@@ -89,6 +89,7 @@ CREATE TABLE IF NOT EXISTS `bb_attachments_desc` (
   `filetime` int(11) NOT NULL DEFAULT '0',
   `thumbnail` tinyint(1) NOT NULL DEFAULT '0',
   `tracker_status` tinyint(1) NOT NULL DEFAULT '0',
+  `hash` char(32) NOT NULL DEFAULT '',
   PRIMARY KEY (`attach_id`),
   KEY `filetime` (`filetime`),
   KEY `filesize` (`filesize`),
