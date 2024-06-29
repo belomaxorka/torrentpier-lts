@@ -2828,3 +2828,6 @@ $lang['RANDOM_RELEASE'] = 'Случайная раздача';
 $lang['RELEASER_STAT_SIZE'] = 'Объемом:';
 $lang['RELEASER_STAT'] = 'Статистика релизера:';
 $lang['RELEASER_STAT_SHOW'] = 'Показать статистику';
+
+// Поиск по статусу раздачи
+$lang['TORRENT_STATUS'] = 'Поиск по статусу релиза';
