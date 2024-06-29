@@ -2823,3 +2823,8 @@ $lang['CAPTCHA_SETTINGS'] = '<h2>ReCaptcha not being fully configured</h2><p>If 
 
 // Случайная раздача
 $lang['RANDOM_RELEASE'] = 'Random release';
+
+// Количество релизов в профиль
+$lang['RELEASER_STAT_SIZE'] = 'Size:';
+$lang['RELEASER_STAT'] = 'Releaser statistics:';
+$lang['RELEASER_STAT_SHOW'] = 'Show statistics';
