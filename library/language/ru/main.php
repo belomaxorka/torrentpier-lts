@@ -2831,3 +2831,7 @@ $lang['RELEASER_STAT_SHOW'] = 'Показать статистику';
 
 // Поиск по статусу раздачи
 $lang['TORRENT_STATUS'] = 'Поиск по статусу релиза';
+
+// Акроним
+$lang['ACRONYM'] = 'Акроним';
+$lang['ACRONYM_TITLE'] = 'Акроним: [acronym=Полный текст]Сокращенный текст[/acronym]';
