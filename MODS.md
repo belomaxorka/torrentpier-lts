@@ -9,3 +9,4 @@
 - Дата запуска форума в статистике на главной v1.0.0 ([ссылка](https://torrentpier.com/resources/data-zapuska-foruma-v-statistike-na-glavnoj.276/))
 - Случайная раздача v1.0.2 ([ссылка](https://torrentpier.com/resources/sluchajnaja-razdacha.277/))
 - Сортировка по ролям в списке пользователей v2.0.0 ([ссылка](https://torrentpier.com/resources/sortirovka-po-roljam-v-spiske-polzovatelej.281/))
+- Автоматический ресайзер аватаров v1.0.1 ([ссылка](https://torrentpier.com/resources/avtomaticheskij-resajzer-avatarov.294/))
