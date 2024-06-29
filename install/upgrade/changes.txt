@@ -122,3 +122,5 @@ ALTER TABLE `bb_bt_tracker_snap` CHANGE `speed_down` `speed_down` int(11) unsign
 DELETE FROM `bb_extensions` WHERE `extension` = 'tga';
 DELETE FROM `bb_extensions` WHERE `extension` = 'tif';
 DELETE FROM `bb_extensions` WHERE `extension` = 'tiff';
+
+// -------------------------------------------------------- //
