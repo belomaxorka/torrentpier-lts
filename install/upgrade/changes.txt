@@ -127,3 +127,7 @@ DELETE FROM `bb_extensions` WHERE `extension` = 'tiff';
 
 // Контрольные суммы файлов
 ALTER TABLE `bb_attachments_desc` ADD `hash` CHAR(32) NOT NULL DEFAULT '';
+
+// Кто просматривает тему
+ALTER TABLE `bb_users` ADD `curpage_topic` mediumint(8) NOT NULL default '0';
+ALTER TABLE `bb_users` ADD `curpage_topic_time` int(11) NOT NULL default '0';
