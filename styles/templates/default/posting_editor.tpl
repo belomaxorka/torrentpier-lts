@@ -202,6 +202,7 @@ bbcode.addTag("codeOpt", "*", "", "0", ctrl);
 bbcode.addTag("codeHR",      "hr",      "",   "8", ctrl);
 bbcode.addTag("codeBR",      "br",      "",   "",  ctrl);
 bbcode.addTag("codeSpoiler", "spoiler", null, "",  ctrl);
+bbcode.addTag("codeAcronym", 'acronym="text"', "/acronym", "",  ctrl);
 
 bbcode.addTag("fontFace", function(e) { var v=e.value; e.selectedIndex=0; return "font=\""+v+"\"" }, "/font");
 bbcode.addTag("codeColor", function(e) { var v=e.value; e.selectedIndex=0; return "color="+v }, "/color");
