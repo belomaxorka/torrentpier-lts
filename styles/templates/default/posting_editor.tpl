@@ -73,6 +73,7 @@ ajax.callback.posts = function(data) {
 	<input type="button" value="&#8212;" name="codeHR" title="{L_HOR_LINE}" style="font-weight: bold; width: 26px;" />
 	<input type="button" value="&para;" name="codeBR" title="{L_NEW_LINE}" style="width: 26px;" />&nbsp;
 	<input type="button" value="{L_SPOILER}" name="codeSpoiler" title="{L_SPOILER}" style="width: 65px;" />
+	<input type="button" value="{L_ACRONYM}" name="codeAcronym" title="{L_ACRONYM_TITLE}" style="width: 70px;" />
 </span>
 &nbsp;
 <div class="buttons floatR">

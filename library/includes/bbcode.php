@@ -503,6 +503,9 @@ class bbcode
 			'#\[quote="(.+?)"\]#isu'                                 => $tpl['quote_username_open'],
 			'#\[spoiler="(.+?)"\]#isu'                               => $tpl['spoiler_title_open'],
 			'#\[list=(a|A|i|I|1)\]#isu'                              => '<ul type="$1">',
+			// Акроним
+			'#\[acronym="(.+?)"\]#isu'                               => '<span class="post-acronym" title="$1">',
+			'#\[acronym=(.+?)\]#isu'                                 => '<span class="post-acronym" title="$1">',
 			'#\[\*=(\d+)\]#isu'                                      => '<li value="$1">',
 			'#\[pre\](.*?)\[/pre\]#isu'                              => '<pre class="post-pre">$1</pre>',
 			'#\[name=([a-zA-Z0-9_]+?)\]#isu'                         => '<a name="$1"></a>',
@@ -523,6 +526,8 @@ class bbcode
 			'[/quote]'   => $tpl['quote_close'],
 			'[spoiler]'  => $tpl['spoiler_open'],
 			'[/spoiler]' => $tpl['spoiler_close'],
+			// Акроним
+			'[/acronym]' => '</span>',
 			'[list]'     => '<ul>',
 			'[*]'        => '<li>',
 			'[/list]'    => '</ul>',
