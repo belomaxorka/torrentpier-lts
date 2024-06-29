@@ -244,6 +244,7 @@ a.small, a.gensmall { color: #006699; text-decoration: none; }
 .post-u     { text-decoration: underline; }
 .post-i     { font-style: italic; }
 .post-s     { text-decoration: line-through; }
+.post-acronym { text-decoration: none; border-bottom: 1px dashed green; cursor: help; color: darkgreen; display: inline-block; }
 /* ---------------------------------- *
      Code blocks
  * ---------------------------------- */
