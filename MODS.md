@@ -13,3 +13,4 @@
 - Количество релизов в профиль v1.2.0 ([ссылка](https://torrentpier.com/resources/kolichestvo-relizov-v-profil.292/))
 - Контрольные суммы файлов v1.2.0 ([ссылка](https://torrentpier.com/resources/kontrolnye-summy-fajlov.280/))
 - Поиск по статусу раздачи v2.0.0 ([ссылка](https://torrentpier.com/resources/poisk-po-statusu-razdachi.161/))
+- BBCode: Акроним v2.0.2 ([ссылка](https://torrentpier.com/resources/bbcode-akronim.289/))
