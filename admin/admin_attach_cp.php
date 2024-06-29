@@ -521,6 +521,8 @@ if ($view == 'attachments')
 
 				'FILENAME' => htmlspecialchars($attachments[$i]['real_filename']),
 				'COMMENT' => htmlspecialchars($attachments[$i]['comment']),
+				// Контрольные суммы файлов
+				'HASH' => ($bb_cfg['attach_file_hash'] && !empty($attachments[$i]['hash'])) ? strtoupper(htmlCHR($attachments[$i]['hash'])) : '',
 				'EXTENSION' => $attachments[$i]['extension'],
 				'SIZE' => humn_size($attachments[$i]['filesize'], 2),
 				'DOWNLOAD_COUNT' => $attachments[$i]['download_count'],

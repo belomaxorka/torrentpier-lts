@@ -198,7 +198,7 @@ function search_attachments($order_by, &$total_rows, $back_links = '')
 	$where_sql = array();
 
 	// Get submitted Vars
-	$search_vars = array('search_keyword_fname', 'search_keyword_comment', 'search_author', 'search_size_smaller', 'search_size_greater', 'search_count_smaller', 'search_count_greater', 'search_days_greater', 'search_forum', 'search_cat');
+	$search_vars = array('search_keyword_fname', 'search_keyword_comment', 'search_hash', 'search_author', 'search_size_smaller', 'search_size_greater', 'search_count_smaller', 'search_count_greater', 'search_days_greater', 'search_forum', 'search_cat');
 
 	for ($i = 0; $i < sizeof($search_vars); $i++)
 	{
@@ -253,6 +253,14 @@ function search_attachments($order_by, &$total_rows, $back_links = '')
 	{
 		$match_word = str_replace('*', '%', $search_keyword_comment);
 		$where_sql[] = " (a.comment LIKE '" . attach_mod_sql_escape($match_word) . "') ";
+	}
+
+	// Контрольные суммы файлов
+	global $bb_cfg;
+	if ($bb_cfg['attach_file_hash'] && !empty($search_hash))
+	{
+		$match_word = str_replace('*', '%', $search_hash);
+		$where_sql[] = " (a.hash LIKE '" . attach_mod_sql_escape($match_word) . "') ";
 	}
 
 	// Search Download Count
