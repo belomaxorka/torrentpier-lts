@@ -2909,3 +2909,15 @@ function bb_captcha ($mode, $callback = '')
 	}
 	return false;
 }
+
+// Контрольные суммы файлов
+function get_file_hash($filepath)
+{
+	global $bb_cfg;
+
+	if ($bb_cfg['attach_file_hash'] && $hash = hash_file('md5', $filepath)) {
+		return $hash;
+	}
+
+	return '';
+}

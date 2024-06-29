@@ -124,3 +124,6 @@ DELETE FROM `bb_extensions` WHERE `extension` = 'tif';
 DELETE FROM `bb_extensions` WHERE `extension` = 'tiff';
 
 // -------------------------------------------------------- //
+
+// Контрольные суммы файлов
+ALTER TABLE `bb_attachments_desc` ADD `hash` CHAR(32) NOT NULL DEFAULT '';

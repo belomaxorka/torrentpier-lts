@@ -10,3 +10,6 @@ $bb_cfg['show_board_start_date'] = true;
 
 // Случайная раздача
 $bb_cfg['random_release_button'] = true;
+
+// Контрольные суммы файлов
+$bb_cfg['attach_file_hash'] = true;
