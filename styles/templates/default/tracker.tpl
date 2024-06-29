@@ -70,7 +70,7 @@ ajax.callback.view_post = function(data) {
 
 <div class="nav">
 	<p class="floatL"><a href="{U_INDEX}">{T_INDEX}</a></p>
-	<!-- IF MATCHES --><p class="floatR">{MATCHES} {SERACH_MAX}</p><!-- ENDIF -->
+	<p class="floatR"><!-- IF $bb_cfg['random_release_button'] --><a href="{U_TRACKER}?random_release=1">{L_RANDOM_RELEASE}</a><!-- ENDIF --><!-- IF MATCHES -->&nbsp;&middot;&nbsp;{MATCHES}&nbsp;{SERACH_MAX}<!-- ENDIF --></p>
 	<div class="clear"></div>
 </div>
 

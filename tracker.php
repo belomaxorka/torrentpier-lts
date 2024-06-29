@@ -68,6 +68,21 @@ $dl_stat_tbl  = BB_BT_DLSTATUS     .' dl';
 $attach_desc_tbl = BB_ATTACHMENTS_DESC .' ad';
 
 //
+// Случайная раздача
+//
+if ($bb_cfg['random_release_button'] && isset($_GET['random_release']))
+{
+	if ($random_release = DB()->fetch_row("SELECT topic_id FROM ". BB_BT_TORRENTS ." WHERE tor_status NOT IN(". implode(', ', array_keys($bb_cfg['tor_frozen'])) .") ORDER BY RAND() LIMIT 1"))
+	{
+		redirect(TOPIC_URL . $random_release['topic_id']);
+	}
+	else
+	{
+		bb_die($lang['NO_MATCH']);
+	}
+}
+
+//
 // Search options
 //
 // Key values
