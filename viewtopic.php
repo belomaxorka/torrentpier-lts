@@ -619,6 +619,35 @@ if ($topic_attachment)
 }
 
 //
+// Кто просматривает тему
+//
+if (!IS_GUEST)
+{
+	$sql = "SELECT username, user_id, user_rank, curpage_topic_time
+		FROM " . BB_USERS . "
+		WHERE curpage_topic = $topic_id
+		AND (curpage_topic_time >= " . (TIMENOW - 300) . ") LIMIT 1";
+
+	if (!$viewing_users = DB()->fetch_rowset($sql))
+	{
+		DB()->query("UPDATE " . BB_USERS . " SET curpage_topic = $topic_id, curpage_topic_time = " . TIMENOW . " WHERE user_id = {$userdata['user_id']} LIMIT 1");
+		$viewing_users = DB()->fetch_rowset($sql);
+	}
+
+	$looking_list = array();
+	foreach ($viewing_users as $row)
+	{
+		$looking_list[] = profile_url($row);
+	}
+
+	$template->assign_vars(array(
+		'LOOKING_LIST' => !empty($looking_list) ? ($lang['WHOIS_LOOKING'] . '&nbsp;' . implode(", ", $looking_list)) : false,
+	));
+
+	unset($viewing_users, $looking_list);
+}
+
+//
 // Update the topic view counter
 //
 $sql = "INSERT INTO ". BUF_TOPIC_VIEW ." (topic_id,  topic_views) VALUES ($topic_id, 1) ON DUPLICATE KEY UPDATE topic_views = topic_views + 1";

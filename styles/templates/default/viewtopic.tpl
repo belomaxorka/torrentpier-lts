@@ -531,6 +531,16 @@ function build_poll_add_form (src_el)
 
 </table><!--/topic_main-->
 
+<!-- IF LOOKING_LIST -->
+<table class="topic" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="nav pad_6 {PG_ROW_CLASS}">
+			<p>{LOOKING_LIST}</p>
+		</td>
+	</tr>
+</table>
+<!-- ENDIF -->
+
 <!-- IF HIDE_POST_IMG --><script type="text/javascript">$('img.postImg').remove();</script><!-- ENDIF -->
 <!-- IF HIDE_SMILE --><script type="text/javascript">$('img.smile').remove();</script><!-- ENDIF -->
 
