@@ -173,6 +173,9 @@
 				<p>{TOTAL_USERS}</p>
 				<p>{TOTAL_GENDER}</p>
 				<p>{NEWEST_USER}</p>
+				<!-- IF BOARD_START_DATE -->
+				<p style="margin-top: 4px;">{L_BOARD_STARTED}:&nbsp;<b>{BOARD_START_DATE}</b></p>
+				<!-- ENDIF -->
 
 				<!-- IF $bb_cfg['tor_stats'] -->
 				<div class="hr1" style="margin: 5px 0 4px;"></div>

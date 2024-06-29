@@ -295,6 +295,8 @@ $template->assign_vars(array(
 	'TOTAL_USERS'           => sprintf($lang['REGISTERED_USERS_TOTAL'], $stats['usercount']),
 	'TOTAL_GENDER'          => ($bb_cfg['gender']) ? sprintf($lang['USERS_TOTAL_GENDER'], $stats['male'], $stats['female'], $stats['unselect']) : '',
 	'NEWEST_USER'           => sprintf($lang['NEWEST_USER'], profile_url($stats['newestuser'])),
+	// Дата запуска форума в статистике на главной
+	'BOARD_START_DATE'      => ($bb_cfg['show_board_start_date']) ? bb_date($bb_cfg['board_startdate']) : '',
 
 	// Tracker stats
 	'TORRENTS_STAT'         => ($bb_cfg['tor_stats']) ? sprintf($lang['TORRENTS_STAT'], $stats['torrentcount'], humn_size($stats['size'])) : '',
