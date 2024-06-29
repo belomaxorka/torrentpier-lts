@@ -7,3 +7,4 @@
 ***
 - Вывод порядкового номера поста в топике v1.0.0 ([ссылка](https://torrentpier.com/threads/vyvod-porjadkovogo-nomera-posta-v-topike.42192/))
 - Дата запуска форума в статистике на главной v1.0.0 ([ссылка](https://torrentpier.com/resources/data-zapuska-foruma-v-statistike-na-glavnoj.276/))
+- Случайная раздача v1.0.2 ([ссылка](https://torrentpier.com/resources/sluchajnaja-razdacha.277/))
