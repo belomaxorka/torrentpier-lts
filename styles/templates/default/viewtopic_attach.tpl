@@ -59,6 +59,9 @@
 		{postrow.attach.attachrow.COMMENT}
 	</p>
 	<!-- ENDIF -->
+	<!-- IF postrow.attach.attachrow.HASH -->
+	<p class="attach_comment med">MD5: {postrow.attach.attachrow.HASH}</p>
+	<!-- ENDIF -->
 </fieldset>
 
 <div class="spacer_12"></div>

@@ -211,6 +211,7 @@ class attach_parent
 	function handle_attachments($mode)
 	{
 		global $is_auth, $attach_config, $refresh, $update_attachment, $post_id, $submit, $preview, $error, $error_msg, $lang;
+		global $upload_dir;
 
 		//
 		// ok, what shall we do ;)
@@ -515,6 +516,8 @@ class attach_parent
 							'mimetype'				=> (string) strtolower($this->type),
 							'filesize'				=> (int) $this->filesize,
 							'filetime'				=> (int) $this->filetime,
+							// Контрольные суммы файлов
+							'hash'                  => get_file_hash($upload_dir . '/' . $this->attach_filename),
 							'thumbnail'				=> (int) $this->thumbnail
 						);
 
@@ -654,6 +657,8 @@ class attach_parent
 						'mimetype'				=> (string) strtolower($this->attachment_mimetype_list[$i]),
 						'filesize'				=> (int) $this->attachment_filesize_list[$i],
 						'filetime'				=> (int) $this->attachment_filetime_list[$i],
+						// Контрольные суммы файлов
+						'hash'                  => get_file_hash($upload_dir . '/' . $this->attachment_list[$i]),
 						'thumbnail'				=> (int) $this->attachment_thumbnail_list[$i]
 					);
 
@@ -704,6 +709,8 @@ class attach_parent
 					'mimetype'				=> (string) strtolower($this->type),
 					'filesize'				=> (int) $this->filesize,
 					'filetime'				=> (int) $this->filetime,
+					// Контрольные суммы файлов
+					'hash'                  => get_file_hash($upload_dir . '/' . $this->attach_filename),
 					'thumbnail'				=> (int) $this->thumbnail
 				);
 

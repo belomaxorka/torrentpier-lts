@@ -348,12 +348,16 @@ function display_attachments($post_id)
 				$target_blank = ( (@intval($display_categories[$attachments['_' . $post_id][$i]['extension']]) == IMAGE_CAT) ) ? 'target="_blank"' : '';
 
 				// display attachment
+				// Контрольные суммы файлов
+				global $bb_cfg;
 				$template->assign_block_vars('postrow.attach.attachrow', array(
 					'U_DOWNLOAD_LINK' => BB_ROOT . DOWNLOAD_URL . $attachments['_' . $post_id][$i]['attach_id'],
 					'S_UPLOAD_IMAGE'  => $upload_image,
 					'DOWNLOAD_NAME'   => $display_name,
 					'FILESIZE'        => $filesize,
 					'COMMENT'         => $comment,
+					// Контрольные суммы файлов
+					'HASH'            => ($bb_cfg['attach_file_hash'] && !empty($attachments['_' . $post_id][$i]['hash'])) ? strtoupper(htmlCHR($attachments['_' . $post_id][$i]['hash'])) : '',
 					'TARGET_BLANK'    => $target_blank,
 					'IS_IMAGE'        => !empty($target_blank), // Проверка на то, что загружаемый файл является картинкой
 					'DOWNLOAD_COUNT'  => declension((int)$attachments['_' . $post_id][$i]['download_count'], 'times'),
