@@ -432,7 +432,8 @@ function user_notification($mode, &$post_data, &$topic_title, &$forum_id, &$topi
 	}
 }
 
-function insert_post ($mode, $topic_id, $forum_id = '', $old_forum_id = '', $new_topic_id = '', $new_topic_title = '', $old_topic_id = '', $message = '', $poster_id = '')
+// Причина переноса топика
+function insert_post ($mode, $topic_id, $forum_id = '', $old_forum_id = '', $new_topic_id = '', $new_topic_title = '', $old_topic_id = '', $message = '', $poster_id = '', $reason_move = '')
 {
 	global $userdata, $lang;
 
