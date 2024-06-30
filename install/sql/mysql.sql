@@ -531,6 +531,7 @@ INSERT INTO `bb_config` VALUES ('premod', '0');
 INSERT INTO `bb_config` VALUES ('new_tpls', '1');
 INSERT INTO `bb_config` VALUES ('tor_comment', '1');
 INSERT INTO `bb_config` VALUES ('terms', '');
+INSERT INTO `bb_config` VALUES ('admin_note', 'Hello, world!');
 
 -- ----------------------------
 -- Table structure for `bb_cron`
