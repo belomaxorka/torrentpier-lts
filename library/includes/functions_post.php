@@ -458,7 +458,9 @@ function insert_post ($mode, $topic_id, $forum_id = '', $old_forum_id = '', $new
 		}
 		if (!$forum_names) return;
 
-		$post_text = sprintf($lang['BOT_TOPIC_MOVED_FROM_TO'], '[url='. make_url(FORUM_URL . $old_forum_id) .']'. $forum_names[$old_forum_id] .'[/url]', '[url='. make_url(FORUM_URL . $forum_id) .']'. $forum_names[$forum_id] .'[/url]', profile_url($userdata));
+		// Причина переноса топика
+		$reason_move = !empty($reason_move) ? htmlCHR($reason_move) : $lang['NOSELECT'];
+		$post_text = sprintf($lang['BOT_TOPIC_MOVED_FROM_TO'], '[url='. make_url(FORUM_URL . $old_forum_id) .']'. $forum_names[$old_forum_id] .'[/url]', '[url='. make_url(FORUM_URL . $forum_id) .']'. $forum_names[$forum_id] .'[/url]', $reason_move, profile_url($userdata));
 
 		$poster_id = BOT_UID;
 		$poster_ip = '7f000001';

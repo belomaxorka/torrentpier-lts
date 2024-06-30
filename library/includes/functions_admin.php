@@ -402,7 +402,8 @@ function topic_delete ($mode_or_topic_id, $forum_id = null, $prune_time = 0, $pr
 	return $deleted_topics_count;
 }
 
-function topic_move ($topic_id, $to_forum_id, $from_forum_id = null, $leave_shadow = false, $insert_bot_msg = false)
+// Причина переноса топика
+function topic_move ($topic_id, $to_forum_id, $from_forum_id = null, $leave_shadow = false, $insert_bot_msg = false, $reason_move = '')
 {
 	global $log_action;
 
@@ -482,7 +483,8 @@ function topic_move ($topic_id, $to_forum_id, $from_forum_id = null, $leave_shad
 	{
 		foreach ($topics as $topic_id => $row)
 		{
-			insert_post('after_move', $topic_id, $to_forum_id, $row['forum_id']);
+			// Причина переноса топика
+			insert_post('after_move', $topic_id, $to_forum_id, $row['forum_id'], '', '', '', '', '', $reason_move);
 		}
 		sync('topic', array_keys($topics));
 	}
