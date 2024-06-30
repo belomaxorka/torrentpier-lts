@@ -1318,6 +1318,8 @@ $lang['UPDATE_POST_TIME'] = 'Оновити час повідомлення';
 $lang['TOPIC_SPLIT_NEW'] = 'Нова тема';
 $lang['TOPIC_SPLIT_OLD'] = 'Стара тема';
 $lang['BOT_LEAVE_MSG_MOVED'] = 'Залишити повідомлення про перенесення';
+// Причина переноса топика
+$lang['BOT_REASON_MOVED'] = 'Причина перенесення';
 $lang['BOT_AFTER_SPLIT_TO_OLD'] = 'Залишити повідомлення про поділ <b>в старій темі</b>';
 $lang['BOT_AFTER_SPLIT_TO_NEW'] = 'Додати повідомлення про поділ <b>в нову тему</b>';
 //qr
