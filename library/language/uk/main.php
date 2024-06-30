@@ -2541,7 +2541,8 @@ $lang['WRONG_INPUT'] = 'Ви ввели деякі неправильні зна
 $lang['PROCESSING'] = 'Йде обробка...';
 $lang['FINISHED'] = 'Закінчити';
 
-$lang['BOT_TOPIC_MOVED_FROM_TO'] = 'Топік був перенесений з форуму [b]%s[/b] у форум [b]%s[/b][br][br]%s';
+// Причина переноса топика
+$lang['BOT_TOPIC_MOVED_FROM_TO'] = 'Топік був перенесений з форуму [b]%s[/b] у форум [b]%s[/b].[br][b]Причина перенесення:[/b] %s[br][br]%s';
 $lang['BOT_MESS_SPLITS'] = 'Повідомлення з цієї теми були виділені в окремий топік [b]%s[/b][br][br]%s';
 $lang['BOT_TOPIC_SPLITS'] = 'Тема була виділена з [b]%s[/b][br][br]%s';
 
