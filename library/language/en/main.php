@@ -2846,3 +2846,9 @@ $lang['WHOIS_LOOKING'] = 'Now viewing this topic:';
 $lang['ADMIN_NOTES'] = 'Admin notes';
 $lang['NOTE_SAVE'] = 'Save note';
 $lang['NOTE_SAVED'] = 'Note has been successfully saved!';
+
+// Набор BBCode тегов с рутрекера by belomaxorka
+$lang['BOX_TAG'] = 'Frame around text: [box]text[/box]';
+$lang['INDENT_TAG'] = 'Insert indent: [indent]text[/indent]';
+$lang['PRE_TAG'] = 'Preformatted text: [pre]text[/pre]';
+$lang['NFO_TAG'] = 'NFO: [nfo]text[/nfo]';

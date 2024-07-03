@@ -2846,3 +2846,9 @@ $lang['WHOIS_LOOKING'] = 'Кто просматривает тему:';
 $lang['ADMIN_NOTES'] = 'Заметки администратора';
 $lang['NOTE_SAVE'] = 'Сохранить заметку';
 $lang['NOTE_SAVED'] = 'Заметка успешно сохранена!';
+
+// Набор BBCode тегов с рутрекера by belomaxorka
+$lang['BOX_TAG'] = 'Рамка вокруг текста: [box]текст[/box]';
+$lang['INDENT_TAG'] = 'Добавить отступ: [indent]текст[/indent]';
+$lang['PRE_TAG'] = 'Форматированный текст: [pre]текст[/pre]';
+$lang['NFO_TAG'] = 'NFO: [nfo]текст[/nfo]';
