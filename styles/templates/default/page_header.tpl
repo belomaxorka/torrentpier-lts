@@ -20,6 +20,7 @@
 <meta name="version" content="{$bb_cfg['tp_version']}">
 
 <script type="text/javascript" src="{SITE_URL}styles/js/jquery.pack.js?v={$bb_cfg['js_ver']}"></script>
+<!-- IF $bb_cfg['new_year_mode'] --><script type="text/javascript" src="{SITE_URL}styles/js/libs/snowfall.js"></script><!-- ENDIF -->
 <script type="text/javascript" src="{SITE_URL}styles/js/main.js?v={$bb_cfg['js_ver']}"></script>
 
 <!-- IF INCLUDE_BBCODE_JS -->
@@ -138,6 +139,13 @@ input[type="checkbox"] { margin-bottom: -1px; }
 </head>
 
 <body>
+<!-- IF $bb_cfg['new_year_mode'] -->
+<script>
+	$(document).ready(function () {
+		$(document).snowfall({round : true, minSize: 3, maxSize:10});
+	});
+</script>
+<!-- ENDIF -->
 <!-- IF EDITABLE_TPLS -->
 <div id="editable-tpl-input" style="display: none;">
 	<span class="editable-inputs nowrap" style="display: none;">

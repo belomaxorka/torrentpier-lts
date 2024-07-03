@@ -5,6 +5,9 @@
 
 if (!defined('BB_ROOT')) die(basename(__FILE__));
 
+// Режим: Новый год
+$bb_cfg['new_year_mode'] = true;
+
 // Дата запуска форума в статистике на главной
 $bb_cfg['show_board_start_date'] = true;
 
