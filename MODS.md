@@ -18,4 +18,9 @@
 - Заметки администратора v1.2.1 ([ссылка](https://torrentpier.com/resources/zametki-administratora.271/))
 - Причина переноса топика v1.0.0 ([ссылка](https://torrentpier.com/resources/prichina-perenosa-topika.287/))
 - Набор BBCode тегов с рутрекера v1.0.0 ([ссылка](https://torrentpier.com/resources/nabor-bbcode-tegov-s-rutrekera.283/))
+- Набор модов от [lufton](https://torrentpier.com/resources/authors/lufton.8750/)
+	* Autocomplete v1.0.0 ([ссылка](https://torrentpier.com/resources/autocomplete.266/))
+    * Drag and Drop Duration v1.0.0 ([ссылка](https://torrentpier.com/resources/drag-and-drop-duration.267/))
+    * Drag and Drop File-list v1.0.0 ([ссылка](https://torrentpier.com/resources/drag-and-drop-fajl-list.268/))
+- Новогодний режим + куча дополнений для него
 - ... и много других мелочей перенесенных с новых версий
