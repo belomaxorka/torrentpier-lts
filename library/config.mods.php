@@ -6,7 +6,8 @@
 if (!defined('BB_ROOT')) die(basename(__FILE__));
 
 // Режим: Новый год
-$bb_cfg['new_year_mode'] = ((date('n') == 12 and date('j') > 21) or (date('n') == 1 and date('j') < 10));
+// Автоматическая активация 21 декабря по 10 января
+$bb_cfg['new_year_mode'] = ((date('n') == 12 && date('j') >= 21) || (date('n') == 1 && date('j') <= 10));
 
 // Дата запуска форума в статистике на главной
 $bb_cfg['show_board_start_date'] = true;
