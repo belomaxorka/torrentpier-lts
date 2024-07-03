@@ -69,22 +69,3 @@
 $p('{ONLOAD_FOCUS_ID}').focus();
 </script>
 <!-- ENDIF -->
-
-<!-- IF $bb_cfg['new_year_mode'] -->
-<style>
-	#xmas {
-		width: 100%;
-		bottom: 0;
-		overflow: hidden;
-		white-space: nowrap;
-		display: inline-block;
-		position: fixed;
-		z-index: 9;
-		background: url("styles/images/xmas/bg0.png") repeat-x;
-		background-position-y: bottom;
-		animation: scroll-text 10s linear infinite;
-		animation-direction: reverse;
-	}
-</style>
-<div id="xmas"><img height="60" src="styles/images/xmas/santa1.gif" alt="Happy New Year!"/></div>
-<!-- ENDIF -->
