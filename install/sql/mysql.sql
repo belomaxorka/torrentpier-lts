@@ -165,6 +165,22 @@ CREATE TABLE IF NOT EXISTS `bb_banlist` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for `bb_book`
+-- ----------------------------
+DROP TABLE IF EXISTS `bb_book`;
+CREATE TABLE IF NOT EXISTS `bb_book` (
+  `book_id` mediumint(8) NOT NULL AUTO_INCREMENT,
+  `user_id` mediumint(9) NOT NULL DEFAULT '0',
+  `topic_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `forum_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`book_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of bb_book
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for `bb_bt_dlstatus`
 -- ----------------------------
 DROP TABLE IF EXISTS `bb_bt_dlstatus`;
