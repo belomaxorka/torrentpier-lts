@@ -12,6 +12,7 @@
 </script>
 <!-- ENDIF -->
 <!-- ENDIF / LOGGED_IN -->
+<script type="text/javascript" src="{SITE_URL}styles/js/libs/printThis.min.js"></script>
 
 <!-- IF $bb_cfg['use_ajax_posts'] && (AUTH_DELETE || AUTH_REPLY || AUTH_EDIT) -->
 <script type="text/javascript">
