@@ -324,6 +324,8 @@ $lang['POST_STICKY'] = 'Прилепленная';
 $lang['POST_NORMAL'] = 'Обычная';
 $lang['POST_DOWNLOAD'] = 'Скачиваемая';
 
+$lang['PRINT_PAGE'] = 'Распечатать страницу';
+
 $lang['CONFIRM_DELETE'] = 'Вы уверены, что хотите удалить это сообщение?';
 $lang['CONFIRM_DELETE_POLL'] = 'Вы уверены, что хотите удалить этот опрос?';
 
