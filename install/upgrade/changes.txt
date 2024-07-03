@@ -134,3 +134,13 @@ ALTER TABLE `bb_users` ADD `curpage_topic_time` int(11) NOT NULL DEFAULT '0';
 
 // Заметки администратора
 INSERT INTO `bb_config` VALUES ('admin_note', 'Hello, world!');
+
+// Закладки
+DROP TABLE IF EXISTS `bb_book`;
+CREATE TABLE IF NOT EXISTS `bb_book` (
+  `book_id` mediumint(8) NOT NULL AUTO_INCREMENT,
+  `user_id` mediumint(9) NOT NULL DEFAULT '0',
+  `topic_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `forum_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`book_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
