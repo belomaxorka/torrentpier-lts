@@ -492,6 +492,21 @@ elseif (($t_data['topic_poster'] == $userdata['user_id']) && $userdata['session_
 }
 
 //
+// Закладки
+//
+if (!IS_GUEST) {
+	if (!DB()->fetch_row('SELECT book_id FROM ' . BB_BOOK . " WHERE topic_id = $topic_id AND user_id = " . $userdata['user_id'])) {
+		$template->assign_vars(array(
+			'U_BOOK' => '<span class="bold a-like" onclick="ajax.book();">Добавить в закладки</span>',
+		));
+	} else {
+		$template->assign_vars(array(
+			'U_BOOK' => '<span class="bold a-like" onclick="ajax.exec({ action:\'book\', mode:\'delete\', tid:' . $topic_id . ', ids: \'0\' });">Удалить закладку</span>',
+		));
+	}
+}
+
+//
 // Topic watch information
 //
 $s_watching_topic = $s_watching_topic_img = '';

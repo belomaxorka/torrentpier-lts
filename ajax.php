@@ -91,6 +91,8 @@ class ajax_common
 		'change_torrent'    => array('user'),
 		'change_tor_status' => array('user'),
 		'manage_group'      => array('user'),
+		// Закладки
+		'book'              => array('user'),
 		// Количество релизов в профиль
 		'releases_profile'  => array('user'),
 
@@ -459,6 +461,12 @@ class ajax_common
 	function sitemap()
 	{
 		require(AJAX_DIR .'sitemap.php');
+	}
+
+	// Закладки
+	function book()
+	{
+		require(AJAX_DIR .'book.php');
 	}
 
 	// Количество релизов в профиль

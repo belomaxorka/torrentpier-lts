@@ -256,6 +256,24 @@ function build_poll_add_form (src_el)
 		<td class="small bold nowrap tRight" width="100%">
 			&nbsp;
 			<!-- IF LOGGED_IN -->
+			<script type="text/javascript">
+				ajax.book = function () {
+					ajax.exec({
+						action: 'book',
+						mode: 'add',
+						tid: {TOPIC_ID},
+						fid: {FORUM_ID},
+					});
+				};
+				ajax.callback.book = function (data) {
+					$('#book').html(data.ok);
+					$('#book2').html(data.ok);
+
+					if (data.info) alert(data.info);
+					if (data.url) document.location.href = data.url;
+				};
+			</script>
+			<span id="book">{U_BOOK}</span> &nbsp;<span style="color:#CDCDCD;">|</span>&nbsp;
 			<a class="small" href="{U_SEARCH_SELF}">{L_SEARCH_SELF}</a> &nbsp;<span style="color:#CDCDCD;">|</span>&nbsp;
 			<a class="menu-root" href="#topic-options">{L_DISPLAYING_OPTIONS}</a>
 			<!-- ENDIF / LOGGED_IN -->

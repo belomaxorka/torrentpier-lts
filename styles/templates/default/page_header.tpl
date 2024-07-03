@@ -341,6 +341,7 @@ $(document).ready(function() {
 		</div>
 	</td>
 	<td width="50%" class="tRight">
+		<a href="{U_BOOK_URL}"><b>Закладки</b></a> &#0183;
 		<a href="{U_OPTIONS}"><b>{L_OPTIONS}</b></a> &#0183;
 		<a href="{U_CUR_DOWNLOADS}">{L_PROFILE}</a> <a href="#dls-menu" class="menu-root menu-alt1">&#9660;</a>
 	</td>
