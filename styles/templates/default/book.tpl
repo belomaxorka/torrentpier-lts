@@ -49,7 +49,7 @@
 	<!-- BEGIN no_book -->
 	<tbody>
 	<tr>
-		<td class="row1 tCenter pad_8" colspan="9">{L_BOOKMARKS_NONE}</td>
+		<td class="row1 tCenter pad_8" colspan="9">{no_book.NO_BOOK}</td>
 	</tr>
 	</tbody>
 	<!-- END no_book -->

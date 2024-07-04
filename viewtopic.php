@@ -497,11 +497,11 @@ elseif (($t_data['topic_poster'] == $userdata['user_id']) && $userdata['session_
 if (!IS_GUEST) {
 	if (!DB()->fetch_row('SELECT book_id FROM ' . BB_BOOK . " WHERE topic_id = $topic_id AND user_id = " . $userdata['user_id'])) {
 		$template->assign_vars(array(
-			'U_BOOK' => '<span class="bold a-like" onclick="ajax.book();">' . $lang['BOOKMARKS_ADD'] . '</span>',
+			'U_BOOK' => '<a class="small" href="#" onclick="ajax.book(); return false;">' . $lang['BOOKMARKS_ADD'] . '</a>',
 		));
 	} else {
 		$template->assign_vars(array(
-			'U_BOOK' => '<span class="bold a-like" onclick="ajax.exec({ action:\'book\', mode:\'delete\', tid:' . $topic_id . ', ids: \'0\' });">' . $lang['BOOKMARKS_REMOVE'] . '</span>',
+			'U_BOOK' => '<a class="small" href="#" onclick="ajax.exec({ action:\'book\', mode:\'delete\', tid:' . $topic_id . ', ids: \'0\' }); return false;">' . $lang['BOOKMARKS_REMOVE'] . '</a>',
 		));
 	}
 }
