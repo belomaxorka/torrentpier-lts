@@ -525,8 +525,11 @@ if (($bb_cfg['board_disable'] || file_exists(BB_DISABLED)) && !defined('IN_ADMIN
 	{
 		// trigger lock
 		cron_release_deadlock();
-		send_no_cache_headers();
-		bb_die('BOARD_DISABLE_CRON');
+		if ($bb_cfg['cron_enabled'])
+		{
+			send_no_cache_headers();
+			bb_die('BOARD_DISABLE_CRON');
+		}
 	}
 	else if ($bb_cfg['board_disable'] && !DBG_USER)
 	{
