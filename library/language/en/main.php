@@ -2855,3 +2855,13 @@ $lang['BOX_TAG'] = 'Frame around text: [box]text[/box]';
 $lang['INDENT_TAG'] = 'Insert indent: [indent]text[/indent]';
 $lang['PRE_TAG'] = 'Preformatted text: [pre]text[/pre]';
 $lang['NFO_TAG'] = 'NFO: [nfo]text[/nfo]';
+
+// Закладки
+$lang['BOOKMARKS'] = 'Bookmarks';
+$lang['BOOKMARKS_ADD'] = 'Add to bookmarks';
+$lang['BOOKMARKS_ADD_SUCCESS'] = 'Bookmark added successfully';
+$lang['BOOKMARKS_REMOVE'] = 'Remove from bookmarks';
+$lang['BOOKMARKS_REMOVE_SUCCESS'] = 'Bookmark deleted successfully';
+$lang['BOOKMARKS_NONE'] = 'Sorry, you don\'t have any bookmarks saved';
+$lang['BOOKMARKS_ALREADY'] = 'You have already bookmarked this topic';
+$lang['BOOKMARKS_LIMIT_REACHED'] = 'You have too many bookmarks...';
