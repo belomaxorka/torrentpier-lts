@@ -35,15 +35,15 @@
 	</tr>
 	</thead>
 	<!-- BEGIN book -->
-	<tr id="tr-{book.ID}" class="row2">
-		<td id="{book.ID}" class="topic_id tCenter row1">
+	<tr id="tr-{book.ID}" class="row1">
+		<td id="{book.ID}" class="topic_id tCenter">
 			<span style="display: none;">{book.TOPIC_ICON}</span>
 			<img class="topic_icon" src="{book.TOPIC_ICON}">
 		</td>
-		<td class="row1 med bold w70"><!-- IF book.POLL --><span class="topicPoll">{L_TOPIC_POLL}</span>&nbsp;<!-- ENDIF -->{book.TOPIC}</td>
-		<td class="row1 med bold tCenter" style="width:30%;">{book.FORUM}</td>
-		<td class="row1 med tCenter" style="width:30%;"><span title="{L_REPLIES}: {book.REPLIES}">{book.REPLIES}</span> | <span title="{L_VIEWED}: {book.VIEWS}">{book.VIEWS}</span></td>
-		<td class="row2 tCenter"><input type="submit" onclick="ajax.book('{book.ID}'); $('#tr-{book.ID}').hide();" value="{L_DELETE}"></td>
+		<td class="med bold w70"><!-- IF book.POLL --><span class="topicPoll">{L_TOPIC_POLL}</span>&nbsp;<!-- ENDIF -->{book.TOPIC}</td>
+		<td class="med bold tCenter" style="width:30%;">{book.FORUM}</td>
+		<td class="med tCenter" style="width:30%;"><span title="{L_REPLIES}: {book.REPLIES}">{book.REPLIES}</span> | <span title="{L_VIEWED}: {book.VIEWS}">{book.VIEWS}</span></td>
+		<td class="tCenter"><input type="submit" onclick="ajax.book('{book.ID}'); $('#tr-{book.ID}').hide();" value="{L_DELETE}"></td>
 	</tr>
 	<!-- END book -->
 	<!-- BEGIN no_book -->
