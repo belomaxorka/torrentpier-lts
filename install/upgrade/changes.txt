@@ -144,3 +144,7 @@ CREATE TABLE IF NOT EXISTS `bb_book` (
   `forum_id` smallint(5) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`book_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+// ------------- //
+ALTER TABLE `bb_bt_torrents` ADD COLUMN `last_seeder_id` int(11) NOT NULL DEFAULT '0';
+ALTER TABLE `buf_last_seeder` ADD COLUMN `user_id` mediumint(8) NOT NULL DEFAULT '0';
