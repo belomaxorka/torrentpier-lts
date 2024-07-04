@@ -2855,3 +2855,13 @@ $lang['BOX_TAG'] = 'Рамка навколо тексту: [box]текст[/box
 $lang['INDENT_TAG'] = 'Додати відступ: [indent]текст[/indent]';
 $lang['PRE_TAG'] = 'Форматований текст: [pre]текст[/pre]';
 $lang['NFO_TAG'] = 'NFO: [nfo]текст[/nfo]';
+
+// Закладки
+$lang['BOOKMARKS'] = 'Закладки';
+$lang['BOOKMARKS_ADD'] = 'Додати в закладки';
+$lang['BOOKMARKS_ADD_SUCCESS'] = 'Закладка успішно додана';
+$lang['BOOKMARKS_REMOVE'] = 'Видалити із закладок';
+$lang['BOOKMARKS_REMOVE_SUCCESS'] = 'Закладка успішно видалена';
+$lang['BOOKMARKS_NONE'] = 'Вибачте, у вас немає збережених закладок';
+$lang['BOOKMARKS_ALREADY'] = 'Ви вже додали цю тему до закладок';
+$lang['BOOKMARKS_LIMIT_REACHED'] = 'У вас занадто багато закладок...';
