@@ -17,14 +17,14 @@ switch ($mode) {
 		$fid = (int)$this->request['fid'];
 
 		if (DB()->fetch_row('SELECT book_id FROM ' . BB_BOOK . " WHERE topic_id = $tid AND user_id = " . $userdata['user_id'])) {
-			$this->ajax_die('Вы уже добавили данную тему в закладки');
+			$this->ajax_die($lang['BOOKMARKS_ALREADY']);
 		}
 
 		// Проверка на лимит закладок
 		if (is_numeric($max_book_marks) && !IS_AM) {
 			$book_count = DB()->fetch_row('SELECT COUNT(*) AS books FROM ' . BB_BOOK . " WHERE user_id = " . $userdata['user_id']);
 			if ($book_count['books'] >= $max_book_marks) {
-				$this->ajax_die('У вас слишком много закладок...');
+				$this->ajax_die($lang['BOOKMARKS_LIMIT_REACHED']);
 			}
 		}
 
@@ -33,14 +33,14 @@ switch ($mode) {
 		$values = "{$userdata['user_id']}, $tid, $fid";
 
 		DB()->query("INSERT IGNORE INTO bb_book ($columns) VALUES ($values)");
-		$this->response['ok'] = 'Закладка успешно добавлена';
+		$this->response['ok'] = $lang['BOOKMARKS_ADD_SUCCESS'];
 		break;
 	case 'delete':
 		$tid = (int)$this->request['tid'];
 
 		// Удаляем закладку из базы
 		DB()->query("DELETE FROM bb_book WHERE topic_id = $tid AND user_id = " . $userdata['user_id']);
-		$this->response['ok'] = 'Закладка успешно удалена';
+		$this->response['ok'] = $lang['BOOKMARKS_REMOVE_SUCCESS'];
 		break;
 	default:
 		$this->ajax_die('Invalid mode:' . $mode);

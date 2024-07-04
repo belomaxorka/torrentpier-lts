@@ -22,7 +22,7 @@ $sql = DB()->fetch_rowset("SELECT b.*, t.*, f.* FROM " . BB_BOOK . " b
 
 if (!$sql) {
 	$template->assign_block_vars('no_book', array(
-		'NO_BOOK' => 'У вас нету закладок',
+		'NO_BOOK' => $lang['BOOKMARKS_NONE'],
 	));
 } else {
 	foreach ($sql as $i => $row) {
