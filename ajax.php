@@ -149,7 +149,7 @@ class ajax_common
 			{
 				$this->ajax_die($lang['BOARD_DISABLE']);
 			}
-			else if ($bb_cfg['cron_enabled'] && file_exists(BB_DISABLED) && $this->action !== 'manage_admin')
+			else if (file_exists(BB_DISABLED) && $this->action !== 'manage_admin')
 			{
 				$this->ajax_die($lang['BOARD_DISABLE_CRON']);
 			}
