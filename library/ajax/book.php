@@ -32,14 +32,14 @@ switch ($mode) {
 		$columns = 'user_id, topic_id, forum_id';
 		$values = "{$userdata['user_id']}, $tid, $fid";
 
-		DB()->query("INSERT IGNORE INTO bb_book ($columns) VALUES ($values)");
+		DB()->query("INSERT IGNORE INTO " . BB_BOOK . " ($columns) VALUES ($values)");
 		$this->response['ok'] = $lang['BOOKMARKS_ADD_SUCCESS'];
 		break;
 	case 'delete':
 		$tid = (int)$this->request['tid'];
 
 		// Удаляем закладку из базы
-		DB()->query("DELETE FROM bb_book WHERE topic_id = $tid AND user_id = " . $userdata['user_id']);
+		DB()->query("DELETE FROM " . BB_BOOK . " WHERE topic_id = $tid AND user_id = " . $userdata['user_id']);
 		$this->response['ok'] = $lang['BOOKMARKS_REMOVE_SUCCESS'];
 		break;
 	default:
