@@ -1,4 +1,4 @@
-<h1 class="pagetitle">Закладки</h1>
+<h1 class="pagetitle">{L_BOOKMARKS}</h1>
 
 <script type="text/javascript">
 	ajax.book = function (tid) {
@@ -49,7 +49,7 @@
 	<!-- BEGIN no_book -->
 	<tbody>
 	<tr>
-		<td class="row1 tCenter pad_8" colspan="9">Извините, у вас нет сохраненных закладок</td>
+		<td class="row1 tCenter pad_8" colspan="9">{L_BOOKMARKS_NONE}</td>
 	</tr>
 	</tbody>
 	<!-- END no_book -->

@@ -2862,6 +2862,6 @@ $lang['BOOKMARKS_ADD'] = 'Добавить в закладки';
 $lang['BOOKMARKS_ADD_SUCCESS'] = 'Закладка успешно добавлена';
 $lang['BOOKMARKS_REMOVE'] = 'Удалить из закладок';
 $lang['BOOKMARKS_REMOVE_SUCCESS'] = 'Закладка успешно удалена';
-$lang['BOOKMARKS_NONE'] = 'У вас нету закладок';
+$lang['BOOKMARKS_NONE'] = 'Извините, у вас нет сохраненных закладок';
 $lang['BOOKMARKS_ALREADY'] = 'Вы уже добавили данную тему в закладки';
 $lang['BOOKMARKS_LIMIT_REACHED'] = 'У вас слишком много закладок...';
