@@ -20,6 +20,7 @@
 - Причина переноса топика v1.0.0 ([ссылка](https://torrentpier.com/resources/prichina-perenosa-topika.287/))
 - Закладки v1.2.5 ([ссылка](https://torrentpier.com/resources/zakladki.119/))
 - Набор BBCode тегов с рутрекера v1.0.0 ([ссылка](https://torrentpier.com/resources/nabor-bbcode-tegov-s-rutrekera.283/))
+- Кто был последний на раздаче v1.0.0 ([ссылка](https://torrentpier.com/resources/kto-byl-poslednij-na-razdache.295/))
 - Набор модов от [lufton](https://torrentpier.com/resources/authors/lufton.8750/)
 	* Autocomplete v1.0.0 ([ссылка](https://torrentpier.com/resources/autocomplete.266/))
     * Drag and Drop Duration v1.0.0 ([ссылка](https://torrentpier.com/resources/drag-and-drop-duration.267/))
