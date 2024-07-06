@@ -48,6 +48,7 @@
 	* Misc
 	* Shortcuts
 	* YouTube Panel
+	* Thumbnail
 	* Alert
 		- Alert theme
 */
@@ -1376,6 +1377,17 @@ div#autocomplete_popup span.regenerate {
 	background: url("../../../images/pic_loading.gif") transparent no-repeat;
 	cursor: pointer;
 	display: inline-block;
+}
+/* ================================================================ *
+    Thumbnail
+ * ================================================================ */
+[class*="lightcase-icon-"]::before {
+	text-decoration: none;
+}
+.light_img {
+	max-width: 200px;
+	max-height: 100px;
+	margin: 5px;
 }
 /* ================================================================ *
     Alert
