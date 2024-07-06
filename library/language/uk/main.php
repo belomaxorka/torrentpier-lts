@@ -2869,16 +2869,16 @@ $lang['BOOKMARKS_LIMIT_REACHED'] = 'У вас занадто багато зак
 // Знак зодиака
 $lang['SHOW_ZODIAC'] = 'Показувати знак зодіаку';
 $lang['ZODIAC_SIGN'] = array(
-	'AQUARIUS' => 'Водолей',
+	'AQUARIUS' => 'Водолій',
 	'ARIES' => 'Овен',
-	'CANCER' => 'Рак',
-	'CAPRICORN' => 'Козерог',
-	'GEMINI' => 'Близнецы',
+	'CANCER' => 'Раки',
+	'CAPRICORN' => 'Козоріг',
+	'GEMINI' => 'Близнюки',
 	'LEO' => 'Лев',
-	'LIBRA' => 'Весы',
-	'PISCES' => 'Рыбы',
-	'SAGITTARIUS' => 'Стрелец',
-	'SCORPIO' => 'Скорпион',
-	'TAURUS' => 'Телец',
-	'VIRGO' => 'Дева',
+	'LIBRA' => 'Терези',
+	'PISCES' => 'Риби',
+	'SAGITTARIUS' => 'Стрілець',
+	'SCORPIO' => 'Скорпіон',
+	'TAURUS' => 'Телець',
+	'VIRGO' => 'Діва',
 );
