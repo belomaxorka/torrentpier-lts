@@ -2934,10 +2934,9 @@ function get_zodiac($birthday, $mode = 'full')
 			if (($month == $date[0] && $day >= $date[1]) || ($month == $date[2] && $day <= $date[3])) {
 				$image = BB_ROOT . 'styles/images/zodiac/' . $sign . '.gif';
 				$title = $lang['ZODIAC_SIGN'][strtoupper($sign)];
-
 				if (isset($title)) {
 					$data_show = $title;
-					if (is_file($image)) {
+					if (file_exists($image)) {
 						switch ($mode) {
 							case 'image':
 								$data_show = "<img src='$image' alt='$title' title='$title ($birthday)' style='vertical-align: middle;' />";

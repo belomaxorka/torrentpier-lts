@@ -2868,7 +2868,7 @@ $lang['BOOKMARKS_LIMIT_REACHED'] = 'You have too many bookmarks...';
 
 // Знак зодиака
 $lang['SHOW_ZODIAC'] = 'Show zodiac';
-$lang['ZODIAC_SIGN'] = [
+$lang['ZODIAC_SIGN'] = array(
 	'AQUARIUS' => 'Aquarius',
 	'ARIES' => 'Aries',
 	'CANCER' => 'Cancer',
@@ -2881,4 +2881,4 @@ $lang['ZODIAC_SIGN'] = [
 	'SCORPIO' => 'Scorpio',
 	'TAURUS' => 'Taurus',
 	'VIRGO' => 'Virgo',
-];
+);
