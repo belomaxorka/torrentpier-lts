@@ -2867,7 +2867,7 @@ $lang['BOOKMARKS_ALREADY'] = 'Ви вже додали цю тему до зак
 $lang['BOOKMARKS_LIMIT_REACHED'] = 'У вас занадто багато закладок...';
 
 // Знак зодиака
-$lang['SHOW_ZODIAC'] = 'Показывать знак зодиака';
+$lang['SHOW_ZODIAC'] = 'Показувати знак зодіаку';
 $lang['ZODIAC_SIGN'] = array(
 	'AQUARIUS' => 'Водолей',
 	'ARIES' => 'Овен',
