@@ -59,6 +59,11 @@ $bbcode_tpl['spoiler_close'] = <<<HTML
 	</div>
 HTML;
 
+// Thumb
+$bbcode_tpl['thumb'] = <<<HTML
+	<a href="\\1" data-rel="lightcase:myCollection:slideshow"><img src="\\1" class="light_img"></a>
+HTML;
+
 // Image
 $bbcode_tpl['img'] = <<<HTML
 	<var class="postImg" title="$1">&#10;</var>
@@ -517,6 +522,7 @@ class bbcode
 			'#\[font=([\w\- \']+)\]#isu'                             => '<span style="font-family: $1;">',
 			"#\[img\]($img_exp)\[/img\]#isu"                         => $tpl['img'],
 			"#\[img=(left|right|center)\]($img_exp)\[/img\]\s*#isu"  => $tpl['img_aligned'],
+			"#\[thumb\]($img_exp)\[/thumb\]\s*#i" 	                 => $tpl['thumb'],
 			"#\[email\]($email_exp)\[/email\]#isu"                   => '<a href="mailto:$1">$1</a>',
 			"#\[qpost=([0-9]*)\]#isu"                                => '<u class="q-post">$1</u>',
 		);

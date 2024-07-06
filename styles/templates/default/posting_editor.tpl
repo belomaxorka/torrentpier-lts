@@ -74,6 +74,7 @@ ajax.callback.posts = function(data) {
 	<input type="button" value="&para;" name="codeBR" title="{L_NEW_LINE}" style="width: 26px;" />
 	<input type="button" value="&#8667;" name="codeIndent" title="{L_INDENT_TAG}" style="width: 26px;" />&nbsp;
 	<input type="button" value="{L_SPOILER}" name="codeSpoiler" title="{L_SPOILER}" style="width: 65px;" />
+	<input type="button" value="{L_THUMB}" name="codeThumb" title="{L_THUMB_TITLE}" />
 	<input type="button" value="pre" name="codePre" title="{L_PRE_TAG}" style="width: 40px;" />
 	<input type="button" value="box" name="codeBox" title="{L_BOX_TAG}" style="width: 40px;" />
 	<input type="button" value="nfo" name="codeNfo" title="{L_NFO_TAG}" style="width: 40px;" />
@@ -206,6 +207,7 @@ bbcode.addTag("codeOpt", "*", "", "0", ctrl);
 bbcode.addTag("codeHR",      "hr",      "",   "8", ctrl);
 bbcode.addTag("codeBR",      "br",      "",   "",  ctrl);
 bbcode.addTag("codeSpoiler", "spoiler", null, "",  ctrl);
+bbcode.addTag("codeThumb",   "thumb",   null, "",  ctrl);
 bbcode.addTag("codeBox",     "box",     null, "",  ctrl);
 bbcode.addTag("codeIndent",  "indent",  null, "",  ctrl);
 bbcode.addTag("codePre",     "pre",     null, "",  ctrl);

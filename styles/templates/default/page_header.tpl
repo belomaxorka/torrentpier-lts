@@ -23,6 +23,14 @@
 <!-- IF $bb_cfg['new_year_mode'] --><script type="text/javascript" src="{SITE_URL}styles/js/libs/snowfall.js"></script><!-- ENDIF -->
 <script type="text/javascript" src="{SITE_URL}styles/js/main.js?v={$bb_cfg['js_ver']}"></script>
 
+<link rel="stylesheet" type="text/css" href="{SITE_URL}styles/js/libs/lightcase/css/lightcase.css"/>
+<script type="text/javascript" src="{SITE_URL}styles/js/libs/lightcase/js/lightcase.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function ($) {
+		$('a[data-rel^=lightcase]').lightcase();
+	});
+</script>
+
 <!-- IF INCLUDE_BBCODE_JS -->
 <script type="text/javascript" src="{SITE_URL}styles/js/bbcode.js?v={$bb_cfg['js_ver']}"></script>
 <script type="text/javascript">

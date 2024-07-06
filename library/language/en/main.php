@@ -1517,6 +1517,10 @@ $lang['QUOTE_TITLE'] = 'Quote text: [quote]text[/quote] (Ctrl+Q)';
 $lang['IMG_TITLE'] = 'Insert image: [img]http://image_url[/img] (Ctrl+R)';
 $lang['URL'] = 'Url';
 $lang['URL_TITLE'] = 'Insert URL: [url]http://url[/url] or [url=http://url]URL text[/url] (Ctrl+W)';
+// [Start] Thumbnail image
+$lang['THUMB'] = 'Thumb';
+$lang['THUMB_TITLE'] = 'Thumbnail image: [thumb]http://image_url[/thumb]';
+// [End] Thumbnail image
 $lang['CODE_TITLE'] = 'Code display: [code]code[/code] (Ctrl+K)';
 $lang['LIST'] = 'List';
 $lang['LIST_TITLE'] = 'List: [list]text[/list] (Ctrl+L)';
