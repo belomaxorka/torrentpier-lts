@@ -228,6 +228,13 @@ ajax.callback.posts = function(data){
 	</td>
 </tr>
 <!-- ENDIF -->
+<tr>
+	<td class="prof-title">{L_SHOW_ZODIAC}:</td>
+	<td>
+		<label><input type="radio" name="user_show_zodiac" value="1" <!-- IF USER_SHOW_ZODIAC -->checked="checked"<!-- ENDIF --> />{L_YES}</label>&nbsp;&nbsp;
+		<label><input type="radio" name="user_show_zodiac" value="0" <!-- IF not USER_SHOW_ZODIAC -->checked="checked"<!-- ENDIF --> />{L_NO}</label>
+	</td>
+</tr>
 <!-- IF SHOW_DATEFORMAT -->
 <tr>
 	<td class="prof-title">{L_DATE_FORMAT}:<br /><h6>{L_DATE_FORMAT_EXPLAIN}</h6></td>

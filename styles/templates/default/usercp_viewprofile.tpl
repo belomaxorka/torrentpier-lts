@@ -457,7 +457,7 @@ ajax.callback.gen_passkey = function(data){
 			<!-- IF BIRTHDAY -->
 			<tr>
 				<th>{L_BIRTHDAY}:</th>
-				<td id="user_birthday"><b class="editable">{BIRTHDAY}</b></td>
+				<td id="user_birthday"><b class="editable">{BIRTHDAY}</b>&nbsp;<!-- IF SHOW_ZODIAC -->{SHOW_ZODIAC}<!-- ENDIF --></td>
 			</tr>
 			<tr>
 				<th>{L_AGE}:</th>

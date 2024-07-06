@@ -113,6 +113,7 @@ $template->assign_vars(array(
 	'BIRTHDAY'             => ($bb_cfg['birthday_enabled'] && !empty($profiledata['user_birthday']) && $profiledata['user_birthday'] != '1900-01-01') ? $profiledata['user_birthday'] : '',
 	'BIRTHDAY_ICON'        => ($bb_cfg['birthday_enabled'] && $this_date == $poster_birthday) ? '<img src="'. $images['icon_birthday'] .'" alt="'. $lang['HAPPY_BIRTHDAY'] .'" title="'. $lang['HAPPY_BIRTHDAY'] .'" border="0" />' : '',
 	'AGE'                  => ($bb_cfg['birthday_enabled'] && !empty($profiledata['user_birthday']) && $profiledata['user_birthday'] != '1900-01-01') ? birthday_age($profiledata['user_birthday']) : '',
+	'SHOW_ZODIAC'          => (IS_ADMIN || $profile_user_id || bf($profiledata['user_opt'], 'user_opt', 'user_show_zodiac')) ? get_zodiac($profiledata['user_birthday']) : '',
 
 	'L_VIEWING_PROFILE'    => sprintf($lang['VIEWING_USER_PROFILE'], $profiledata['username']),
 	'L_MY_PROFILE'         => sprintf($lang['VIEWING_MY_PROFILE'], 'profile.php?mode=editprofile'),

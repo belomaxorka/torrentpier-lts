@@ -278,6 +278,7 @@ $bf['user_opt'] = array(
 	'dis_post_edit'      => 13, // Запрет на редактирование сообщений
 	'user_dls'           => 14, // Скрывать список текущих закачек в профиле
 	'user_retracker'     => 15, // Добавлять ретрекер к скачиваемым торрентам
+	'user_show_zodiac'   => 16, // Знак зодиака (Если номер "16" занят, то замените на любой другой свободный номер)
 );
 
 function bit2dec ($bit_num)
@@ -2920,4 +2921,39 @@ function get_file_hash($filepath)
 	}
 
 	return '';
+}
+
+// Знак зодиака
+function get_zodiac($birthday, $mode = 'full')
+{
+	global $lang, $bb_cfg;
+
+	list($year, $month, $day) = array_pad(explode('-', $birthday, 3), 3, 0);
+	if (ctype_digit("$year$month$day") && checkdate($month, $day, $year)) {
+		foreach ($bb_cfg['zodiac_sign'] as $sign => $date) {
+			if (($month == $date[0] && $day >= $date[1]) || ($month == $date[2] && $day <= $date[3])) {
+				$image = BB_ROOT . 'styles/images/zodiac/' . $sign . '.gif';
+				$title = $lang['ZODIAC_SIGN'][strtoupper($sign)];
+
+				if (isset($title)) {
+					$data_show = $title;
+					if (is_file($image)) {
+						switch ($mode) {
+							case 'image':
+								$data_show = "<img src='$image' alt='$title' title='$title ($birthday)' style='vertical-align: middle;' />";
+								break;
+							default:
+							case 'full':
+								$data_show = "($title <img src='$image' alt='$title' title='$title ($birthday)' style='vertical-align: middle;' />)";
+								break;
+						}
+					}
+
+					return $data_show;
+				}
+			}
+		}
+	}
+
+	return false;
 }

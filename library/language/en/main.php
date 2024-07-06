@@ -2865,3 +2865,20 @@ $lang['BOOKMARKS_REMOVE_SUCCESS'] = 'Bookmark deleted successfully';
 $lang['BOOKMARKS_NONE'] = 'Sorry, you don\'t have any bookmarks saved';
 $lang['BOOKMARKS_ALREADY'] = 'You have already bookmarked this topic';
 $lang['BOOKMARKS_LIMIT_REACHED'] = 'You have too many bookmarks...';
+
+// Знак зодиака
+$lang['SHOW_ZODIAC'] = 'Show zodiac';
+$lang['ZODIAC_SIGN'] = [
+	'AQUARIUS' => 'Aquarius',
+	'ARIES' => 'Aries',
+	'CANCER' => 'Cancer',
+	'CAPRICORN' => 'Capricorn',
+	'GEMINI' => 'Gemini',
+	'LEO' => 'Leo',
+	'LIBRA' => 'Libra',
+	'PISCES' => 'Pisces',
+	'SAGITTARIUS' => 'Sagittarius',
+	'SCORPIO' => 'Scorpio',
+	'TAURUS' => 'Taurus',
+	'VIRGO' => 'Virgo',
+];

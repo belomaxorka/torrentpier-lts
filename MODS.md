@@ -19,6 +19,7 @@
 - Заметки администратора v1.2.1 ([ссылка](https://torrentpier.com/resources/zametki-administratora.271/))
 - Причина переноса топика v1.0.0 ([ссылка](https://torrentpier.com/resources/prichina-perenosa-topika.287/))
 - Закладки v1.2.5 ([ссылка](https://torrentpier.com/resources/zakladki.119/))
+- Знак зодиака v1.0.2 ([ссылка](https://torrentpier.com/resources/znak-zodiaka.278/))
 - Набор BBCode тегов с рутрекера v1.0.0 ([ссылка](https://torrentpier.com/resources/nabor-bbcode-tegov-s-rutrekera.283/))
 - Кто был последний на раздаче v1.0.0 ([ссылка](https://torrentpier.com/resources/kto-byl-poslednij-na-razdache.295/))
 - Набор модов от [lufton](https://torrentpier.com/resources/authors/lufton.8750/)
