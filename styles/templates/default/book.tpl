@@ -27,7 +27,6 @@
 <table class="forumline tablesorter">
 	<thead>
 	<tr>
-		<th class="header"></th>
 		<th class="{sorter: 'text'}"><b class="tbs-text">{L_TOPIC}</b></th>
 		<th class="{sorter: 'text'}"><b class="tbs-text">{L_FORUM}</b></th>
 		<th class="{sorter: false}"><b class="tbs-text">{L_REPLIES}</b></th>
