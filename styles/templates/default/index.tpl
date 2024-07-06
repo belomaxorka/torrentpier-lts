@@ -173,6 +173,7 @@
 				<p>{TOTAL_USERS}</p>
 				<p>{TOTAL_GENDER}</p>
 				<p>{NEWEST_USER}</p>
+				<p id="users_today"><a class="clickable" href="#" onclick="ajax.exec({action: 'index_data', mode: 'users_today'}); return false;">{L_USERS_TODAY}</a></p>
 				<!-- IF BOARD_START_DATE -->
 				<p style="margin-top: 4px;">{L_BOARD_STARTED}:&nbsp;<b>{BOARD_START_DATE}</b></p>
 				<!-- ENDIF -->

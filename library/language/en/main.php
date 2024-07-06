@@ -2882,3 +2882,7 @@ $lang['ZODIAC_SIGN'] = array(
 	'TAURUS' => 'Taurus',
 	'VIRGO' => 'Virgo',
 );
+
+// [AJAX] Пользователи за 24 часа
+$lang['USERS_TODAY'] = 'Users who visited the site today';
+$lang['USERS_TODAY_NONE'] = 'No one came in today';
