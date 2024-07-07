@@ -33,7 +33,7 @@ class upload_common
 		IMAGETYPE_BMP => 'bmp',
 	);
 
-	function init ($cfg = array(), $post_params = array(), $uploaded_only = true)
+	function init ($cfg = array(), $post_params = array(), $uploaded_only = true, $disable_resizer = false)
 	{
 		global $bb_cfg, $lang;
 
@@ -108,6 +108,12 @@ class upload_common
 				// width & height
 				if (($this->cfg['max_width'] && $width > $this->cfg['max_width']) || ($this->cfg['max_height'] && $height > $this->cfg['max_height']))
 				{
+					if ($disable_resizer)
+					{
+						$this->errors[] = sprintf($lang['UPLOAD_ERROR_DIMENSIONS'], $this->cfg['max_width'], $this->cfg['max_height']);
+						return false;
+					}
+
 					// уменьшаем изображение если оно больше положенного
 					require(CLASS_DIR . 'SimpleImage.php');
 					for ($i = 0, $max_try = 3; $i <= $max_try; $i++)
