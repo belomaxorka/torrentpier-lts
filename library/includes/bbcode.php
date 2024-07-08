@@ -15,6 +15,24 @@ function get_bbcode_tpl ()
 {
 $bbcode_tpl = array();
 
+// Sub
+$bbcode_tpl['sub_open'] = <<<HTML
+	<sub><small>
+HTML;
+
+$bbcode_tpl['sub_close'] = <<<HTML
+	</small></sub>
+HTML;
+
+// Sup
+$bbcode_tpl['sup_open'] = <<<HTML
+	<sup><small>
+HTML;
+
+$bbcode_tpl['sup_close'] = <<<HTML
+	</small></sup>
+HTML;
+
 // Quote
 $bbcode_tpl['quote_open'] = <<<HTML
 	<div class="q-wrap">
@@ -541,6 +559,11 @@ class bbcode
 			'[/pre]'     => '</pre>',
 			'[nfo]'      => '<pre class="post-nfo">',
 			'[/nfo]'     => '</pre>',
+			// BB-код: текст в верхнем и нижнем индексе
+			'[sub]'      => $tpl['sub_open'],
+			'[/sub]'     => $tpl['sub_close'],
+			'[sup]'      => $tpl['sup_open'],
+			'[/sup]'     => $tpl['sup_close'],
 			// Акроним
 			'[/acronym]' => '</span>',
 			'[list]'     => '<ul>',

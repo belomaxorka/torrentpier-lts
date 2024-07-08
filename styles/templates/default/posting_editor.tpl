@@ -93,7 +93,9 @@ ajax.callback.posts = function(data) {
 	<input type="button" value="B" name="codeB" title="{L_BOLD}" style="font-weight: bold; width: 25px;" />
 	<input type="button" value="i" name="codeI" title="{L_ITALIC}" style="width: 25px; font-style: italic;" />
 	<input type="button" value="u" name="codeU" title="{L_UNDERLINE}" style="width: 25px; text-decoration: underline;" />
-	<input type="button" value="s" name="codeS" title="{L_STRIKEOUT}" style="width: 25px; text-decoration: line-through;" />&nbsp;&nbsp;
+	<input type="button" value="s" name="codeS" title="{L_STRIKEOUT}" style="width: 25px; text-decoration: line-through;" />&nbsp;
+	<input type="button" value="{L_SUP}" name="codeSup" title="{L_SUP_TITLE}" />
+	<input type="button" value="{L_SUB}" name="codeSub" title="{L_SUB_TITLE}" />&nbsp;&nbsp;
 	<input type="button" value="{L_QUOTE}" name="codeQuote" title="{L_QUOTE_TITLE}" style="width: 57px;" />
 	<input type="button" value="Img" name="codeImg" title="{L_IMG_TITLE}" style="width: 40px;" />
 	<input type="button" value="{L_URL}" name="codeUrl" title="{L_URL_TITLE}" style="width: 63px; text-decoration: underline;" />&nbsp;
@@ -191,6 +193,9 @@ bbcode.addTag("codeB", "b", null, "B", ctrl);
 bbcode.addTag("codeI", "i", null, "I", ctrl);
 bbcode.addTag("codeU", "u", null, "U", ctrl);
 bbcode.addTag("codeS", "s", null, "S", ctrl);
+
+bbcode.addTag("codeSup", "sup", null, "", ctrl);
+bbcode.addTag("codeSub", "sub", null, "", ctrl);
 
 bbcode.addTag("codeQuote", "quote", null, "Q", ctrl);
 bbcode.addTag("codeImg", "img", null, "R", ctrl);
