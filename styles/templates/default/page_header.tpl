@@ -302,11 +302,7 @@ if ( (typeof(window.opera) != "undefined" && window.opera.version() < 12) || (wi
 <div id="logo">
 	<!--<h1>{SITENAME}</h1>
 	<h6>{SITE_DESCRIPTION}</h6> -->
-	<!-- IF $bb_cfg['new_year_mode'] -->
-	<a href="{U_INDEX}"><img src="styles/images/logo/logo_summer.png" title="{SITENAME}" alt="{SITENAME}" /></a>
-	<!-- ELSE -->
 	<a href="{U_INDEX}"><img src="styles/images/logo/logo.png" title="{SITENAME}" alt="{SITENAME}" /></a>
-	<!-- ENDIF -->
 </div>
 <!--/logo-->
 
