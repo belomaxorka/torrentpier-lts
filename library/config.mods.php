@@ -37,3 +37,6 @@ $bb_cfg['zodiac_sign'] = array(
 	'aquarius' => [1, 21, 2, 19],
 	'pisces' => [2, 20, 3, 20],
 );
+
+// Просмотр кода топика
+$bb_cfg['show_post_bbcode_button'] = true;

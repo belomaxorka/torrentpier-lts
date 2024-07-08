@@ -11,6 +11,8 @@ $_lang = $_main . 'lang/' . basename($bb_cfg['default_lang']) .'/';
 
 // post_buttons
 $images['icon_quote']          = $_lang .'icon_quote.gif';
+// Просмотр кода топика
+$images['icon_code']           = $_lang .'icon_code.gif';
 $images['icon_edit']           = $_lang .'icon_edit.gif';
 $images['icon_search']         = $_lang .'icon_search.gif';
 $images['icon_profile']        = $_lang .'icon_profile.gif';
@@ -134,6 +136,8 @@ if (!empty($page_cfg['load_tpl_vars']) AND $vars = array_flip($page_cfg['load_tp
 	{
 		$template->assign_vars(array(
 			'QUOTE_IMG'       => ($bb_cfg['text_buttons']) ? $lang['REPLY_WITH_QUOTE_TXTB'] : '<img src="'. $images['icon_quote']   .'" alt="'.$lang['REPLY_WITH_QUOTE_TXTB'].'" title="'. $lang['REPLY_WITH_QUOTE'] .'" />',
+			// Просмотр кода топика
+			'CODE_IMG'        => ($bb_cfg['text_buttons']) ? $lang['CODE_TOPIC_TXTB']       : '<img src="'. $images['icon_code']    .'" alt="'.$lang['CODE_TOPIC_TXTB'].'" title="'. $lang['CODE'] .'" />',
 			'EDIT_POST_IMG'   => ($bb_cfg['text_buttons']) ? $lang['EDIT_DELETE_POST_TXTB'] : '<img src="'. $images['icon_edit']    .'" alt="'.$lang['EDIT_DELETE_POST_TXTB'].'" title="'. $lang['EDIT_POST'] .'" />',
 			'DELETE_POST_IMG' => ($bb_cfg['text_buttons']) ? $lang['DELETE_POST_TXTB']      : '<img src="'. $images['icon_delpost'] .'" alt="'.$lang['DELETE_POST_TXTB'].'" title="'. $lang['DELETE_POST'] .'" />',
 			'IP_POST_IMG'     => ($bb_cfg['text_buttons']) ? $lang['VIEW_IP_TXTB']          : '<img src="'. $images['icon_ip']      .'" alt="'.$lang['VIEW_IP_TXTB'].'" title="'. $lang['VIEW_IP'] .'" />',

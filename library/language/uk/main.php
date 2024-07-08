@@ -1348,6 +1348,8 @@ $lang['READ_PROFILE_TXTB'] = '[Профіль]';
 $lang['SEND_EMAIL_TXTB'] = '[E-mail]';
 $lang['VISIT_WEBSITE_TXTB'] = '[www]';
 $lang['EDIT_DELETE_POST_TXTB'] = '[Змінити]';
+// Просмотр кода топика
+$lang['CODE_TOPIC_TXTB'] = '[Код]';
 $lang['SEARCH_USER_POSTS_TXTB'] = '[Пошук]';
 $lang['VIEW_IP_TXTB'] = '[ip]';
 $lang['DELETE_POST_TXTB'] = '[x]';
