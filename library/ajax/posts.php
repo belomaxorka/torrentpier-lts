@@ -193,7 +193,9 @@ switch($this->request['type'])
 						<input type="button" value="B" name="codeB" title="'. $lang['BOLD'] .'" style="font-weight: bold; width: 25px;" />
 						<input type="button" value="i" name="codeI" title="'. $lang['ITALIC'] .'" style="width: 25px; font-style: italic;" />
 						<input type="button" value="u" name="codeU" title="'. $lang['UNDERLINE'] .'" style="width: 25px; text-decoration: underline;" />
-						<input type="button" value="s" name="codeS" title="'. $lang['STRIKEOUT'] .'" style="width: 25px; text-decoration: line-through;" />&nbsp;&nbsp;
+						<input type="button" value="s" name="codeS" title="'. $lang['STRIKEOUT'] .'" style="width: 25px; text-decoration: line-through;" />&nbsp;
+						<input type="button" value="'. $lang['SUP'] .'" name="codeSup" title="'. $lang['SUP_TITLE'] .'" />
+						<input type="button" value="'. $lang['SUB'] .'" name="codeSub" title="'. $lang['SUB_TITLE'] .'" />&nbsp;&nbsp;
 						<input type="button" value="'. $lang['QUOTE'] .'" name="codeQuote" title="'. $lang['QUOTE_TITLE'] .'" style="width: 57px;" />
 						<input type="button" value="Img" name="codeImg" title="'. $lang['IMG_TITLE'] .'" style="width: 40px;" />
 						<input type="button" value="'. $lang['URL'] .'" name="codeUrl" title="'. $lang['URL_TITLE'] .'" style="width: 63px; text-decoration: underline;" />&nbsp;
