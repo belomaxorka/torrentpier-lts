@@ -217,6 +217,9 @@ switch($this->request['type'])
 					bbcode.addTag("codeU", "u", null, "U", ctrl);
 					bbcode.addTag("codeS", "s", null, "S", ctrl);
 
+					bbcode.addTag("codeSup", "sup", null, "", ctrl);
+					bbcode.addTag("codeSub", "sub", null, "", ctrl);
+
 					bbcode.addTag("codeQuote", "quote", null, "Q", ctrl);
 					bbcode.addTag("codeImg", "img", null, "R", ctrl);
 					bbcode.addTag("codeUrl", "url", "/url", "W", ctrl);
