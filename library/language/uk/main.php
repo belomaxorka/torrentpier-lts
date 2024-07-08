@@ -2890,3 +2890,9 @@ $lang['ZODIAC_SIGN'] = array(
 // [AJAX] Пользователи за 24 часа
 $lang['USERS_TODAY'] = 'Користувачі відвідали ресурс за сьогодні';
 $lang['USERS_TODAY_NONE'] = 'Ніхто не заходив за сьогодні';
+
+// BB-код: текст в верхнем и нижнем индексе
+$lang['SUB_TITLE'] = 'Нижній індекс: [sub]текст[/sub]';
+$lang['SUB'] = 'SUB';
+$lang['SUP_TITLE'] = 'Верхній індекс: [sup]текст[/sup]';
+$lang['SUP'] = 'SUP';
