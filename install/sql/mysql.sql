@@ -1215,6 +1215,7 @@ CREATE TABLE IF NOT EXISTS `bb_users` (
   `tpl_name` varchar(255) NOT NULL DEFAULT 'default',
   `curpage_topic` mediumint(8) NOT NULL DEFAULT '0',
   `curpage_topic_time` int(11) NOT NULL DEFAULT '0',
+  `user_park_profile` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`user_id`),
   KEY `username` (`username`(10)),
   KEY `user_email` (`user_email`(10)),
