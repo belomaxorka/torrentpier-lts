@@ -13,8 +13,9 @@ $html = '';
 switch($mode)
 {
 	case 'users_today':
+		$max_users = 150;
 		$day = TIMENOW - (24 * 60 * 60); // 24 часа
-		$get_users = DB()->fetch_rowset("SELECT username, user_id, user_rank, user_opt FROM " . BB_USERS . " WHERE user_session_time > $day AND user_id NOT IN(" . EXCLUDED_USERS_CSV . ") ORDER BY user_session_time DESC");
+		$get_users = DB()->fetch_rowset("SELECT username, user_id, user_rank, user_opt FROM " . BB_USERS . " WHERE user_session_time > $day AND user_id NOT IN(" . EXCLUDED_USERS_CSV . ") ORDER BY RAND()");
 
 		$users = array();
 		foreach ($get_users as $user) {
@@ -24,7 +25,12 @@ switch($mode)
 		}
 
 		if (!empty($users)) {
-			$html = $lang['USERS_TODAY'] . '&nbsp;(<b>' . count($users) . '</b>)' . ':&nbsp;' . implode(", ", $users);
+			if (count($users) > $max_users) {
+				$html = $lang['USERS_TODAY'] . '&nbsp;(<b>' . count($users) . '</b>)' . ':&nbsp;' . implode(", ", array_slice($users, 0, $max_users));
+				$html .= ', ...';
+			} else {
+				$html = $lang['USERS_TODAY'] . '&nbsp;(<b>' . count($users) . '</b>)' . ':&nbsp;' . implode(", ", $users);
+			}
 		} else {
 			$html = $lang['USERS_TODAY_NONE'];
 		}
