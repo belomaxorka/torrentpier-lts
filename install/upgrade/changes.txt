@@ -148,3 +148,6 @@ CREATE TABLE IF NOT EXISTS `bb_book` (
 // Кто был последний на раздаче
 ALTER TABLE `bb_bt_torrents` ADD COLUMN `last_seeder_id` mediumint(8) NOT NULL DEFAULT '0';
 ALTER TABLE `buf_last_seeder` ADD COLUMN `user_id` mediumint(8) NOT NULL DEFAULT '0';
+
+// Парковка аккаунта
+ALTER TABLE `bb_users` ADD `user_park_profile` TINYINT(1) NOT NULL DEFAULT '0';
