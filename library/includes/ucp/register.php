@@ -801,8 +801,6 @@ $template->assign_vars(array(
 	'LANGUAGE_SELECT'    => language_select($pr_data['user_lang'], 'user_lang'),
 	'TIMEZONE_SELECT'    => tz_select($pr_data['user_timezone'], 'user_timezone'),
 	'USER_TIMEZONE'      => $pr_data['user_timezone'],
-	// Парковка аккаунта
-	'PARK_PROFILE'       => $pr_data['user_park_profile'],
 
 	'AVATAR_EXPLAIN'     => sprintf($lang['AVATAR_EXPLAIN'], $bb_cfg['avatars']['max_width'], $bb_cfg['avatars']['max_height'], humn_size($bb_cfg['avatars']['max_size'])),
 	'AVATAR_DISALLOWED'  => bf($pr_data['user_opt'], 'user_opt', 'dis_avatar'),
