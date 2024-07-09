@@ -26,6 +26,13 @@ $user->session_start();
 
 set_die_append_msg();
 
+//
+// Проверка на парковку аккаунта
+//
+if ($userdata['user_park_profile']) {
+	bb_die($lang['PARK_ACCOUNT_PARKED']);
+}
+
 // Posts per page
 $posts_per_page = $bb_cfg['posts_per_page'];
 $select_ppp = '';

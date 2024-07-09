@@ -70,6 +70,13 @@ $dl_stat_tbl  = BB_BT_DLSTATUS     .' dl';
 $attach_desc_tbl = BB_ATTACHMENTS_DESC .' ad';
 
 //
+// Проверка на парковку аккаунта
+//
+if ($userdata['user_park_profile']) {
+	bb_die($lang['PARK_ACCOUNT_PARKED']);
+}
+
+//
 // Случайная раздача
 //
 if ($bb_cfg['random_release_button'] && isset($_GET['random_release']))

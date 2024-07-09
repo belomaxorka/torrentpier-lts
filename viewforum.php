@@ -48,6 +48,13 @@ if (!$forum_id OR !$forum_data = @$forums['forum'][$forum_id])
 	bb_die($lang['FORUM_NOT_EXIST']);
 }
 
+//
+// Проверка на парковку аккаунта
+//
+if ($userdata['user_park_profile']) {
+	bb_die($lang['PARK_ACCOUNT_PARKED']);
+}
+
 // Only new
 $only_new = $user->opt_js['only_new'];
 $only_new_sql = '';
