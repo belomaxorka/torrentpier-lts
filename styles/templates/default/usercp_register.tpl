@@ -221,7 +221,7 @@ ajax.callback.posts = function(data){
 	</td>
 </tr>
 <tr>
-	<td>{L_OFF_PM}:</td>
+	<td class="prof-title">{L_OFF_PM}:</td>
 	<td>
 		<label><input type="radio" name="off_pm" value="1" <!-- IF OFF_PM -->checked="checked"<!-- ENDIF --> />{L_YES}</label>&nbsp;&nbsp;
 		<label><input type="radio" name="off_pm" value="0" <!-- IF not OFF_PM -->checked="checked"<!-- ENDIF --> />{L_NO}</label>
