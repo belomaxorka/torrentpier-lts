@@ -621,6 +621,17 @@ foreach ($profile_fields as $field => $can_edit)
 			break;
 
 		/**
+		 *  Парковка аккаунта (edit)
+		 */
+		case 'user_park_profile':
+			$user_park_profile = isset($_POST['user_park_profile']) ? (int)$_POST['user_park_profile'] : $pr_data['user_park_profile'];
+			if ($submit && $user_park_profile != $pr_data['user_park_profile']) {
+				$pr_data['user_park_profile'] = $user_park_profile;
+				$db_data['user_park_profile'] = $user_park_profile;
+			}
+			break;
+
+		/**
 		*  default
 		*/
 		default:
