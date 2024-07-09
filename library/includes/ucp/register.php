@@ -127,6 +127,8 @@ switch ($mode)
 			'user_occ'         => true,
 			'user_interests'   => true,
 			'tpl_name'         => true,
+			// Парковка аккаунта
+			'user_park_profile' => true,
 		);
 
 		// Выбор профиля: для юзера свой, для админа любой
