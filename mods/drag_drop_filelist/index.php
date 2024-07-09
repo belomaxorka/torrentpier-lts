@@ -6,7 +6,7 @@
  * @author lufton <lufton@gmail.com>
  */
 
-require __DIR__ . '/config.php';
+require_once __DIR__ . '/config.php';
 $tpl = new Template(__DIR__);
 $tpl->set_filenames(array('mod' => 'index.tpl'));
 $tpl->assign_vars(array(
