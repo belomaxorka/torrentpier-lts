@@ -402,6 +402,8 @@ foreach ($profile_fields as $field => $can_edit)
 				'user_callseed'       => ($reg_mode) ? true  : true,
 				'user_retracker'      => ($reg_mode) ? true  : true,
 				'user_show_zodiac'    => ($reg_mode) ? true  : true,
+				// Отключение входящих личных сообщений
+				'off_pm'              => ($reg_mode) ? false : true,
 			);
 
 			foreach ($update_user_opt as $opt => $can_change_opt)
