@@ -629,6 +629,7 @@ foreach ($profile_fields as $field => $can_edit)
 				$pr_data['user_park_profile'] = $user_park_profile;
 				$db_data['user_park_profile'] = $user_park_profile;
 			}
+			$tp_data['PARK_PROFILE'] = $pr_data['user_park_profile'];
 			break;
 
 		/**
