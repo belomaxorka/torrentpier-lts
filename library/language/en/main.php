@@ -2898,3 +2898,7 @@ $lang['SUB_TITLE'] = 'Subscript text: [sub]text[/sub]';
 $lang['SUB'] = 'SUB';
 $lang['SUP_TITLE'] = 'Superscript text: [sup]text[/sup]';
 $lang['SUP'] = 'SUP';
+
+// Отключение входящих личных сообщений
+$lang['OFF_PM'] = 'Disable incoming PM';
+$lang['OFF_PM_MESSAGE'] = 'User disables incoming PM';
