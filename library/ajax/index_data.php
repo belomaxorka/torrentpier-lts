@@ -14,7 +14,7 @@ switch($mode)
 {
 	case 'users_today':
 		$day = TIMENOW - (24 * 60 * 60); // 24 часа
-		$get_users = DB()->fetch_rowset("SELECT username, user_id, user_rank, user_opt FROM " . BB_USERS . " WHERE user_session_time > $day AND user_active = 1 ORDER BY username");
+		$get_users = DB()->fetch_rowset("SELECT username, user_id, user_rank, user_opt FROM " . BB_USERS . " WHERE user_session_time > $day AND user_id NOT IN(" . EXCLUDED_USERS_CSV . ") ORDER BY user_session_time DESC");
 
 		$users = array();
 		foreach ($get_users as $user) {
