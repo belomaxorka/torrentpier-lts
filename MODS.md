@@ -23,6 +23,7 @@
 - Причина переноса топика v1.0.0 ([ссылка](https://torrentpier.com/resources/prichina-perenosa-topika.287/))
 - Закладки v1.2.5 ([ссылка](https://torrentpier.com/resources/zakladki.119/))
 - Знак зодиака v1.0.2 ([ссылка](https://torrentpier.com/resources/znak-zodiaka.278/))
+- Отключение входящих личных сообщений v1.0.0 ([ссылка](https://torrentpier.com/resources/otkljuchenie-vxodjaschix-lichnyx-soobschenij.177/))
 - Набор BBCode тегов с рутрекера v1.0.0 ([ссылка](https://torrentpier.com/resources/nabor-bbcode-tegov-s-rutrekera.283/))
 - Кто был последний на раздаче v1.0.0 ([ссылка](https://torrentpier.com/resources/kto-byl-poslednij-na-razdache.295/))
 - [AJAX] Пользователи за 24 часа v1.0.0 ([ссылка](https://torrentpier.com/resources/ajax-polzovateli-za-24-chasa.282/))
