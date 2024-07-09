@@ -87,6 +87,13 @@ $user->session_start();
 
 set_die_append_msg();
 
+//
+// Проверка на парковку аккаунта
+//
+if ($userdata['user_park_profile']) {
+	bb_die($lang['PARK_ACCOUNT_PARKED']);
+}
+
 if (!$download_id)
 {
 	bb_die($lang['NO_ATTACHMENT_SELECTED']);
