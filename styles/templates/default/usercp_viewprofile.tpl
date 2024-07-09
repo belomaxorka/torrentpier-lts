@@ -232,6 +232,7 @@ ajax.callback.gen_passkey = function(data){
 			<p id="avatar-adm" class="med mrg_4">[ <a href="#" onclick="if (window.confirm('{L_AVATAR_DELETE}?')){ ajax.avatar('delete', {PROFILE_USER_ID}); } return false;" class="adm">{L_AVATAR_DELETE}</a> ]</p>
 			<!-- ENDIF -->
 		</div>
+		<h4 class="cat border bw_TB">{L_PARK_PROFILE_STATUS}: {STATUS_PARK}</h4>
 		<p class="small mrg_4">
 		<!-- IF IS_ADMIN -->
 			{RANK_SELECT}
