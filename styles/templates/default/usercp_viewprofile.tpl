@@ -212,6 +212,7 @@ ajax.callback.gen_passkey = function(data){
 <tr>
 	<td class="row1 vTop tCenter" width="30%">
 
+		<h4 class="cat border bw_TB">{L_PARK_PROFILE_STATUS}: <span class="warnColor2">{STATUS_PARK}</span></h4>
 		<div id="avatar-img" class="mrg_4 med">
 			{AVATAR_IMG}
 			<!-- IF IS_ADMIN || PROFILE_USER -->
