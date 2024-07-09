@@ -13,7 +13,7 @@ $html = '';
 switch($mode)
 {
 	case 'users_today':
-		$day = TIMENOW - (date('H', TIMENOW) * 60 * 60) - (date('i', TIMENOW) * 60) - date('s', TIMENOW);
+		$day = TIMENOW - (24 * 60 * 60); // 24 часа
 		$get_users = DB()->fetch_rowset("SELECT username, user_id, user_rank, user_opt FROM " . BB_USERS . " WHERE user_session_time > $day AND user_active = 1 ORDER BY username");
 
 		$users = array();
