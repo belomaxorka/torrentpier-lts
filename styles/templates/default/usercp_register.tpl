@@ -102,6 +102,9 @@ document.write('<input type="hidden" name="user_timezone" value="'+tz+'" />');
 	<td class="prof-title">{L_AUTOLOGIN}:</td>
 	<td><a href="{U_RESET_AUTOLOGIN}">{L_RESET_AUTOLOGIN}</a><br /><h6>{L_RESET_AUTOLOGIN_EXPL}</h6></td>
 </tr>
+<tr>
+	<td class="prof-title">{L_PARK_CONTROL}:<!-- IF $bb_cfg['park_acc_help_url'] -->&nbsp;<h6><a target="blank" href="{$bb_cfg['park_acc_help_url']}">{L_PARK_PROFILE_STATUS_WHOTE}</a></h6><!-- ENDIF --></td>
+</tr>
 <!-- ENDIF -->
 <tr>
 	<th colspan="2">{L_PROFILE_INFO}</th>

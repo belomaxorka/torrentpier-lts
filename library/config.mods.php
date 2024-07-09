@@ -40,3 +40,6 @@ $bb_cfg['zodiac_sign'] = array(
 
 // Просмотр кода топика
 $bb_cfg['show_post_bbcode_button'] = true;
+
+// Парковка аккаунта
+$bb_cfg['park_acc_help_url'] = 'viewtopic.php?t=5';
