@@ -2902,3 +2902,9 @@ $lang['SUP'] = 'SUP';
 // Отключение входящих личных сообщений
 $lang['OFF_PM'] = 'Disable incoming PM';
 $lang['OFF_PM_MESSAGE'] = 'User disables incoming PM';
+
+// Парковка аккаунта
+$lang['PARK_CONTROL'] = 'Parking account';
+$lang['PARK_WARNING'] = 'If you park your account, you will not be able to use the resource!';
+$lang['PARK_PROFILE_STATUS'] = 'Account is parked';
+$lang['PARK_PROFILE_STATUS_WHOTE'] = 'What is "Parking account"?';
