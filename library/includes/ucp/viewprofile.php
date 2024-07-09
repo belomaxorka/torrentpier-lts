@@ -102,6 +102,9 @@ $template->assign_vars(array(
 	'LAST_VISIT_TIME'      => ($profiledata['user_lastvisit']) ? (!$profile_user_id && bf($profiledata['user_opt'], 'user_opt', 'user_viewonline') && !IS_ADMIN) ? $lang['HIDDEN_USER'] : bb_date($profiledata['user_lastvisit'], $bb_cfg['last_visit_date_format'], false) : $lang['NEVER'],
 	'LAST_ACTIVITY_TIME'   => ($profiledata['user_session_time']) ? (!$profile_user_id && bf($profiledata['user_opt'], 'user_opt', 'user_viewonline') && !IS_ADMIN) ? $lang['HIDDEN_USER'] : bb_date($profiledata['user_session_time'], $bb_cfg['last_activity_date_format'], false) : $lang['NEVER'],
 
+	// Парковка аккаунта
+	'STATUS_PARK'          => ((bool)$profiledata['user_park_profile']) ? $lang['YES'] : $lang['NO'],
+
 	'USER_ACTIVE'          => $profiledata['user_active'],
 	'LOCATION'             => $profiledata['user_from'],
 	'OCCUPATION'           => $profiledata['user_occ'],
