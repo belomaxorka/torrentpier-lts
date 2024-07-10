@@ -30,16 +30,17 @@ if ($delete_dlstat_sql = join(') OR (', $delete_dlstat_sql))
 }
 
 // Save the last 50 votes for topics
-DB()->query("
-	DELETE t1 FROM " . BB_THX . " t1
+DB()->query('
+	DELETE t1
+	FROM ' . BB_THX . ' t1
 	JOIN (
 		SELECT topic_id, MAX(time) as max_time
-		FROM " . BB_THX . "
+		FROM ' . BB_THX . '
 		GROUP BY topic_id
 		HAVING COUNT(*) > 50
 	) t2
 	ON t1.topic_id = t2.topic_id AND t1.time = t2.max_time;
-");
+');
 
 // Delete orphans
 DB()->query("
