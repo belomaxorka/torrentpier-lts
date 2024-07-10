@@ -2849,7 +2849,7 @@ $lang['ACRONYM'] = 'Acronym';
 $lang['ACRONYM_TITLE'] = 'Acronym: [acronym=Full text]Short text[/acronym]';
 
 // Кто просматривает тему
-$lang['WHOIS_LOOKING'] = 'Now viewing this topic:';
+$lang['WHOIS_LOOKING'] = 'Now viewing this topic';
 
 // Заметки администратора
 $lang['ADMIN_NOTES'] = 'Admin notes';
