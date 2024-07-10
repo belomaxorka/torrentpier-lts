@@ -1216,6 +1216,7 @@ CREATE TABLE IF NOT EXISTS `bb_users` (
   `curpage_topic` mediumint(8) NOT NULL DEFAULT '0',
   `curpage_topic_time` int(11) NOT NULL DEFAULT '0',
   `user_park_profile` tinyint(1) NOT NULL DEFAULT '0',
+  `user_relationships` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`user_id`),
   KEY `username` (`username`(10)),
   KEY `user_email` (`user_email`(10)),
@@ -1225,9 +1226,9 @@ CREATE TABLE IF NOT EXISTS `bb_users` (
 -- ----------------------------
 -- Records of bb_users
 -- ----------------------------
-INSERT INTO `bb_users` VALUES ('-1', '0', 'Guest', 'd41d8cd98f00b204e9800998ecf8427e', '0', '0', '0', UNIX_TIMESTAMP(), '0', '0', '0', '', 'ru', '0', '0', '0', '0', '0', '0', '0', '1900-01-01', '', '', '', '', '', '', '', '', '', '', '', '', '0', '0.00', 'default', '0', '0', '0');
-INSERT INTO `bb_users` VALUES ('-746', '0', 'bot', 'd41d8cd98f00b204e9800998ecf8427e', '0', '0', '0', UNIX_TIMESTAMP(), '0', '0', '0', '', 'ru', '0', '0', '0', '144', '0', '0', '0', '1900-01-01', 'bot@torrentpier.com', '', '', '', '', '', '', '', '', '', '', '', '0', '0.00', 'default', '0', '0', '0');
-INSERT INTO `bb_users` VALUES ('2', '1', 'admin', 'c3284d0f94606de1fd2af172aba15bf3', '0', '0', '0', UNIX_TIMESTAMP(), '0', '1', '1', '', 'ru', '0', '0', '0', '304', '1', '0', '0', '1900-01-01', 'admin@torrentpier.com', '', '', '', '', '', '', '', '', '', '', '', '0', '0.00', 'default', '0', '0', '0');
+INSERT INTO `bb_users` VALUES ('-1', '0', 'Guest', 'd41d8cd98f00b204e9800998ecf8427e', '0', '0', '0', UNIX_TIMESTAMP(), '0', '0', '0', '', 'ru', '0', '0', '0', '0', '0', '0', '0', '1900-01-01', '', '', '', '', '', '', '', '', '', '', '', '', '0', '0.00', 'default', '0', '0', '0', '0');
+INSERT INTO `bb_users` VALUES ('-746', '0', 'bot', 'd41d8cd98f00b204e9800998ecf8427e', '0', '0', '0', UNIX_TIMESTAMP(), '0', '0', '0', '', 'ru', '0', '0', '0', '144', '0', '0', '0', '1900-01-01', 'bot@torrentpier.com', '', '', '', '', '', '', '', '', '', '', '', '0', '0.00', 'default', '0', '0', '0', '0');
+INSERT INTO `bb_users` VALUES ('2', '1', 'admin', 'c3284d0f94606de1fd2af172aba15bf3', '0', '0', '0', UNIX_TIMESTAMP(), '0', '1', '1', '', 'ru', '0', '0', '0', '304', '1', '0', '0', '1900-01-01', 'admin@torrentpier.com', '', '', '', '', '', '', '', '', '', '', '', '0', '0.00', 'default', '0', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for `bb_user_group`
