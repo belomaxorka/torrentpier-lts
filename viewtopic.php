@@ -661,11 +661,15 @@ if (!IS_GUEST) {
 		$looking_list[] = (count($looking_list) >= $max_users) ? $key : profile_url(array('user_id' => $key, 'username' => $value['username'], 'user_rank' => $value['user_rank']));
 	}
 
+	$output_list = $lang['WHOIS_LOOKING'] . '&nbsp;' . implode(", ", array_slice($looking_list, 0, $max_users));
+	if (count($looking_list) > $max_users) {
+		$output_list .= ', ...';
+	}
 	$template->assign_vars(array(
-		'LOOKING_LIST' => !empty($looking_list) ? ($lang['WHOIS_LOOKING'] . '&nbsp;' . implode(", ", array_slice($looking_list, 0, $max_users))) : false,
+		'LOOKING_LIST' => !empty($looking_list) ? $output_list : false,
 	));
 
-	unset($viewing_users, $looking_list, $max_users);
+	unset($viewing_users, $looking_list, $output_list, $max_users);
 }
 
 //
