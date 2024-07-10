@@ -1288,3 +1288,19 @@ CREATE TABLE IF NOT EXISTS `buf_topic_view` (
 -- ----------------------------
 -- Records of buf_topic_view
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for `bb_thx`
+-- ----------------------------
+DROP TABLE IF EXISTS `bb_thx`;
+CREATE TABLE IF NOT EXISTS `bb_thx` (
+  `topic_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `user_id` mediumint(8) NOT NULL DEFAULT '0',
+  `to_user_id` mediumint(8) NOT NULL DEFAULT '0',
+  `time` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`topic_id`, `user_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of bb_thx
+-- ----------------------------
