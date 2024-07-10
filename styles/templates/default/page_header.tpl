@@ -191,6 +191,23 @@ input[type="checkbox"] { margin-bottom: -1px; }
 		<input type="button" class="editable-cancel" value="x" style="width: 30px;">
 	</span>
 </div>
+<div id="editable-tpl-yesno-relationships" style="display: none;">
+	<span class="editable-inputs nowrap" style="display: none;">
+		<select class="editable-value">
+			<option value="0">&nbsp;{$lang['RELATIONSHIPS_SELECTOR'][0]}&nbsp;</option>
+			<option value="1">&nbsp;{$lang['RELATIONSHIPS_SELECTOR'][1]}&nbsp;</option>
+			<option value="2">&nbsp;{$lang['RELATIONSHIPS_SELECTOR'][2]}&nbsp;</option>
+			<option value="3">&nbsp;{$lang['RELATIONSHIPS_SELECTOR'][3]}&nbsp;</option>
+			<option value="4">&nbsp;{$lang['RELATIONSHIPS_SELECTOR'][4]}&nbsp;</option>
+			<option value="5">&nbsp;{$lang['RELATIONSHIPS_SELECTOR'][5]}&nbsp;</option>
+			<option value="6">&nbsp;{$lang['RELATIONSHIPS_SELECTOR'][6]}&nbsp;</option>
+			<option value="7">&nbsp;{$lang['RELATIONSHIPS_SELECTOR'][7]}&nbsp;</option>
+			<option value="8">&nbsp;{$lang['RELATIONSHIPS_SELECTOR'][8]}&nbsp;</option>
+		</select>
+		<input type="button" class="editable-submit" value="&raquo;" style="width: 30px; font-weight: bold;">
+		<input type="button" class="editable-cancel" value="x" style="width: 30px;">
+	</span>
+</div>
 <div id="editable-tpl-yesno-twitter" style="display: none;">
 	<span class="editable-inputs nowrap" style="display: none;">
 		<input type="text" class="editable-value" value="{TWITTER}" />
