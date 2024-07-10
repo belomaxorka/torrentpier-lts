@@ -18,6 +18,9 @@ $bb_cfg['random_release_button'] = true;
 // Контрольные суммы файлов
 $bb_cfg['attach_file_hash'] = true;
 
+// Кто просматривает тему
+$bb_cfg['who_is_looking_topic'] = true;
+
 // Поиск по статусу раздачи
 $bb_cfg['search_by_tor_status'] = true;
 

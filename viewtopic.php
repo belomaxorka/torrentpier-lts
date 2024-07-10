@@ -643,12 +643,12 @@ if ($topic_attachment)
 //
 // Кто просматривает тему
 //
-if (!IS_GUEST) {
+if ($bb_cfg['who_is_looking_topic']) {
 	$max_users = 150;
 	if (!$viewing_users = CACHE('bb_cache')->get('viewing_users_' . $topic_id)) {
 		$viewing_users = array();
 	}
-	if (!isset($viewing_users[$userdata['user_id']])) {
+	if (!IS_GUEST && !isset($viewing_users[$userdata['user_id']])) {
 		$viewing_users[$userdata['user_id']] = array(
 			'user_rank' => $userdata['user_rank'],
 			'username' => $userdata['username']
