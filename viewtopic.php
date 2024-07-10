@@ -643,30 +643,29 @@ if ($topic_attachment)
 //
 // Кто просматривает тему
 //
-if (!IS_GUEST)
-{
-	$sql = "SELECT username, user_id, user_rank, curpage_topic_time
-		FROM " . BB_USERS . "
-		WHERE curpage_topic = $topic_id
-		AND (curpage_topic_time >= " . (TIMENOW - 300) . ") LIMIT 1";
-
-	if (!$viewing_users = DB()->fetch_rowset($sql))
-	{
-		DB()->query("UPDATE " . BB_USERS . " SET curpage_topic = $topic_id, curpage_topic_time = " . TIMENOW . " WHERE user_id = {$userdata['user_id']} LIMIT 1");
-		$viewing_users = DB()->fetch_rowset($sql);
+if (!IS_GUEST) {
+	$max_users = 150;
+	if (!$viewing_users = CACHE('bb_cache')->get('viewing_users_' . $topic_id)) {
+		$viewing_users = array();
+	}
+	if (!isset($viewing_users[$userdata['user_id']])) {
+		$viewing_users[$userdata['user_id']] = [
+			'user_rank' => $userdata['user_rank'],
+			'username' => $userdata['username']
+		];
+		CACHE('bb_cache')->set('viewing_users_' . $topic_id, $viewing_users, 300);
 	}
 
 	$looking_list = array();
-	foreach ($viewing_users as $row)
-	{
-		$looking_list[] = profile_url($row);
+	foreach ($viewing_users as $key => $value) {
+		$looking_list[] = (count($looking_list) >= $max_users) ? $key : profile_url(array('user_id' => $key, 'username' => $value['username'], 'user_rank' => $value['user_rank']));
 	}
 
 	$template->assign_vars(array(
-		'LOOKING_LIST' => !empty($looking_list) ? ($lang['WHOIS_LOOKING'] . '&nbsp;' . implode(", ", $looking_list)) : false,
+		'LOOKING_LIST' => !empty($looking_list) ? ($lang['WHOIS_LOOKING'] . '&nbsp;' . implode(", ", array_slice($looking_list, 0, $max_users))) : false,
 	));
 
-	unset($viewing_users, $looking_list);
+	unset($viewing_users, $looking_list, $max_users);
 }
 
 //
