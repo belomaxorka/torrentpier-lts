@@ -373,6 +373,68 @@ $('#tor-filelist-btn').click(function(){
 </div>
 </div>
 
+<!-- IF $bb_cfg['tor_thank'] -->
+<script type="text/javascript">
+	$(function () {
+		$thx_head = $('#thx-block').find('.sp-head');
+		$thx_btn = $('#thx-btn');
+		close_thx_list();
+		$thx_btn.one('click', function () {
+			ajax.thx('add');
+			$(this).prop({disabled: true});
+		});
+		$thx_head.one('click', function () {
+			ajax.thx('get');
+		});
+	});
+	ajax.thx = function (mode) {
+		ajax.exec({
+			action: 'thx',
+			mode: mode,
+			topic_id: {TOPIC_ID},
+			to_user_id: {postrow.POSTER_ID},
+		});
+	}
+	ajax.callback.thx = function (data) {
+		if (data.mode === 'add') {
+			$thx_btn.hide().after('<h2 style="color: green;">{$lang['THANKS_GRATITUDE']}<h2>');
+			open_thx_list();
+		} else {
+			$('#thx-list').html(data.html);
+		}
+	}
+
+	function thx_is_visible() {
+		return $('#thx-list').is(':visible');
+	}
+
+	function open_thx_list() {
+		ajax.thx('get');
+		if (!thx_is_visible()) {
+			$thx_head.click();
+		}
+	}
+
+	function close_thx_list() {
+		if (thx_is_visible()) {
+			$thx_head.click();
+		}
+	}
+</script>
+<div id="thx-block">
+	<!-- IF not IS_GUEST -->
+	<div id="thx-btn-div">
+		<input id="thx-btn" type="button" class="bold" style="width: 200px;" value='{L_THANK_TOPIC}'>
+	</div>
+	<!-- ENDIF -->
+	<!-- IF not IS_GUEST or $bb_cfg['tor_thanks_list_guests'] -->
+	<div class="sp-wrap">
+		<div id="thx-list" class="sp-body" data-no-sp-open="true" title="{L_LAST_LIKES}"></div>
+	</div>
+	<!-- ENDIF -->
+</div>
+<!-- ENDIF -->
+
 <div class="spacer_12"></div>
 <!-- ENDIF -->
 <!-- END tor_reged -->
