@@ -49,3 +49,7 @@ $bb_cfg['park_acc_help_url'] = 'viewtopic.php?t=5';
 
 // Семейное положение
 $bb_cfg['show_relationships'] = true;
+
+// Спасибо
+$bb_cfg['tor_thank'] = true;
+$bb_cfg['tor_thanks_list_guests'] = true;

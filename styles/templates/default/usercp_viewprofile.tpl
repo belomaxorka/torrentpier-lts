@@ -399,6 +399,12 @@ ajax.callback.gen_passkey = function(data){
 					</p>
 				</td>
 			</tr>
+			<!-- IF THANKS -->
+			<tr>
+				<th>{L_PROFILE_THANKS}:</th>
+				<td><b>{THANKS}</b></td>
+			</tr>
+			<!-- ENDIF -->
 
 			<tr id="bt_user_ratio" <!-- IF TRAF_STATS -->style="display: none;"<!-- ENDIF -->>
 				<th>{L_USER_RATIO}:</th>

@@ -101,6 +101,8 @@ class ajax_common
 		'user_register'     => array('guest'),
 		'posts'             => array('guest'),
 		'index_data'        => array('guest'),
+		// Спасибо
+		'thx'               => array('guest'),
 	);
 
 	var $action = null;
@@ -473,5 +475,11 @@ class ajax_common
 	function releases_profile()
 	{
 		require(AJAX_DIR .'releases_profile.php');
+	}
+
+	// Спасибо
+	function thx()
+	{
+		require(AJAX_DIR .'thanks.php');
 	}
 }
