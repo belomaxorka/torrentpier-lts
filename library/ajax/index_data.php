@@ -25,11 +25,9 @@ switch($mode)
 		}
 
 		if (!empty($users)) {
+			$html = $lang['USERS_TODAY'] . '&nbsp;(<b>' . count($users) . '</b>)' . ':&nbsp;' . implode(", ", array_slice($users, 0, $max_users));
 			if (count($users) > $max_users) {
-				$html = $lang['USERS_TODAY'] . '&nbsp;(<b>' . count($users) . '</b>)' . ':&nbsp;' . implode(", ", array_slice($users, 0, $max_users));
 				$html .= ', ...';
-			} else {
-				$html = $lang['USERS_TODAY'] . '&nbsp;(<b>' . count($users) . '</b>)' . ':&nbsp;' . implode(", ", $users);
 			}
 		} else {
 			$html = $lang['USERS_TODAY_NONE'];
