@@ -456,6 +456,12 @@ ajax.callback.gen_passkey = function(data){
 				<td id="user_gender"><b class="editable">{GENDER}</b></td>
 			</tr>
 			<!-- ENDIF -->
+			<!-- IF RELATIONSHIPS -->
+			<tr>
+				<th>{L_RELATIONSHIPS}:</th>
+				<td id="user_relationships"><b class="editable">{RELATIONSHIPS}</b></td>
+			</tr>
+			<!-- ENDIF -->
 			<!-- IF BIRTHDAY -->
 			<tr>
 				<th>{L_BIRTHDAY}:</th>

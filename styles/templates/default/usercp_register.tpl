@@ -120,6 +120,12 @@ document.write('<input type="hidden" name="user_timezone" value="'+tz+'" />');
 	<td>{USER_GENDER}</td>
 </tr>
 <!-- ENDIF -->
+<!-- IF $bb_cfg['show_relationships'] -->
+<tr>
+	<td class="prof-title">{L_RELATIONSHIPS}:</td>
+	<td>{USER_RELATIONSHIPS}</td>
+</tr>
+<!-- ENDIF -->
 <!-- IF $bb_cfg['birthday_enabled'] -->
 <tr>
 	<td class="prof-title">{L_BIRTHDAY}:</td>
