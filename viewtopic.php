@@ -661,7 +661,7 @@ if (!IS_GUEST) {
 		$looking_list[] = (count($looking_list) >= $max_users) ? $key : profile_url(array('user_id' => $key, 'username' => $value['username'], 'user_rank' => $value['user_rank']));
 	}
 
-	$output_list = $lang['WHOIS_LOOKING'] . '&nbsp;' . implode(", ", array_slice($looking_list, 0, $max_users));
+	$output_list = $lang['WHOIS_LOOKING'] . '&nbsp;(' . count($looking_list) . ')' . ':&nbsp;' . implode(", ", array_slice($looking_list, 0, $max_users));
 	if (count($looking_list) > $max_users) {
 		$output_list .= ', ...';
 	}
