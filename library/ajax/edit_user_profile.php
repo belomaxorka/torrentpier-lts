@@ -55,6 +55,16 @@ switch ($field)
 		else $this->response['new_value'] = $lang['GENDER_SELECT'][$value];
 		break;
 
+	// Семейное положение
+	case 'user_relationships':
+		if (!$bb_cfg['show_relationships']) $this->ajax_die($lang['MODULE_OFF']);
+		if (!isset($lang['RELATIONSHIPS_SELECTOR'][$value]))
+		{
+			$this->ajax_die($lang['ERROR']);
+		}
+		else $this->response['new_value'] = $lang['RELATIONSHIPS_SELECTOR'][$value];
+		break;
+
 	case 'user_birthday':
 		if (!$bb_cfg['birthday_enabled']) $this->ajax_die($lang['MODULE_OFF']);
 		$birthday_date = date_parse($value);

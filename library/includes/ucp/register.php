@@ -567,6 +567,22 @@ foreach ($profile_fields as $field => $can_edit)
 			break;
 
 		/**
+		 *  Отношения (edit)
+		 */
+		case 'user_relationships':
+			$relationships = isset($_POST['user_relationships']) ? (int) $_POST['user_relationships'] : $pr_data['user_relationships'];
+			if ($submit && $relationships != $pr_data['user_relationships'])
+			{
+				if (isset($lang['RELATIONSHIPS_SELECTOR'][$relationships]))
+				{
+					$pr_data['user_relationships'] = $relationships;
+					$db_data['user_relationships'] = (int) $relationships;
+				}
+			}
+			$tp_data['USER_RELATIONSHIPS'] = build_select('user_relationships', array_flip($lang['RELATIONSHIPS_SELECTOR']), $pr_data['user_relationships']);
+			break;
+
+		/**
 		*  Skype (edit)
 		*/
 		case 'user_skype':
