@@ -129,6 +129,8 @@ switch ($mode)
 			'tpl_name'         => true,
 			// Парковка аккаунта
 			'user_park_profile' => true,
+			// Семейное положение
+			'user_relationships' => $bb_cfg['show_relationships'],
 		);
 
 		// Выбор профиля: для юзера свой, для админа любой

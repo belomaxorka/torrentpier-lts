@@ -109,6 +109,9 @@ $template->assign_vars(array(
 	'LOCATION'             => $profiledata['user_from'],
 	'OCCUPATION'           => $profiledata['user_occ'],
 	'INTERESTS'            => $profiledata['user_interests'],
+	// [Start] Семейное положение
+	'RELATIONSHIPS'        => ($bb_cfg['show_relationships'] && isset($lang['RELATIONSHIPS_SELECTOR'][$profiledata['user_relationships']])) ? $lang['RELATIONSHIPS_SELECTOR'][$profiledata['user_relationships']] : '',
+	// [End] Семейное положение
 	'SKYPE'                => $profiledata['user_skype'],
 	'TWITTER'              => $profiledata['user_twitter'],
 	'USER_POINTS'          => $profiledata['user_points'],
