@@ -2909,3 +2909,17 @@ $lang['PARK_WARNING'] = 'If you park your account, you will not be able to use t
 $lang['PARK_PROFILE_STATUS'] = 'Account is parked';
 $lang['PARK_PROFILE_STATUS_FAQ'] = 'What is "Parking account"?';
 $lang['PARK_ACCOUNT_PARKED'] = 'Access to the resource is limited while the account is parked. To start using the resource again, disable parking in your profile settings';
+
+// Семейное положение
+$lang['RELATIONSHIPS'] = 'Relationships';
+$lang['RELATIONSHIPS_SELECTOR'] = array(
+	0 => 'Unknown',
+	1 => 'Single',
+	2 => 'Dating',
+	3 => 'Engaged',
+	4 => 'Married',
+	5 => 'In a civil marriage',
+	6 => 'In love',
+	7 => 'Complicated',
+	8 => 'Actively looking'
+);
