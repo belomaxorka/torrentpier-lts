@@ -28,7 +28,7 @@
 - Отключение входящих личных сообщений v1.0.0 ([ссылка](https://torrentpier.com/resources/otkljuchenie-vxodjaschix-lichnyx-soobschenij.177/))
 - Набор BBCode тегов с рутрекера v1.0.0 ([ссылка](https://torrentpier.com/resources/nabor-bbcode-tegov-s-rutrekera.283/))
 - Кто был последний на раздаче v1.0.0 ([ссылка](https://torrentpier.com/resources/kto-byl-poslednij-na-razdache.295/))
-- [AJAX] Пользователи за 24 часа v1.0.0 ([ссылка](https://torrentpier.com/resources/ajax-polzovateli-za-24-chasa.282/))
+- [AJAX] Пользователи за 24 часа v1.1.1 ([ссылка](https://torrentpier.com/resources/ajax-polzovateli-za-24-chasa.282/))
 - Набор модов от [lufton](https://torrentpier.com/resources/authors/lufton.8750/)
 	* Autocomplete v1.0.0 ([ссылка](https://torrentpier.com/resources/autocomplete.266/))
     * Drag and Drop Duration v1.0.0 ([ссылка](https://torrentpier.com/resources/drag-and-drop-duration.267/))
