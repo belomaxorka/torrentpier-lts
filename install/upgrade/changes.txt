@@ -126,7 +126,7 @@ DELETE FROM `bb_extensions` WHERE `extension` = 'tiff';
 // -------------------------------------------------------- //
 
 // Контрольные суммы файлов
-ALTER TABLE `bb_attachments_desc` ADD `hash` CHAR(32) NOT NULL DEFAULT '';
+ALTER TABLE `bb_attachments_desc` ADD `hash` char(32) NOT NULL DEFAULT '';
 
 // Заметки администратора
 INSERT INTO `bb_config` VALUES ('admin_note', 'Hello, world!');
@@ -150,3 +150,13 @@ ALTER TABLE `bb_users` ADD `user_park_profile` tinyint(1) NOT NULL DEFAULT '0';
 
 // Семейное положение
 ALTER TABLE `bb_users` ADD `user_relationships` tinyint(4) NOT NULL DEFAULT '0';
+
+// Спасибо
+DROP TABLE IF EXISTS `bb_thx`;
+CREATE TABLE IF NOT EXISTS `bb_thx` (
+  `topic_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `user_id` mediumint(8) NOT NULL DEFAULT '0',
+  `to_user_id` mediumint(8) NOT NULL DEFAULT '0',
+  `time` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`topic_id`, `user_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
