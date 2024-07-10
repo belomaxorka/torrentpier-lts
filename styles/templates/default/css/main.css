@@ -49,6 +49,7 @@
 	* Shortcuts
 	* YouTube Panel
 	* Thumbnail
+	* Thanks
 	* Alert
 		- Alert theme
 */
@@ -1388,6 +1389,35 @@ div#autocomplete_popup span.regenerate {
 	max-width: 200px;
 	max-height: 100px;
 	margin: 5px;
+}
+/* ================================================================ *
+    Thanks
+ * ================================================================ */
+#thx-block {
+	width: 95%;
+	margin: 12px auto 0;
+}
+#thx-block .sp-wrap {
+	width: 100% !important;
+}
+#thx-btn-div {
+	text-align: center;
+	margin: 0 0 12px;
+}
+#thx-list a {
+	text-decoration: none;
+}
+#thx-list b {
+	font-size: 11px;
+	color: #2E2E2E;
+	white-space: nowrap;
+}
+#thx-list i {
+	font-weight: normal;
+	color: #000000;
+}
+#thx-list u {
+	display: none;
 }
 /* ================================================================ *
     Alert
