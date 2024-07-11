@@ -23,7 +23,7 @@ if (!$bb_cfg['tor_thank']) {
 }
 
 if (!$mode = (string)$this->request['mode']) {
-	$this->ajax_die('invalid mode (empty)');
+	$this->ajax_die("invalid mode (empty)");
 }
 
 if (!$topic_id = (int)$this->request['topic_id']) {
@@ -31,7 +31,7 @@ if (!$topic_id = (int)$this->request['topic_id']) {
 }
 
 if (!$to_user_id = (int)$this->request['to_user_id']) { // poster_id
-	$this->ajax_die('invalid to_user_id (empty)');
+	$this->ajax_die("invalid to_user_id (empty)");
 }
 
 switch ($mode) {
@@ -52,7 +52,7 @@ switch ($mode) {
 		}
 
 		// Добавление спасибо
-		$columns = 'topic_id, user_id, to_user_id, time';
+		$columns = "topic_id, user_id, to_user_id, time";
 		$values = "$topic_id, {$userdata['user_id']}, $to_user_id, " . TIMENOW;
 		DB()->query("INSERT IGNORE INTO " . BB_THX . " ($columns) VALUES ($values)");
 
@@ -86,7 +86,7 @@ switch ($mode) {
 					AND thx.user_id = u.user_id
 		");
 		foreach ($sql as $row) {
-			$user_list[] = '<b>' . profile_url($row) . ' <i>(' . bb_date($row['time']) . ')</i></b>';
+			$user_list[] = "<b>" . profile_url($row) . " <i>(" . bb_date($row['time']) . ")</i></b>";
 		}
 
 		if (!empty($user_list)) {
@@ -97,7 +97,7 @@ switch ($mode) {
 		}
 		break;
 	default:
-		$this->ajax_die('Invalid mode: ' . $mode);
+		$this->ajax_die("Invalid mode: " . $mode);
 }
 
 $this->response['mode'] = $mode;
