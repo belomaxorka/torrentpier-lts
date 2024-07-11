@@ -652,16 +652,17 @@ if ($bb_cfg['who_is_looking_topic']) {
 	}
 
 	// Удаляем устаревшие записи из кэша
-	foreach ($viewing_users as $user) {
-		$timestamp = $user['time'];
+	foreach ($viewing_users as $viewing_user) {
+		$timestamp = $viewing_user['time'];
 		if ((TIMENOW - $timestamp) >= $cache_lifetime) {
-			unset($viewing_users[$user['user_id']]);
+			unset($viewing_users[$viewing_user['user_id']]);
 			if (!empty($viewing_users)) {
 				CACHE('bb_cache')->set('viewing_users_' . $topic_id, $viewing_users, $cache_lifetime);
 			} else {
 				CACHE('bb_cache')->rm('viewing_users_' . $topic_id);
 			}
 		}
+		unset($viewing_user);
 	}
 
 	// Добавляем новые записи в кэш
