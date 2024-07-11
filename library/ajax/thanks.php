@@ -13,6 +13,11 @@ if (!defined('IN_AJAX')) {
 
 global $bb_cfg, $lang, $userdata;
 
+// ----------------- Настройки ----------------- //
+// Максимальное количество поблагодаривших, при преодолении лимита, будет удаляться по одному пользователю с конца
+$max_users = 60;
+// --------------------------------------------- //
+
 if (!$bb_cfg['tor_thank']) {
 	$this->ajax_die($lang['MODULE_OFF']);
 }
@@ -31,14 +36,17 @@ if (!$to_user_id = (int)$this->request['to_user_id']) {
 
 switch ($mode) {
 	case 'add':
+		// Проверка на гостя
 		if (IS_GUEST) {
 			$this->ajax_die($lang['NEED_TO_LOGIN_FIRST']);
 		}
 
-		if (DB()->fetch_row('SELECT poster_id FROM ' . BB_BT_TORRENTS . " WHERE topic_id = $topic_id AND poster_id = " . $userdata['user_id'])) {
+		// Проверка на спасибо самому себе
+		if ($to_user_id == $userdata['user_id']) {
 			$this->ajax_die($lang['LIKE_OWN_POST']);
 		}
 
+		// Проверка на повторное спасибо
 		if (DB()->fetch_row('SELECT topic_id FROM ' . BB_THX . " WHERE topic_id = $topic_id  AND user_id = " . $userdata['user_id'])) {
 			$this->ajax_die($lang['LIKE_ALREADY']);
 		}
