@@ -657,7 +657,7 @@ if ($bb_cfg['who_is_looking_topic']) {
 		var_dump(TIMENOW - $timestamp);
 		if ((TIMENOW - $timestamp) >= $cache_lifetime) {
 			unset($viewing_users[$user['user_id']]);
-			if (count($viewing_users) >= 1) {
+			if (!empty($viewing_users)) {
 				CACHE('bb_cache')->set('viewing_users_' . $topic_id, $viewing_users, $cache_lifetime);
 			} else {
 				CACHE('bb_cache')->rm('viewing_users_' . $topic_id);
