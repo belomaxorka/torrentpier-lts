@@ -65,7 +65,7 @@ switch ($mode) {
 					SELECT user_id
 					FROM " . BB_THX . "
 					WHERE topic_id = $topic_id
-					ORDER BY time
+					ORDER BY time ASC
 					LIMIT 1
 				) AS subquery
 			)
