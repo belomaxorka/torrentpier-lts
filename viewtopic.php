@@ -654,7 +654,6 @@ if ($bb_cfg['who_is_looking_topic']) {
 	// Удаляем устаревшие записи из кэша
 	foreach ($viewing_users as $user) {
 		$timestamp = $user['time'];
-		var_dump(TIMENOW - $timestamp);
 		if ((TIMENOW - $timestamp) >= $cache_lifetime) {
 			unset($viewing_users[$user['user_id']]);
 			if (!empty($viewing_users)) {
