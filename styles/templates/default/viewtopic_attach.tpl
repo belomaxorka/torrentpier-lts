@@ -400,6 +400,9 @@ $('#tor-filelist-btn').click(function(){
 			$thx_btn.hide().after('<h2 style="color: green;">{$lang['THANKS_GRATITUDE']}<h2>');
 			open_thx_list();
 		} else {
+			if (data.count_likes) {
+				$thx_head.append(data.count_likes);
+			}
 			$('#thx-list').html(data.html);
 		}
 	}

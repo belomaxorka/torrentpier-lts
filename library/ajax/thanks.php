@@ -48,6 +48,7 @@ switch ($mode) {
 		DB()->query('INSERT IGNORE INTO ' . BB_THX . " ($columns) VALUES ($values)");
 		break;
 	case 'get':
+		$max_users = 60;
 		if (IS_GUEST && !$bb_cfg['tor_thanks_list_guests']) {
 			$this->ajax_die($lang['NEED_TO_LOGIN_FIRST']);
 		}
@@ -59,7 +60,12 @@ switch ($mode) {
 			$user_list[] = '<b>' . profile_url($row) . ' <i>(' . bb_date($row['time']) . ')</i></b>';
 		}
 
-		$this->response['html'] = join(', ', $user_list) ?: $lang['NO_LIKES'];
+		if (!empty($user_list)) {
+			$this->response['count_likes'] = "&nbsp;(" . count($user_list) . ")";
+			$this->response['html'] = implode(", ", array_slice($user_list, 0, $max_users));
+		} else {
+			$this->response['html'] = $lang['NO_LIKES'];
+		}
 		break;
 	default:
 		$this->ajax_die('Invalid mode: ' . $mode);
