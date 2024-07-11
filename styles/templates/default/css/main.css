@@ -1409,15 +1409,11 @@ div#autocomplete_popup span.regenerate {
 }
 #thx-list b {
 	font-size: 11px;
-	color: #2E2E2E;
 	white-space: nowrap;
 }
 #thx-list i {
 	font-weight: normal;
 	color: #000000;
-}
-#thx-list u {
-	display: none;
 }
 /* ================================================================ *
     Alert
