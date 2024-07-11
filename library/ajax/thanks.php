@@ -48,7 +48,7 @@ switch ($mode) {
 		DB()->query('INSERT IGNORE INTO ' . BB_THX . " ($columns) VALUES ($values)");
 		break;
 	case 'get':
-		$max_users = 60;
+		$max_users = 50;
 		if (IS_GUEST && !$bb_cfg['tor_thanks_list_guests']) {
 			$this->ajax_die($lang['NEED_TO_LOGIN_FIRST']);
 		}
@@ -57,12 +57,16 @@ switch ($mode) {
 
 		$user_list = array();
 		foreach ($sql as $row) {
-			$user_list[] = '<b>' . profile_url($row) . ' <i>(' . bb_date($row['time']) . ')</i></b>';
+			$user_list[] = (count($user_list) >= $max_users) ? $row['user_id'] : ('<b>' . profile_url($row) . ' <i>(' . bb_date($row['time']) . ')</i></b>');
 		}
 
 		if (!empty($user_list)) {
-			$this->response['count_likes'] = "&nbsp;(" . count($user_list) . ")";
-			$this->response['html'] = implode(", ", array_slice($user_list, 0, $max_users));
+			$this->response['count_likes'] = "&nbsp;(" . declension(count($user_list), 'times') . ")";
+			$html = implode(", ", array_slice($user_list, 0, $max_users));
+			if (count($user_list) > $max_users) {
+				$html .= ', ...';
+			}
+			$this->response['html'] = $html;
 		} else {
 			$this->response['html'] = $lang['NO_LIKES'];
 		}
