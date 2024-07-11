@@ -651,7 +651,7 @@ if ($bb_cfg['who_is_looking_topic']) {
 		$viewing_users = array();
 	}
 
-	// Удаление устаревших записей из кэша
+	// Удаляем устаревшие записи из кэша
 	foreach ($viewing_users as $user) {
 		$timestamp = $user['time'];
 		var_dump(TIMENOW - $timestamp);
@@ -676,6 +676,7 @@ if ($bb_cfg['who_is_looking_topic']) {
 		CACHE('bb_cache')->set('viewing_users_' . $topic_id, $viewing_users, $cache_lifetime);
 	}
 
+	// Формируем вывод
 	$looking_list = array();
 	foreach ($viewing_users as $key => $value) {
 		$looking_list[] = (count($looking_list) >= $max_users) ? $value['user_id'] : profile_url(array('user_id' => $value['user_id'], 'username' => $value['username'], 'user_rank' => $value['user_rank']));
