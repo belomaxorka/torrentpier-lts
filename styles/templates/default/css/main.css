@@ -1404,9 +1404,6 @@ div#autocomplete_popup span.regenerate {
 	text-align: center;
 	margin: 0 0 12px;
 }
-#thx-list a {
-	text-decoration: none;
-}
 #thx-list b {
 	font-size: 11px;
 	white-space: nowrap;
