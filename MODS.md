@@ -21,7 +21,7 @@
 - BBCode: Акроним v2.0.2 ([ссылка](https://torrentpier.com/resources/bbcode-akronim.289/))
 - BB-код: Thumbnail Image v1.0.2 ([ссылка](https://torrentpier.com/resources/bb-kod-thumbnail-image.238/))
 - BB-код: текст в верхнем и нижнем индексе v1.0.0 ([ссылка](https://torrentpier.com/resources/bb-kod-tekst-v-verxnem-i-nizhnem-indekse.193/))
-- Кто просматривает тему v2.1.0 ([ссылка](https://torrentpier.com/resources/kto-prosmatrivaet-temu.274/))
+- Кто просматривает тему v2.1.1 ([ссылка](https://torrentpier.com/resources/kto-prosmatrivaet-temu.274/))
 - Заметки администратора v1.2.1 ([ссылка](https://torrentpier.com/resources/zametki-administratora.271/))
 - Причина переноса топика v1.0.0 ([ссылка](https://torrentpier.com/resources/prichina-perenosa-topika.287/))
 - Закладки v1.2.5 ([ссылка](https://torrentpier.com/resources/zakladki.119/))
