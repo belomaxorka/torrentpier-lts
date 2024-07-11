@@ -61,10 +61,13 @@ switch ($mode) {
 			DELETE FROM " . BB_THX . "
 			WHERE user_id IN (
 				SELECT user_id
-				FROM " . BB_THX . "
-				WHERE topic_id = $topic_id
-				ORDER BY time
-				LIMIT 1
+				FROM (
+					SELECT user_id
+					FROM " . BB_THX . "
+					WHERE topic_id = $topic_id
+					ORDER BY time
+					LIMIT 1
+				) AS subquery
 			)
 			AND (SELECT COUNT(*) FROM " . BB_THX . " WHERE topic_id = $topic_id) > $max_users;
 		");
