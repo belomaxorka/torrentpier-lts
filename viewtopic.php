@@ -646,23 +646,42 @@ if ($topic_attachment)
 //
 if ($bb_cfg['who_is_looking_topic']) {
 	$max_users = 150;
+	$cache_lifetime = 300;
 	if (!$viewing_users = CACHE('bb_cache')->get('viewing_users_' . $topic_id)) {
 		$viewing_users = array();
 	}
+
+	// Удаление устаревших записей из кэша
+	foreach ($viewing_users as $user) {
+		$timestamp = $user['time'];
+		var_dump(TIMENOW - $timestamp);
+		if ((TIMENOW - $timestamp) >= $cache_lifetime) {
+			unset($viewing_users[$user['user_id']]);
+			if (count($viewing_users) >= 1) {
+				CACHE('bb_cache')->set('viewing_users_' . $topic_id, $viewing_users, $cache_lifetime);
+			} else {
+				CACHE('bb_cache')->rm('viewing_users_' . $topic_id);
+			}
+		}
+	}
+
+	// Добавляем новые записи в кэш
 	if (!IS_GUEST && !isset($viewing_users[$userdata['user_id']])) {
 		$viewing_users[$userdata['user_id']] = array(
+			'time' => TIMENOW,
+			'user_id' => $userdata['user_id'],
 			'user_rank' => $userdata['user_rank'],
 			'username' => $userdata['username']
 		);
-		CACHE('bb_cache')->set('viewing_users_' . $topic_id, $viewing_users, 300);
+		CACHE('bb_cache')->set('viewing_users_' . $topic_id, $viewing_users, $cache_lifetime);
 	}
 
 	$looking_list = array();
 	foreach ($viewing_users as $key => $value) {
-		$looking_list[] = (count($looking_list) >= $max_users) ? $key : profile_url(array('user_id' => $key, 'username' => $value['username'], 'user_rank' => $value['user_rank']));
+		$looking_list[] = (count($looking_list) >= $max_users) ? $value['user_id'] : profile_url(array('user_id' => $value['user_id'], 'username' => $value['username'], 'user_rank' => $value['user_rank']));
 	}
 
-	$output_list = $lang['WHOIS_LOOKING'] . '&nbsp;(' . count($looking_list) . ')' . ':&nbsp;' . implode(", ", array_slice($looking_list, 0, $max_users));
+	$output_list = $lang['WHOIS_LOOKING'] . '&nbsp;(' . count($looking_list) . ')' . ':&nbsp;' . implode(", ", array_slice(array_reverse($looking_list), 0, $max_users));
 	if (count($looking_list) > $max_users) {
 		$output_list .= ', ...';
 	}
@@ -670,7 +689,7 @@ if ($bb_cfg['who_is_looking_topic']) {
 		'LOOKING_LIST' => !empty($looking_list) ? $output_list : false,
 	));
 
-	unset($viewing_users, $looking_list, $output_list, $max_users);
+	unset($viewing_users, $looking_list, $output_list, $max_users, $cache_lifetime);
 }
 
 //
