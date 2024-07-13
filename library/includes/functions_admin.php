@@ -366,6 +366,13 @@ function topic_delete ($mode_or_topic_id, $forum_id = null, $prune_time = 0, $pr
 		LEFT JOIN ". BB_BT_DLSTATUS  ." dl  USING(topic_id)
 	");
 
+	// Закладки [Удаление закладок]
+	DB()->query("
+		DELETE book
+			FROM " . $tmp_delete_topics . " del
+			LEFT JOIN " . BB_BOOK . " book ON(book.topic_id = del.topic_id)
+	");
+
 	// Log action
 	if ($prune)
 	{
