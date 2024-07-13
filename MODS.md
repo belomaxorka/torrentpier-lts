@@ -24,7 +24,7 @@
 - Кто просматривает тему v2.1.1 ([ссылка](https://torrentpier.com/resources/kto-prosmatrivaet-temu.274/))
 - Заметки администратора v1.2.1 ([ссылка](https://torrentpier.com/resources/zametki-administratora.271/))
 - Причина переноса топика v1.0.0 ([ссылка](https://torrentpier.com/resources/prichina-perenosa-topika.287/))
-- Закладки v1.2.5 ([ссылка](https://torrentpier.com/resources/zakladki.119/))
+- Закладки v1.2.6 ([ссылка](https://torrentpier.com/resources/zakladki.119/))
 - Знак зодиака v1.0.2 ([ссылка](https://torrentpier.com/resources/znak-zodiaka.278/))
 - Отключение входящих личных сообщений v1.0.0 ([ссылка](https://torrentpier.com/resources/otkljuchenie-vxodjaschix-lichnyx-soobschenij.177/))
 - Набор BBCode тегов с рутрекера v1.0.0 ([ссылка](https://torrentpier.com/resources/nabor-bbcode-tegov-s-rutrekera.283/))
