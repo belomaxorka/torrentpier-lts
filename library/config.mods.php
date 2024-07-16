@@ -53,3 +53,4 @@ $bb_cfg['show_relationships'] = true;
 // Спасибо
 $bb_cfg['tor_thank'] = true;
 $bb_cfg['tor_thanks_list_guests'] = true;
+$bb_cfg['tor_thank_limit_per_topic'] = 50;
