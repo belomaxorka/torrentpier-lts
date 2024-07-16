@@ -57,7 +57,7 @@ switch ($mode) {
 		DB()->query("INSERT IGNORE INTO " . BB_THX . " ($columns) VALUES ($values)");
 
 		// Проверка на лимит
-		$thanks_count = DB()->fetch_row("SELECT COUNT(*) FROM " . BB_THX . " WHERE topic_id = $topic_id");
+		$thanks_count = DB()->fetch_row("SELECT COUNT(*) as thx FROM " . BB_THX . " WHERE topic_id = $topic_id")['thx'];
 		if ($thanks_count > $max_users) {
 			DB()->query("DELETE FROM " . BB_THX . " WHERE topic_id = $topic_id ORDER BY time ASC LIMIT 1");
 		}
