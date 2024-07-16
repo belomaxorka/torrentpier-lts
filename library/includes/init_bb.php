@@ -492,7 +492,7 @@ if ((empty($_POST) && !defined('IN_ADMIN') && !defined('IN_AJAX') && !file_exist
 		{
 			bb_log(date('H:i:s - ') . getmypid() .' --x- DB-LOCK OBTAINED !!!!!!!!!!!!!!!!!'. LOG_LF, CRON_LOG_DIR .'cron_check');
 
-			sleep(2);
+			// sleep(2);
 			require(CRON_DIR .'cron_init.php');
 
 			DB()->release_lock('cron');
