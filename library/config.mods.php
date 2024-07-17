@@ -27,18 +27,18 @@ $bb_cfg['search_by_tor_status'] = true;
 // Знак зодиака
 $bb_cfg['zodiac_sign'] = array(
 #	'знак зодиака' => [месяц начала, день начала, месяц конца, день конца]
-	'aries' => [3, 21, 4, 20],
-	'taurus' => [4, 21, 5, 21],
-	'gemini' => [5, 22, 6, 21],
-	'cancer' => [6, 22, 7, 22],
-	'leo' => [7, 23, 8, 21],
-	'virgo' => [8, 22, 9, 23],
-	'libra' => [9, 24, 10, 23],
-	'scorpio' => [10, 24, 11, 22],
-	'sagittarius' => [11, 23, 12, 22],
-	'capricorn' => [12, 23, 1, 20],
-	'aquarius' => [1, 21, 2, 19],
-	'pisces' => [2, 20, 3, 20],
+	'aries' => array(3, 21, 4, 20),
+	'taurus' => array(4, 21, 5, 21),
+	'gemini' => array(5, 22, 6, 21),
+	'cancer' => array(6, 22, 7, 22),
+	'leo' => array(7, 23, 8, 21),
+	'virgo' => array(8, 22, 9, 23),
+	'libra' => array(9, 24, 10, 23),
+	'scorpio' => array(10, 24, 11, 22),
+	'sagittarius' => array(11, 23, 12, 22),
+	'capricorn' => array(12, 23, 1, 20),
+	'aquarius' => array(1, 21, 2, 19),
+	'pisces' => array(2, 20, 3, 20),
 );
 
 // Просмотр кода топика
