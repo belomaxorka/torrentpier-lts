@@ -160,3 +160,6 @@ CREATE TABLE IF NOT EXISTS `bb_thx` (
   `time` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`topic_id`, `user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+// Обнуление рейтинга
+ALTER TABLE `bb_bt_users` ADD COLUMN `ratio_nulled` tinyint(1) NOT NULL DEFAULT '0';
