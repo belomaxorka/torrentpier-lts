@@ -2924,3 +2924,11 @@ $lang['RELATIONSHIPS_SELECTOR'] = array(
 	7 => 'Complicated',
 	8 => 'Actively looking'
 );
+
+// Спасибо
+$lang['THANK_TOPIC'] = 'Say "Thanks"';
+$lang['THANKS_GRATITUDE'] = 'Thank you for your appreciation!';
+$lang['LAST_LIKES'] = 'Last who thank';
+$lang['LIKE_OWN_POST'] = 'You can\'t leave a thank you in your own topic';
+$lang['NO_LIKES'] = 'No one has said thank you yet...';
+$lang['LIKE_ALREADY'] = 'You have already left a thank you in this topic';
