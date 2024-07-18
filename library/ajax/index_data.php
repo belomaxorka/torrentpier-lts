@@ -134,7 +134,7 @@ switch($mode)
 			break;
 		}
 		if ($ratio_nulled && !IS_ADMIN) {
-			$this->ajax_die("Вы уже обнуляли рейтинг!");
+			$this->ajax_die($lang['BT_NULL_RATIO_AGAIN']);
 		}
 		if (($user_ratio > $bb_cfg['ratio_to_null']) && !IS_ADMIN) {
 			$this->ajax_die("Ваш рейтинг нормален. Обнуление разрешено только при рейтинге меньше " . $bb_cfg['ratio_to_null']);
@@ -142,7 +142,7 @@ switch($mode)
 
 		DB()->query("UPDATE " . BB_BT_USERS . " SET u_up_total = 0, u_down_total = 0, u_up_release = 0, u_up_bonus = 0, ratio_nulled = 1 WHERE user_id = " . $user_id);
 		CACHE('bb_cache')->rm('btu_' . $user_id);
-		$this->ajax_die('Рейтинг сброшен!');
+		$this->ajax_die($lang['BT_NULL_RATIO_SUCCESS']);
 	break;
 
 	case 'get_traf_stats':
