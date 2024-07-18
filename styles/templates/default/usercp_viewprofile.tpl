@@ -152,7 +152,7 @@ ajax.callback.group_membership = function(data) {
 </script>
 <!-- ENDIF -->
 
-<!-- IF TRAF_STATS -->
+<!-- IF TRAF_STATS || $bb_cfg['ratio_null_enabled'] -->
 <script type="text/javascript">
 ajax.index_data = function(mode) {
 	ajax.exec({
@@ -419,7 +419,7 @@ ajax.callback.gen_passkey = function(data){
 					<!-- ENDIF -->
 					<!-- IF PROFILE_USER || IS_ADMIN -->
 					<!-- IF $bb_cfg['ratio_null_enabled'] and not NULLED_RATIO -->
-					[ 123 ]
+					[ <a class="med" href="#" onclick="ajax.index_data('null_ratio'); return false;">{L_BT_NULL_RATIO}</a> ]
 					<!-- ENDIF -->
 					<!-- ENDIF -->
 				</td>
