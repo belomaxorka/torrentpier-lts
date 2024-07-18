@@ -2932,3 +2932,11 @@ $lang['LAST_LIKES'] = 'Last who thank';
 $lang['LIKE_OWN_POST'] = 'You can\'t leave a thank you in your own topic';
 $lang['NO_LIKES'] = 'No one has said thank you yet...';
 $lang['LIKE_ALREADY'] = 'You have already left a thank you in this topic';
+
+// Обнуление рейтинга
+$lang['BT_NULL_RATIO'] = 'Reset rating';
+$lang['BT_NULL_RATIO_NONE'] = 'You don\'t have a rating';
+$lang['BT_NULL_RATIO_ALERT'] = "Attention!\n\nAre you sure you want to reset your rating?";
+$lang['BT_NULL_RATIO_AGAIN'] = 'You have already reset your rating!';
+$lang['BT_NULL_RATIO_NOT_NEEDED'] = 'You have a good rating. Reset is possible only with a rating less than %s';
+$lang['BT_NULL_RATIO_SUCCESS'] = 'The rating has been reset successfully!';

@@ -2937,6 +2937,6 @@ $lang['LIKE_ALREADY'] = 'Вы уже оставляли спасибо в это
 $lang['BT_NULL_RATIO'] = 'Сбросить рейтинг';
 $lang['BT_NULL_RATIO_NONE'] = 'У вас нет рейтинга';
 $lang['BT_NULL_RATIO_ALERT'] = "Внимание!\n\nВы уверены что хотите сбросить рейтинг?";
-$lang['BT_NULL_RATIO_AGAIN'] = 'Вы уже делали сброс рейтинга';
+$lang['BT_NULL_RATIO_AGAIN'] = 'Вы уже делали сброс рейтинга!';
 $lang['BT_NULL_RATIO_NOT_NEEDED'] = 'У вас хороший рейтинг. Сброс возможен только при рейтинге меньше чем %s';
 $lang['BT_NULL_RATIO_SUCCESS'] = 'Рейтинг успешно сброшен!';
