@@ -417,6 +417,11 @@ ajax.callback.gen_passkey = function(data){
 						<a href="#" onclick="ajax.exec({ action: 'gen_passkey', user_id  : {PROFILE_USER_ID} }); return false;">{L_BT_GEN_PASSKEY}</a>
 					</span> ]
 					<!-- ENDIF -->
+					<!-- IF PROFILE_USER || IS_ADMIN -->
+					<!-- IF $bb_cfg['ratio_null_enabled'] and not NULLED_RATIO -->
+					[ 123 ]
+					<!-- ENDIF -->
+					<!-- ENDIF -->
 				</td>
 			</tr>
 
