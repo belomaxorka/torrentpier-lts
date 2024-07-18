@@ -2924,3 +2924,11 @@ $lang['RELATIONSHIPS_SELECTOR'] = array(
 	7 => 'Все складно',
 	8 => 'В активному пошуку'
 );
+
+// Спасибо
+$lang['THANK_TOPIC'] = 'Сказати "Дякую"';
+$lang['THANKS_GRATITUDE'] = 'Спасибі за подяку!';
+$lang['LAST_LIKES'] = 'Останні, хто подякував';
+$lang['LIKE_OWN_POST'] = 'Ви не можете залишити подяку у власній темі';
+$lang['NO_LIKES'] = 'Ніхто ще не сказав дякую...';
+$lang['LIKE_ALREADY'] = 'Ви вже дякую в цій темі';
