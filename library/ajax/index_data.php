@@ -135,7 +135,7 @@ switch($mode)
 		$ratio_nulled = (bool)$btu['ratio_nulled'];
 		$user_ratio = get_bt_ratio($btu);
 
-		if ($user_ratio === null) {
+		if (($user_ratio === null) && !IS_ADMIN) {
 			break;
 		}
 		if ($ratio_nulled && !IS_ADMIN) {
