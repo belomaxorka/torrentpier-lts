@@ -54,3 +54,8 @@ $bb_cfg['show_relationships'] = true;
 $bb_cfg['tor_thank'] = true;
 $bb_cfg['tor_thanks_list_guests'] = true;
 $bb_cfg['tor_thank_limit_per_topic'] = 50;
+
+// Обнуление рейтинга
+// Для $bb_cfg['ratio_to_null'] можете использовать своё значение
+$bb_cfg['ratio_null_enabled'] = true;
+$bb_cfg['ratio_to_null'] = $bb_cfg['bt_min_ratio_allow_dl_tor'];
