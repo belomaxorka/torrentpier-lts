@@ -116,13 +116,13 @@ switch($mode)
 		}
 	break;
 
+	// Обнуление рейтинга
 	case 'null_ratio':
 		if (!$bb_cfg['ratio_null_enabled']) {
 			$this->ajax_die($lang['MODULE_OFF']);
 		}
 
-		if (empty($this->request['confirmed']))
-		{
+		if (empty($this->request['confirmed'])) {
 			$this->prompt_for_confirm($lang['BT_NULL_RATIO_ALERT']);
 		}
 
@@ -136,13 +136,13 @@ switch($mode)
 		$user_ratio = get_bt_ratio($btu);
 
 		if (($user_ratio === null) && !IS_ADMIN) {
-			break;
+			$this->ajax_die($lang['BT_NULL_RATIO_NONE']);
 		}
 		if ($ratio_nulled && !IS_ADMIN) {
 			$this->ajax_die($lang['BT_NULL_RATIO_AGAIN']);
 		}
 		if (($user_ratio > $bb_cfg['ratio_to_null']) && !IS_ADMIN) {
-			$this->ajax_die("Ваш рейтинг нормален. Обнуление разрешено только при рейтинге меньше " . $bb_cfg['ratio_to_null']);
+			$this->ajax_die(sprintf($lang['BT_NULL_RATIO_NOT_NEEDED'], $bb_cfg['ratio_to_null']));
 		}
 
 		DB()->query("UPDATE " . BB_BT_USERS . " SET u_up_total = 0, u_down_total = 0, u_up_release = 0, u_up_bonus = 0, ratio_nulled = 1 WHERE user_id = " . $user_id);
