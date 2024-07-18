@@ -736,7 +736,7 @@ function ocelot_send_request ($get, $max_attempts = 1, &$err = false)
 	{
 		if ($sleep)
 		{
-			// sleep($sleep);
+			sleep($sleep);
 		}
 
 		// Send request
