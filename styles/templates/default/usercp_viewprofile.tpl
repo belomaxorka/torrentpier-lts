@@ -161,12 +161,14 @@ ajax.index_data = function(mode) {
 		user_id : {PROFILE_USER_ID}
 	});
 };
-ajax.callback.index_data = function(data) {
-	$('#traf-stats-tbl').html(data.html);
-	$('#bt_user_ratio').html(data.user_ratio);
-	$('#traf-stats-span').hide();
-	$('#traf-stats-tbl').show();
-	$('#bt_user_ratio').show();
+ajax.callback.index_data = function (data) {
+	if (data.mode == 'get_traf_stats') {
+		$('#traf-stats-tbl').html(data.html);
+		$('#bt_user_ratio').html(data.user_ratio);
+		$('#traf-stats-span').hide();
+		$('#traf-stats-tbl').show();
+		$('#bt_user_ratio').show();
+	}
 };
 </script>
 <!-- ENDIF -->
