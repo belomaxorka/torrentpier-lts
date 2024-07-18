@@ -121,7 +121,6 @@ switch($mode)
 		if (!$bb_cfg['ratio_null_enabled']) {
 			$this->ajax_die($lang['MODULE_OFF']);
 		}
-
 		if (empty($this->request['confirmed'])) {
 			$this->prompt_for_confirm($lang['BT_NULL_RATIO_ALERT']);
 		}
