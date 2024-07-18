@@ -121,6 +121,11 @@ switch($mode)
 			$this->ajax_die($lang['MODULE_OFF']);
 		}
 
+		if (empty($this->request['confirmed']))
+		{
+			$this->prompt_for_confirm($lang['BT_NULL_RATIO_ALERT']);
+		}
+
 		$user_id = (int)$this->request['user_id'];
 		if (!IS_ADMIN && $user_id != $userdata['user_id']) {
 			$this->ajax_die($lang['NOT_AUTHORISED']);
