@@ -140,7 +140,7 @@ switch($mode)
 		if ($ratio_nulled && !IS_ADMIN) {
 			$this->ajax_die($lang['BT_NULL_RATIO_AGAIN']);
 		}
-		if (($user_ratio > $bb_cfg['ratio_to_null']) && !IS_ADMIN) {
+		if (($user_ratio >= $bb_cfg['ratio_to_null']) && !IS_ADMIN) {
 			$this->ajax_die(sprintf($lang['BT_NULL_RATIO_NOT_NEEDED'], $bb_cfg['ratio_to_null']));
 		}
 
