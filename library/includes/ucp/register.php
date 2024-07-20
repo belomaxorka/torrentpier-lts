@@ -443,7 +443,7 @@ foreach ($profile_fields as $field => $can_edit)
 					require(INC_DIR .'functions_upload.php');
 					$upload = new upload_common();
 
-					if ($upload->init($bb_cfg['avatars'], $_FILES['avatar']) AND $upload->store('avatar', $pr_data))
+					if ($upload->init($bb_cfg['avatars'], $_FILES['avatar'], !isset($_POST['use_monster_avatar'])) AND $upload->store('avatar', $pr_data))
 					{
 						$pr_data['avatar_ext_id'] = $upload->file_ext_id;
 						$db_data['avatar_ext_id'] = (int) $upload->file_ext_id;
