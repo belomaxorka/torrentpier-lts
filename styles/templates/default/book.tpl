@@ -35,7 +35,7 @@
 	</tr>
 	</thead>
 	<!-- BEGIN book -->
-	<tr id="tr-{book.ID}" class="row1">
+	<tr id="tr-{book.ID}" class="{book.ROW_CLASS}">
 		<td id="{book.ID}" class="topic_id tCenter">
 			<span style="display: none;">{book.TOPIC_ICON}</span>
 			<img class="topic_icon" src="{book.TOPIC_ICON}">

@@ -29,6 +29,7 @@ if (!$sql) {
 		$is_unread = is_unread($row['topic_last_post_time'], $row['topic_id'], $row['forum_id']);
 
 		$template->assign_block_vars('book', array(
+			'ROW_CLASS' => (!($i % 2)) ? 'row1' : 'row2',
 			'REPLIES' => $row['topic_replies'],
 			'VIEWS' => $row['topic_views'],
 			'ID' => $row['topic_id'],
