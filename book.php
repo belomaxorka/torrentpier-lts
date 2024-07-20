@@ -23,7 +23,7 @@ $sql = DB()->fetch_rowset("SELECT t.*, f.forum_id, f.forum_name FROM " . BB_BOOK
 								INNER JOIN " . BB_TOPICS . " t ON(t.topic_id = b.topic_id)
 								INNER JOIN " . BB_FORUMS . " f ON(f.forum_id = b.forum_id)
 							WHERE user_id = {$userdata['user_id']}
-							GROUP BY t.topic_last_post_time DESC
+							GROUP BY b.time DESC
 							LIMIT $start, $per_page");
 
 if (!$sql) {

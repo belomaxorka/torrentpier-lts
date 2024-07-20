@@ -173,6 +173,7 @@ CREATE TABLE IF NOT EXISTS `bb_book` (
   `user_id` mediumint(9) NOT NULL DEFAULT '0',
   `topic_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `forum_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `time` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`book_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 

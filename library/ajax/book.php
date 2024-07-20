@@ -5,7 +5,6 @@ if (!defined('IN_AJAX')) die(basename(__FILE__));
 global $bb_cfg, $lang, $userdata;
 
 $mode = (string)$this->request['mode'];
-$html = '';
 
 // Максимальное количество закладок (указать число) (false - выключено)
 // Исключение: Администраторы и модераторы (IS_AM)
@@ -29,8 +28,8 @@ switch ($mode) {
 		}
 
 		// Добавляем закладку в базу
-		$columns = 'user_id, topic_id, forum_id';
-		$values = "{$userdata['user_id']}, $tid, $fid";
+		$columns = 'user_id, topic_id, forum_id, time';
+		$values = "{$userdata['user_id']}, $tid, $fid, " . TIMENOW;
 
 		DB()->query("INSERT IGNORE INTO " . BB_BOOK . " ($columns) VALUES ($values)");
 		$this->response['ok'] = $lang['BOOKMARKS_ADD_SUCCESS'];
@@ -47,5 +46,4 @@ switch ($mode) {
 		break;
 }
 
-$this->response['html'] = $html;
 $this->response['mode'] = $mode;
