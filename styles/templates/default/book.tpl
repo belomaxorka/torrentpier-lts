@@ -1,5 +1,3 @@
-<h1 class="pagetitle">{L_BOOKMARKS}</h1>
-
 <script type="text/javascript">
 	ajax.book = function (tid) {
 		ajax.exec({
@@ -14,14 +12,21 @@
 		if (data.url) document.location.href = data.url;
 	};
 </script>
-<table>
-	<tbody>
+
+<table cellpadding="2" cellspacing="0" width="100%">
 	<tr>
-		<td class="nav w100">
-			<!-- IF LOGGED_IN --><a href="#" class="med normal" onclick="setCookie('{COOKIE_MARK}', 'all_forums'); window.location.reload();">{L_MARK_ALL_FORUMS_READ}</a><!-- ENDIF -->
+		<td width="100%">
+			<h1 class="pagetitle">{L_BOOKMARKS}</h1>
+			<div id="forums_top_links" class="nav">
+				<a href="{U_INDEX}">{T_INDEX}</a>&nbsp;<em>&middot;</em>
+				<!-- IF LOGGED_IN -->
+				<em>&middot;</em>
+				<a href="#" class="med normal" onclick="setCookie('{COOKIE_MARK}', 'all_forums'); window.location.reload();">{L_MARK_ALL_FORUMS_READ}</a>
+				<!-- ENDIF -->
+			</div>
 		</td>
+		<td class="vBottom tLeft nowrap med"><b>{PAGINATION}</b></td>
 	</tr>
-	</tbody>
 </table>
 
 <table class="forumline tablesorter">
