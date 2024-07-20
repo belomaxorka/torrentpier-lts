@@ -18,6 +18,7 @@ $user->session_start(array('req_login' => true));
 $mode = request_var('mode', 'list');
 $start = isset($_GET['start']) ? abs(intval($_GET['start'])) : 0;
 $per_page = $bb_cfg['topics_per_page'];
+$tracking_topics = get_tracks('topic');
 
 $sql = DB()->fetch_rowset("
 	SELECT t.*, f.forum_id, f.forum_name FROM " . BB_BOOK . " b
