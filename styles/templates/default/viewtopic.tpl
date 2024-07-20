@@ -257,7 +257,6 @@ function build_poll_add_form (src_el)
 		<!-- ENDIF / AUTH_MOD -->
 
 		<td class="small bold nowrap tRight" width="100%">
-			&nbsp;
 			<!-- IF LOGGED_IN -->
 			<script type="text/javascript">
 				ajax.book = function () {
@@ -271,9 +270,6 @@ function build_poll_add_form (src_el)
 				ajax.callback.book = function (data) {
 					$('#book').html(data.ok);
 					$('#book2').html(data.ok);
-
-					if (data.info) alert(data.info);
-					if (data.url) document.location.href = data.url;
 				};
 			</script>
 			<span id="book">{U_BOOK}</span> &nbsp;<span style="color:#CDCDCD;">|</span>&nbsp;
