@@ -55,6 +55,7 @@
 	<!-- END no_book -->
 	<tfoot>
 	<tr>
+		<td class="vBottom tLeft nowrap med"><b>{PAGINATION}</b></td>
 		<td class="catBottom tLeft" colspan="5">&nbsp;</td>
 	</tr>
 	</tfoot>

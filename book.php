@@ -15,11 +15,17 @@ $page_cfg['use_tablesorter'] = true;
 // Init userdata
 $user->session_start(array('req_login' => true));
 
+$start = isset($_GET['start']) ? abs(intval($_GET['start'])) : 0;
+$per_page = $bb_cfg['topics_per_page'];
+
 $sql = DB()->fetch_rowset("SELECT t.*, f.forum_id, f.forum_name FROM " . BB_BOOK . " b
 								INNER JOIN " . BB_TOPICS . " t ON(t.topic_id = b.topic_id)
 								INNER JOIN " . BB_FORUMS . " f ON(f.forum_id = b.forum_id)
-							WHERE user_id = {$userdata['user_id']}");
+							WHERE user_id = {$userdata['user_id']}
+							GROUP BY t.topic_last_post_time DESC
+							LIMIT $start, $per_page");
 
+$book_count = 0;
 if (!$sql) {
 	$template->assign_block_vars('no_book', array(
 		'NO_BOOK' => $lang['BOOKMARKS_NONE'],
@@ -38,7 +44,15 @@ if (!$sql) {
 			'TOPIC' => '<a title="' . preg_replace($orig_word, $replacement_word, $row['topic_title']) . '" href="' . TOPIC_URL . $row['topic_id'] . '">' . str_short(preg_replace($orig_word, $replacement_word, $row['topic_title']), 70) . '</a>',
 			'TOPIC_ICON' => get_topic_icon($row, $is_unread)
 		));
+		$book_count++;
 	}
 }
+
+$template->assign_vars(array(
+	'PAGINATION' => generate_pagination(BB_ROOT . 'profile.php?mode=watch', $book_count, $per_page, $start),
+	'PAGE_NUMBER' => sprintf($lang['PAGE_OF'], (floor($start / $per_page) + 1), ceil($book_count / $per_page)),
+	'U_PER_PAGE' => BB_ROOT . 'profile.php?mode=watch',
+	'PER_PAGE' => $per_page,
+));
 
 print_page('book.tpl');
