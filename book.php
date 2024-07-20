@@ -48,11 +48,5 @@ if (!$sql) {
 	}
 }
 
-$template->assign_vars(array(
-	'PAGINATION' => generate_pagination(BB_ROOT . 'profile.php?mode=watch', $book_count, $per_page, $start),
-	'PAGE_NUMBER' => sprintf($lang['PAGE_OF'], (floor($start / $per_page) + 1), ceil($book_count / $per_page)),
-	'U_PER_PAGE' => BB_ROOT . 'profile.php?mode=watch',
-	'PER_PAGE' => $per_page,
-));
-
+generate_pagination(BB_ROOT . 'book.php', $book_count, $per_page, $start);
 print_page('book.tpl');

@@ -55,8 +55,14 @@
 	<!-- END no_book -->
 	<tfoot>
 	<tr>
-		<td class="vBottom tLeft nowrap med"><b>{PAGINATION}</b></td>
+		<!-- IF PAGINATION -->
+		<td class="catBottom tLeft {PG_ROW_CLASS}" colspan="5">
+			<p style="float: left">{PAGE_NUMBER}</p>
+			<p style="float: right">{PAGINATION}</p>
+		</td>
+		<!-- ELSE -->
 		<td class="catBottom tLeft" colspan="5">&nbsp;</td>
+		<!-- ENDIF -->
 	</tr>
 	</tfoot>
 </table>
