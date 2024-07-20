@@ -25,7 +25,6 @@
 				<!-- ENDIF -->
 			</div>
 		</td>
-		<td class="vBottom tLeft nowrap med"><b>{PAGINATION}</b></td>
 	</tr>
 </table>
 
