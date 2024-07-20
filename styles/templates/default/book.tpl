@@ -6,11 +6,6 @@
 			tid: tid
 		});
 	};
-
-	ajax.callback.book = function (data) {
-		if (data.info) alert(data.info);
-		if (data.url) document.location.href = data.url;
-	};
 </script>
 
 <table cellpadding="2" cellspacing="0" width="100%">
