@@ -35,11 +35,16 @@ switch ($mode) {
 		$this->response['ok'] = $lang['BOOKMARKS_ADD_SUCCESS'];
 		break;
 	case 'delete':
+		if (empty($this->request['confirmed'])) {
+			$this->prompt_for_confirm();
+		}
+
 		$tid = (int)$this->request['tid'];
 
 		// Удаляем закладку из базы
 		DB()->query("DELETE FROM " . BB_BOOK . " WHERE topic_id = $tid AND user_id = " . $userdata['user_id']);
 		$this->response['ok'] = $lang['BOOKMARKS_REMOVE_SUCCESS'];
+		$this->response['tid'] = $tid;
 		break;
 	default:
 		$this->ajax_die('Invalid mode:' . $mode);

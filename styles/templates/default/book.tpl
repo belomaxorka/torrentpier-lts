@@ -7,8 +7,10 @@
 		});
 	};
 
-	ajax.callback.book = function () {
-		return true;
+	ajax.callback.book = function (data) {
+		if (data.ok) {
+			$('#tr-' + data.tid).hide();
+		}
 	};
 </script>
 
@@ -48,7 +50,7 @@
 		<td class="med bold tCenter" style="width:30%;">{book.FORUM}</td>
 		<td class="med tCenter" style="width:30%;"><span title="{L_REPLIES}: {book.REPLIES}">{book.REPLIES}</span></td>
 		<td class="med tCenter" style="width:30%;"><span title="{L_VIEWED}: {book.VIEWS}">{book.VIEWS}</span></td>
-		<td class="tCenter"><input type="submit" onclick="ajax.book('{book.ID}'); $('#tr-{book.ID}').hide();" value="{L_DELETE}"></td>
+		<td class="tCenter"><input type="submit" onclick="ajax.book('{book.ID}');" value="{L_DELETE}"></td>
 	</tr>
 	<!-- END book -->
 	<!-- BEGIN no_book -->
