@@ -15,6 +15,7 @@ $page_cfg['use_tablesorter'] = true;
 // Init userdata
 $user->session_start(array('req_login' => true));
 
+$mode = request_var('mode', 'list');
 $start = isset($_GET['start']) ? abs(intval($_GET['start'])) : 0;
 $per_page = $bb_cfg['topics_per_page'];
 
@@ -51,7 +52,7 @@ if (!$sql) {
 	}
 	if ($total = DB()->sql_fetchrow($result)) {
 		$total_book = $total['total'];
-		generate_pagination('book.php', $total_book, $per_page, $start);
+		generate_pagination("book.php?mode=$mode", $total_book, $per_page, $start);
 	}
 	DB()->sql_freeresult($result);
 }
