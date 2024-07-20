@@ -51,7 +51,7 @@ if (!$sql) {
 	}
 	if ($total = DB()->sql_fetchrow($result)) {
 		$total_book = $total['total'];
-		generate_pagination(BB_ROOT . 'book.php?list=1', $total_book, $per_page, $start);
+		generate_pagination('book.php', $total_book, $per_page, $start);
 	}
 	DB()->sql_freeresult($result);
 }
