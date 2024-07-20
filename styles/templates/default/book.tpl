@@ -30,7 +30,8 @@
 		<th class="{sorter: 'text'}"></th>
 		<th class="{sorter: 'text'}"><b class="tbs-text">{L_TOPIC}</b></th>
 		<th class="{sorter: 'text'}"><b class="tbs-text">{L_FORUM}</b></th>
-		<th class="{sorter: false}"><b class="tbs-text">{L_REPLIES}</b></th>
+		<th class="{sorter: 'digit'}"><b class="tbs-text">{L_REPLIES}</b></th>
+		<th class="{sorter: 'digit'}"><b class="tbs-text">{L_VIEWS}</b></th>
 		<th class="{sorter: false}">&nbsp;{L_DELETE}&nbsp;</th>
 	</tr>
 	</thead>
@@ -42,26 +43,27 @@
 		</td>
 		<td class="med bold w70"><!-- IF book.POLL --><span class="topicPoll">{L_TOPIC_POLL}</span>&nbsp;<!-- ENDIF -->{book.TOPIC}</td>
 		<td class="med bold tCenter" style="width:30%;">{book.FORUM}</td>
-		<td class="med tCenter" style="width:30%;"><span title="{L_REPLIES}: {book.REPLIES}">{book.REPLIES}</span> | <span title="{L_VIEWED}: {book.VIEWS}">{book.VIEWS}</span></td>
+		<td class="med tCenter" style="width:30%;"><span title="{L_REPLIES}: {book.REPLIES}">{book.REPLIES}</span></td>
+		<td class="med tCenter" style="width:30%;"><span title="{L_VIEWED}: {book.VIEWS}">{book.VIEWS}</span></td>
 		<td class="tCenter"><input type="submit" onclick="ajax.book('{book.ID}'); $('#tr-{book.ID}').hide();" value="{L_DELETE}"></td>
 	</tr>
 	<!-- END book -->
 	<!-- BEGIN no_book -->
 	<tbody>
 	<tr>
-		<td class="row1 tCenter pad_8" colspan="9">{no_book.NO_BOOK}</td>
+		<td class="row1 tCenter pad_8" colspan="6">{no_book.NO_BOOK}</td>
 	</tr>
 	</tbody>
 	<!-- END no_book -->
 	<tfoot>
 	<tr>
 		<!-- IF PAGINATION -->
-		<td class="catBottom tLeft" colspan="5">
+		<td class="catBottom tLeft" colspan="6">
 			<p style="float: left">{PAGE_NUMBER}</p>
 			<p style="float: right">{PAGINATION}</p>
 		</td>
 		<!-- ELSE -->
-		<td class="catBottom tLeft" colspan="5">&nbsp;</td>
+		<td class="catBottom tLeft" colspan="6">&nbsp;</td>
 		<!-- ENDIF -->
 	</tr>
 	</tfoot>
