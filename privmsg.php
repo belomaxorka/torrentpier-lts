@@ -54,6 +54,13 @@ else
 // Start session management
 $user->session_start(array('req_login' => true));
 
+//
+// Проверка на парковку аккаунта
+//
+if ($userdata['user_park_profile']) {
+	bb_die($lang['PARK_ACCOUNT_PARKED']);
+}
+
 if (IS_AM)
 {
 	$bb_cfg['max_inbox_privmsgs']   += 1000;
