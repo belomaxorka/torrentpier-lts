@@ -269,7 +269,6 @@ function build_poll_add_form (src_el)
 				};
 				ajax.callback.book = function (data) {
 					$('#book').html(data.ok);
-					$('#book2').html(data.ok);
 				};
 			</script>
 			<span id="book">{U_BOOK}</span> &nbsp;<span style="color:#CDCDCD;">|</span>&nbsp;
