@@ -442,13 +442,13 @@ foreach ($profile_fields as $field => $can_edit)
 					// Manual filling $_FILES['avatar']
 					$_FILES['avatar'] = array();
 					if (is_file($tempAvatarPath)) {
-						$_FILES['avatar'] = [
+						$_FILES['avatar'] = array(
 							'name' => "MonsterID_{$pr_data['user_id']}.png",
 							'type' => mime_content_type($tempAvatarPath),
 							'tmp_name' => $tempAvatarPath,
 							'error' => UPLOAD_ERR_OK,
 							'size' => filesize($tempAvatarPath)
-						];
+						);
 					}
 				}
 
