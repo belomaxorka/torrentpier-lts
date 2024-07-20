@@ -25,7 +25,6 @@ $sql = DB()->fetch_rowset("SELECT t.*, f.forum_id, f.forum_name FROM " . BB_BOOK
 							GROUP BY t.topic_last_post_time DESC
 							LIMIT $start, $per_page");
 
-$book_count = 0;
 if (!$sql) {
 	$template->assign_block_vars('no_book', array(
 		'NO_BOOK' => $lang['BOOKMARKS_NONE'],
@@ -44,9 +43,17 @@ if (!$sql) {
 			'TOPIC' => '<a title="' . preg_replace($orig_word, $replacement_word, $row['topic_title']) . '" href="' . TOPIC_URL . $row['topic_id'] . '">' . str_short(preg_replace($orig_word, $replacement_word, $row['topic_title']), 70) . '</a>',
 			'TOPIC_ICON' => get_topic_icon($row, $is_unread)
 		));
-		$book_count++;
 	}
+
+	$sql = "SELECT COUNT(*) AS total FROM " . BB_BOOK . " WHERE user_id = {$userdata['user_id']}";
+	if (!$result = DB()->sql_query($sql)) {
+		bb_die('Error getting total bookmarks');
+	}
+	if ($total = DB()->sql_fetchrow($result)) {
+		$total_book = $total['total'];
+		generate_pagination(BB_ROOT . 'book.php?list=1', $total_book, $per_page, $start);
+	}
+	DB()->sql_freeresult($result);
 }
 
-generate_pagination(BB_ROOT . 'book.php', $book_count, $per_page, $start);
 print_page('book.tpl');
