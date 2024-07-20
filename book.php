@@ -19,12 +19,14 @@ $mode = request_var('mode', 'list');
 $start = isset($_GET['start']) ? abs(intval($_GET['start'])) : 0;
 $per_page = $bb_cfg['topics_per_page'];
 
-$sql = DB()->fetch_rowset("SELECT t.*, f.forum_id, f.forum_name FROM " . BB_BOOK . " b
-								INNER JOIN " . BB_TOPICS . " t ON(t.topic_id = b.topic_id)
-								INNER JOIN " . BB_FORUMS . " f ON(f.forum_id = b.forum_id)
-							WHERE user_id = {$userdata['user_id']}
-							ORDER BY b.time DESC
-							LIMIT $start, $per_page");
+$sql = DB()->fetch_rowset("
+	SELECT t.*, f.forum_id, f.forum_name FROM " . BB_BOOK . " b
+		INNER JOIN " . BB_TOPICS . " t ON(t.topic_id = b.topic_id)
+		INNER JOIN " . BB_FORUMS . " f ON(f.forum_id = b.forum_id)
+	WHERE user_id = {$userdata['user_id']}
+	ORDER BY b.time DESC
+	LIMIT $start, $per_page
+");
 
 if (!$sql) {
 	$template->assign_block_vars('no_book', array(
