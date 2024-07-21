@@ -258,6 +258,7 @@ function build_poll_add_form (src_el)
 
 		<td class="small bold nowrap tRight" width="100%">
 			<!-- IF LOGGED_IN -->
+			<!-- IF U_BOOK -->
 			<script type="text/javascript">
 				ajax.book = function () {
 					ajax.exec({
@@ -272,6 +273,7 @@ function build_poll_add_form (src_el)
 				};
 			</script>
 			<span id="book">{U_BOOK}</span> &nbsp;<span style="color:#CDCDCD;">|</span>&nbsp;
+			<!-- ENDIF / U_BOOK -->
 			<a class="small" href="{U_SEARCH_SELF}">{L_SEARCH_SELF}</a> &nbsp;<span style="color:#CDCDCD;">|</span>&nbsp;
 			<a class="menu-root" href="#topic-options">{L_DISPLAYING_OPTIONS}</a>
 			<!-- ENDIF / LOGGED_IN -->
