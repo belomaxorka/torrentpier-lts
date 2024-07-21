@@ -7,6 +7,7 @@
 <meta name="apple-mobile-web-app-title" content="{SITENAME}">
 <meta name="application-name" content="{SITENAME}"/>
 <meta property="og:site_name" content="{SITENAME}">
+<meta property="twitter:card" content="summary">
 <meta property="og:type" content="website">
 <meta property="og:image" content="{SITE_URL}styles/images/logo/logo.png" />
 <meta property="twitter:image" content="{SITE_URL}styles/images/logo/logo.png">
