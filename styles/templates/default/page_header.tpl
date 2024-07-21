@@ -9,6 +9,7 @@
 <meta property="og:site_name" content="{SITENAME}">
 <meta property="twitter:card" content="summary">
 <meta property="og:type" content="website">
+<meta property="og:url" content="{CURRENT_URL}">
 <meta property="og:image" content="{SITE_URL}styles/images/logo/logo.png" />
 <meta property="twitter:image" content="{SITE_URL}styles/images/logo/logo.png">
 <meta property="og:title" content="<!-- IF PAGE_TITLE -->{PAGE_TITLE} :: {SITENAME}<!-- ELSE -->{SITENAME}<!-- ENDIF -->">
