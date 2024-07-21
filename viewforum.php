@@ -433,11 +433,6 @@ $u_auth[] = ($is_auth['auth_download']) ? $lang['RULES_DOWNLOAD_CAN'] : $lang['R
 $u_auth[] = ($is_auth['auth_mod']) ? $lang['RULES_MODERATE'] : '';
 $u_auth = join("<br />\n", $u_auth);
 
-// Assign meta
-$template->assign_vars(array(
-	'META_DESCRIPTION' => htmlCHR($forum_data['forum_desc']),
-));
-
 $template->assign_vars(array(
 	'SHOW_JUMPBOX'        => $bb_cfg['show_jumpbox'],
 	'PAGE_TITLE'          => htmlCHR($forum_data['forum_name']),

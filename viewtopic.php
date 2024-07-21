@@ -865,13 +865,6 @@ for($i = 0; $i < $total_posts; $i++)
 		$mc_select_type[$key] = $value['type'];
 	}
 
-	// Assign meta
-	if (($post_id == $t_data['topic_first_post_id']) || ($start && $i == 0)) {
-		$template->assign_vars(array(
-			'META_DESCRIPTION' => str_short(strip_tags(br2space($message)), 120),
-		));
-	}
-
 	$template->assign_block_vars('postrow', array(
 		'ROW_CLASS'          => !($i % 2) ? 'row1' : 'row2',
 		'POST_ID'            => $post_id,
