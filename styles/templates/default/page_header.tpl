@@ -9,6 +9,7 @@
 <meta property="og:site_name" content="{SITENAME}">
 <meta property="twitter:card" content="summary">
 <meta property="og:type" content="website">
+<link rel="canonical" href="{CURRENT_URL}">
 <meta property="og:url" content="{CURRENT_URL}">
 <meta property="og:image" content="{SITE_URL}styles/images/logo/logo.png" />
 <meta property="twitter:image" content="{SITE_URL}styles/images/logo/logo.png">
