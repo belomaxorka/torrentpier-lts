@@ -432,6 +432,11 @@ function br2nl ($txt)
 	return preg_replace('#<br\s*/?>#i', "\n", $txt);
 }
 
+function br2space ($txt)
+{
+	return preg_replace('#<br\s*/?>#i', " ", $txt);
+}
+
 function html_ent_decode ($txt, $quote_style = ENT_QUOTES, $charset = 'UTF-8')
 {
 	return (string) html_entity_decode($txt, $quote_style, $charset);
