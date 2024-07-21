@@ -107,8 +107,6 @@ define('GUEST_UID', -1);
 define('ANONYMOUS', GUEST_UID); // Alias for GUEST_UID
 define('BOT_UID',   -746);
 
-define('RATIO_ENABLED', TR_RATING_LIMITS && MIN_DL_FOR_RATIO > 0);
-
 // Alias for SQLite3::escapeString
 function sqlite3_escape_string ($str)
 {

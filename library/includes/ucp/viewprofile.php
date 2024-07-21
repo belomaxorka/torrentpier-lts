@@ -141,7 +141,6 @@ $template->assign_vars(array(
 	'SHOW_ROLE'            => (IS_AM || $profile_user_id || $profiledata['user_active']),
 	'GROUP_MEMBERSHIP'     => false,
 	'TRAF_STATS'           => !(IS_AM || $profile_user_id),
-	'RATIO_ENABLED'        => RATIO_ENABLED,
 ));
 
 if (IS_AM)

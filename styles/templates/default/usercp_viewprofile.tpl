@@ -152,7 +152,6 @@ ajax.callback.group_membership = function(data) {
 </script>
 <!-- ENDIF -->
 
-<!-- IF RATIO_ENABLED -->
 <!-- IF TRAF_STATS || $bb_cfg['ratio_null_enabled'] -->
 <script type="text/javascript">
 ajax.index_data = function(mode) {
@@ -172,7 +171,6 @@ ajax.callback.index_data = function (data) {
 	}
 };
 </script>
-<!-- ENDIF -->
 <!-- ENDIF -->
 
 <!-- IF SHOW_PASSKEY -->
@@ -404,7 +402,6 @@ ajax.callback.gen_passkey = function(data){
 				</td>
 			</tr>
 
-			<!-- IF RATIO_ENABLED -->
 			<tr id="bt_user_ratio" <!-- IF TRAF_STATS -->style="display: none;"<!-- ENDIF -->>
 				<th>{L_USER_RATIO}:</th>
 				<td>
@@ -437,7 +434,6 @@ ajax.callback.gen_passkey = function(data){
 				( {L_UPLOADED} <b class="seedmed">{UP_TOTAL}</b> + {L_RELEASED} <b class="seedmed">{RELEASED}</b> + {L_BONUS} <b class="seedmed">{UP_BONUS}</b> ) / {L_DOWNLOADED} <b class="leechmed">{DOWN_TOTAL}</b>
 				</td>
 			</tr>
-			<!-- ENDIF -->
 
 			<!-- IF LOCATION -->
 			<tr>
