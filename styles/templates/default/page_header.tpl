@@ -21,6 +21,7 @@
 
 <!-- IF META_DESCRIPTION -->
 <meta name="description" content="{META_DESCRIPTION}">
+<meta property="og:description" content="{META_DESCRIPTION}">
 <!-- ENDIF / META_DESCRIPTION -->
 
 <script type="text/javascript" src="{SITE_URL}styles/js/jquery.pack.js?v={$bb_cfg['js_ver']}"></script>
