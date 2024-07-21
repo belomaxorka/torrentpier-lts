@@ -19,6 +19,10 @@
 <meta name="generator" content="TorrentPier LTS">
 <meta name="version" content="{$bb_cfg['tp_version']}">
 
+<!-- IF META_DESCRIPTION -->
+<meta name="description" content="{META_DESCRIPTION}">
+<!-- ENDIF / META_DESCRIPTION -->
+
 <script type="text/javascript" src="{SITE_URL}styles/js/jquery.pack.js?v={$bb_cfg['js_ver']}"></script>
 <!-- IF $bb_cfg['new_year_mode'] --><script type="text/javascript" src="{SITE_URL}styles/js/libs/snowfall.js"></script><!-- ENDIF -->
 <script type="text/javascript" src="{SITE_URL}styles/js/main.js?v={$bb_cfg['js_ver']}"></script>
