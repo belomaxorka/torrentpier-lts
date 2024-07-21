@@ -4,6 +4,7 @@
 <title><!-- IF HAVE_NEW_PM -->({HAVE_NEW_PM}) <!-- ENDIF --><!-- IF PAGE_TITLE -->{PAGE_TITLE} :: {SITENAME}<!-- ELSE -->{SITENAME}<!-- ENDIF --></title>
 <meta http-equiv="Content-Type" content="text/html; charset={CONTENT_ENCODING}" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="apple-mobile-web-app-title" content="{SITENAME}">
 <meta name="application-name" content="{SITENAME}"/>
 <meta property="og:site_name" content="{SITENAME}">
 <meta property="og:type" content="website">
