@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Style-Type" content="text/css" />
 <meta name="application-name" content="{SITENAME}"/>
 <meta property="og:site_name" content="{SITENAME}">
+<meta property="og:type" content="website">
 <meta property="og:image" content="{SITE_URL}styles/images/logo/logo.png" />
 <meta property="twitter:image" content="{SITE_URL}styles/images/logo/logo.png">
 <meta property="og:title" content="<!-- IF PAGE_TITLE -->{PAGE_TITLE} :: {SITENAME}<!-- ELSE -->{SITENAME}<!-- ENDIF -->">
