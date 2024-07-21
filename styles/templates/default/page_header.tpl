@@ -4,22 +4,12 @@
 <title><!-- IF HAVE_NEW_PM -->({HAVE_NEW_PM}) <!-- ENDIF --><!-- IF PAGE_TITLE -->{PAGE_TITLE} :: {SITENAME}<!-- ELSE -->{SITENAME}<!-- ENDIF --></title>
 <meta http-equiv="Content-Type" content="text/html; charset={CONTENT_ENCODING}" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
-<meta name="apple-mobile-web-app-title" content="{SITENAME}">
 <meta name="application-name" content="{SITENAME}"/>
 <meta property="og:site_name" content="{SITENAME}">
-<meta property="twitter:card" content="summary">
-<meta property="og:type" content="website">
-<link rel="canonical" href="{CURRENT_URL}">
-<meta property="og:url" content="{CURRENT_URL}">
 <meta property="og:image" content="{SITE_URL}styles/images/logo/logo.png" />
 <meta property="twitter:image" content="{SITE_URL}styles/images/logo/logo.png">
 <meta property="og:title" content="<!-- IF PAGE_TITLE -->{PAGE_TITLE} :: {SITENAME}<!-- ELSE -->{SITENAME}<!-- ENDIF -->">
 <meta property="twitter:title" content="<!-- IF PAGE_TITLE -->{PAGE_TITLE} :: {SITENAME}<!-- ELSE -->{SITENAME}<!-- ENDIF -->">
-<!-- IF META_DESCRIPTION -->
-<meta name="description" content="{META_DESCRIPTION}">
-<meta property="og:description" content="{META_DESCRIPTION}">
-<meta property="twitter:description" content="{META_DESCRIPTION}">
-<!-- ENDIF / META_DESCRIPTION -->
 <!-- IF META_PREV_PAGE -->
 <link rel="prev" href="{META_PREV_PAGE}">
 <!-- ENDIF / META_PREV_PAGE -->
