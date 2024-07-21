@@ -21,10 +21,10 @@
 <meta property="twitter:description" content="{META_DESCRIPTION}">
 <!-- ENDIF / META_DESCRIPTION -->
 <!-- IF META_PREV_PAGE -->
-<link rel="prev" href="/{META_PREV_PAGE}">
+<link rel="prev" href="{META_PREV_PAGE}">
 <!-- ENDIF / META_PREV_PAGE -->
 <!-- IF META_NEXT_PAGE -->
-<link rel="next" href="/{META_NEXT_PAGE}">
+<link rel="next" href="{META_NEXT_PAGE}">
 <!-- ENDIF / META_NEXT_PAGE -->
 {META}
 <link rel="stylesheet" href="{STYLESHEET}?v={$bb_cfg['css_ver']}" type="text/css">

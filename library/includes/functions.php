@@ -1755,13 +1755,13 @@ function generate_pagination ($base_url, $num_items, $per_page, $start_item, $ad
 		if ($on_page > 1)
 		{
 			$page_string = ' <a href="' . $base_url . "&amp;start=" . ( ( $on_page - 2 ) * $per_page ) . '">' . $lang['PREVIOUS_PAGE'] . '</a>&nbsp;&nbsp;' . $page_string;
-			$meta_prev_link = $base_url . "&amp;start=" . (($on_page - 2) * $per_page);
+			$meta_prev_link = FULL_URL . $base_url . "&amp;start=" . (($on_page - 2) * $per_page);
 		}
 
 		if ($on_page < $total_pages)
 		{
 			$page_string .= '&nbsp;&nbsp;<a href="' . $base_url . "&amp;start=" . ( $on_page * $per_page ) . '">' . $lang['NEXT_PAGE'] . '</a>';
-			$meta_next_link = $base_url . "&amp;start=" . ($on_page * $per_page);
+			$meta_next_link = FULL_URL . $base_url . "&amp;start=" . ($on_page * $per_page);
 		}
 
 	}
