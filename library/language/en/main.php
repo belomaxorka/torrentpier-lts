@@ -1633,6 +1633,7 @@ $lang['ADMIN_INDEX'] = 'Admin Index';
 $lang['CREATE_PROFILE'] = 'Create profile';
 
 $lang['TP_VERSION'] = 'TorrentPier version';
+$lang['TP_MOD_VERSION'] = 'TorrentPier (modded) version';
 $lang['TP_RELEASE_DATE'] = 'Release date';
 $lang['ZF_VERSION'] = 'Zend Framework version';
 $lang['PHP_INFO'] = 'Information about PHP';
