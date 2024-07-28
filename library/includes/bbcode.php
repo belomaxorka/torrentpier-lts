@@ -96,6 +96,12 @@ $bbcode_tpl['hr'] = <<<HTML
 	<span class="post-hr">-</span>
 HTML;
 
+// Movie
+$bbcode_tpl['movie'] = <<<HTML
+	<div style="width: 720px; height: auto;" data-kinobox="auto" data-\\1="\\2"></div>
+	<script src="https://kinobox.tv/kinobox.min.js"></script>
+HTML;
+
 array_deep($bbcode_tpl, 'bbcode_tpl_compact');
 return $bbcode_tpl;
 }
@@ -543,6 +549,7 @@ class bbcode
 			"#\[thumb\]($img_exp)\[/thumb\]\s*#i" 	                 => $tpl['thumb'],
 			"#\[email\]($email_exp)\[/email\]#isu"                   => '<a href="mailto:$1">$1</a>',
 			"#\[qpost=([0-9]*)\]#isu"                                => '<u class="q-post">$1</u>',
+			"#\[movie=(kinopoisk|imdb|tmdb)\](.+?)\[/movie\]\s*#isu" => $tpl['movie'],
 		);
 
 		$this->str = array(
