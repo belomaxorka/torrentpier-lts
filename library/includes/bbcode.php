@@ -98,7 +98,7 @@ HTML;
 
 // Movie
 $bbcode_tpl['movie'] = <<<HTML
-	<div style="width: 720px; height: auto;" data-kinobox="auto" data-\\1="\\2"></div>
+	<div style="width: 720px; height: auto; margin-left: auto; margin-right: auto;" data-kinobox="auto" data-\\1="\\2"></div>
 	<script src="https://kinobox.tv/kinobox.min.js"></script>
 HTML;
 
@@ -549,6 +549,7 @@ class bbcode
 			"#\[thumb\]($img_exp)\[/thumb\]\s*#i" 	                 => $tpl['thumb'],
 			"#\[email\]($email_exp)\[/email\]#isu"                   => '<a href="mailto:$1">$1</a>',
 			"#\[qpost=([0-9]*)\]#isu"                                => '<u class="q-post">$1</u>',
+			// Movie
 			"#\[movie=(kinopoisk|imdb|tmdb)\](.+?)\[/movie\]\s*#isu" => $tpl['movie'],
 		);
 
