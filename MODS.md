@@ -14,7 +14,7 @@
 - Сброс рейтинга v1.0.1 ([ссылка](https://torrentpier.com/resources/sbros-rejtinga.298/))
 - Сортировка по ролям в списке пользователей v2.0.0 ([ссылка](https://torrentpier.com/resources/sortirovka-po-roljam-v-spiske-polzovatelej.281/))
 - Автоматический ресайзер аватаров v1.0.1 ([ссылка](https://torrentpier.com/resources/avtomaticheskij-resajzer-avatarov.294/))
-- Количество релизов в профиль v1.2.1 ([ссылка](https://torrentpier.com/resources/kolichestvo-relizov-v-profil.292/))
+- Количество релизов в профиль v1.2.2 ([ссылка](https://torrentpier.com/resources/kolichestvo-relizov-v-profil.292/))
 - Контрольные суммы файлов v1.2.0 ([ссылка](https://torrentpier.com/resources/kontrolnye-summy-fajlov.280/))
 - Парковка аккаунта v1.0.0 ([ссылка](https://torrentpier.com/resources/parkovka-akkaunta.164/))
 - Отключение личных сообщений у припаркованных аккаунтов v1.0.0 ([ссылка](https://torrentpier.com/resources/otkljuchenie-lichnyx-soobschenij-u-priparkovannyx-akkauntov.163/))
