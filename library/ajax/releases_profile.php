@@ -29,14 +29,14 @@ switch ($mode) {
 
 		if ($row = DB()->fetch_row($sql)) {
 			$total_releases = $row['COUNT(tor.poster_id)'];
-			$total_releases_size = humn_size($row['SUM(tor.size)']);
+			$total_releases_size = $row['SUM(tor.size)'];
 			$total_releases_completed = $row['SUM(ad.download_count)'];
 			$total_releases_completed_full = $row['SUM(tor.complete_count)'];
 		}
 
 		$this->response['releases_profile_html'] = '[
 			' . $lang['RELEASES'] . ': <span class="seed bold">' . $total_releases . '</span> |
-			' . $lang['RELEASER_STAT_SIZE'] . ' <span class="seed bold">' . $total_releases_size . '</span> |
+			' . $lang['RELEASER_STAT_SIZE'] . ' <span class="seed bold">' . humn_size($total_releases_size) . '</span> |
 			' . $lang['DOWNLOADED'] . ': <span title="' . $lang['COMPLETED'] . ':&nbsp;' . declension((int)$total_releases_completed_full, 'times') . '" class="seed bold">' . declension((int)$total_releases_completed, 'times') . '</span> ]';
 		break;
 
