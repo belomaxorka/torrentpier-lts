@@ -31,6 +31,7 @@
 - Закладки v1.3.0 ([ссылка](https://torrentpier.com/resources/zakladki.119/))
 - Знак зодиака v1.0.2 ([ссылка](https://torrentpier.com/resources/znak-zodiaka.278/))
 - Улучшение стандартной пагинации v1.0.0 ([ссылка](https://torrentpier.com/resources/uluchshenie-standartnoj-paginacii.300/))
+- Улучшение индексации страниц v1.0.0 ([ссылка](https://torrentpier.com/resources/uluchshenie-indeksacii-stranic.304/))
 - Отключение входящих личных сообщений v1.0.0 ([ссылка](https://torrentpier.com/resources/otkljuchenie-vxodjaschix-lichnyx-soobschenij.177/))
 - Набор BBCode тегов с рутрекера v1.0.0 ([ссылка](https://torrentpier.com/resources/nabor-bbcode-tegov-s-rutrekera.283/))
 - Кто был последний на раздаче v1.0.0 ([ссылка](https://torrentpier.com/resources/kto-byl-poslednij-na-razdache.295/))
