@@ -1133,7 +1133,7 @@ CREATE TABLE IF NOT EXISTS `bb_topics` (
 -- ----------------------------
 -- Records of bb_topics
 -- ----------------------------
-INSERT INTO `bb_topics` VALUES ('1', '1', 'Добро пожаловать в TorrentPier II', '2', UNIX_TIMESTAMP(), '0', '0', '0', '0', '0', '1', '1', '0', '0', '0', UNIX_TIMESTAMP(), '0');
+INSERT INTO `bb_topics` VALUES ('1', '1', 'Добро пожаловать в TorrentPier II', '2', UNIX_TIMESTAMP(), '0', '0', '0', '0', '0', '1', '1', '0', '0', '0', UNIX_TIMESTAMP(), '0', '1');
 
 -- ----------------------------
 -- Table structure for `bb_topics_watch`
