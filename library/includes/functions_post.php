@@ -69,7 +69,7 @@ function prepare_post(&$mode, &$post_data, &$error_msg, &$username, &$subject, &
 //
 // Post a new topic/reply or edit existing post/poll
 //
-function submit_post($mode, &$post_data, &$message, &$meta, &$forum_id, &$topic_id, &$post_id, &$topic_type, $post_username, $post_subject, $post_message, $update_post_time, $poster_rg_id, $attach_rg_sig)
+function submit_post($mode, &$post_data, &$message, &$meta, &$forum_id, &$topic_id, &$post_id, &$topic_type, $post_username, $post_subject, $post_message, $update_post_time, $poster_rg_id, $attach_rg_sig, $robots_indexing)
 {
 	global $userdata, $post_info, $is_auth, $bb_cfg, $lang, $datastore;
 
@@ -125,9 +125,9 @@ function submit_post($mode, &$post_data, &$message, &$meta, &$forum_id, &$topic_
 
 		$sql_insert = "
 			INSERT INTO
-				" . BB_TOPICS . " (topic_title, topic_poster, topic_time, forum_id, topic_status, topic_type, topic_dl_type)
+				" . BB_TOPICS . " (topic_title, topic_poster, topic_time, forum_id, topic_status, topic_type, topic_dl_type, topic_allow_robots)
 			VALUES
-				('$post_subject', " . $userdata['user_id'] . ", $current_time, $forum_id, " . TOPIC_UNLOCKED . ", $topic_type, $topic_dl_type)
+				('$post_subject', " . $userdata['user_id'] . ", $current_time, $forum_id, " . TOPIC_UNLOCKED . ", $topic_type, $topic_dl_type, $robots_indexing)
 		";
 
 		$sql_update = "
@@ -136,7 +136,8 @@ function submit_post($mode, &$post_data, &$message, &$meta, &$forum_id, &$topic_
 			SET
 				topic_title = '$post_subject',
 				topic_type = $topic_type,
-				topic_dl_type = $topic_dl_type
+				topic_dl_type = $topic_dl_type,
+				topic_allow_robots = $robots_indexing
 			WHERE
 				topic_id = $topic_id
 		";
