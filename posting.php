@@ -286,9 +286,14 @@ if ($mode == 'editpost')
 	}
 }
 
-// Notify
+// Notify & Allow robots indexing
+$robots_indexing = isset($post_info['topic_allow_robots']) ? $post_info['topic_allow_robots'] : true;
 if ($submit || $refresh)
 {
+	// Настройка индексации при создании темы
+	if (IS_AM) {
+		$robots_indexing = !empty($_POST['robots']);
+	}
 	$notify_user = (int) !empty($_POST['notify']);
 }
 else
@@ -393,7 +398,7 @@ elseif ( ($submit || $confirm) && !$topic_has_new_posts )
 			{
 				$topic_type = ( isset($post_data['topic_type']) && $topic_type != $post_data['topic_type'] && !$is_auth['auth_sticky'] && !$is_auth['auth_announce'] ) ? $post_data['topic_type'] : $topic_type;
 
-				submit_post($mode, $post_data, $return_message, $return_meta, $forum_id, $topic_id, $post_id, $topic_type, DB()->escape($username), DB()->escape($subject), DB()->escape($message), $update_post_time, $poster_rg_id, $attach_rg_sig);
+				submit_post($mode, $post_data, $return_message, $return_meta, $forum_id, $topic_id, $post_id, $topic_type, DB()->escape($username), DB()->escape($subject), DB()->escape($message), $update_post_time, $poster_rg_id, $attach_rg_sig, (int)$robots_indexing);
 
 				$post_url = POST_URL ."$post_id#$post_id";
 				$post_msg = ($mode == 'editpost') ? $lang['EDITED']: $lang['STORED'];
@@ -602,6 +607,11 @@ if (!IS_GUEST)
 $topic_type_toggle = '';
 if ( $mode == 'newtopic' || ( $mode == 'editpost' && $post_data['first_post'] ) )
 {
+	// Настройка индексации при создании темы
+	if (IS_AM) {
+		$template->assign_var('SHOW_ROBOTS_CHECKBOX');
+	}
+
 	$template->assign_block_vars('switch_type_toggle', array());
 
 	if( $is_auth['auth_sticky'] )
@@ -735,6 +745,7 @@ $template->assign_vars(array(
 	'U_VIEWTOPIC'          => ($mode == 'reply') ? TOPIC_URL . "$topic_id&amp;postorder=desc" : '',
 
 	'S_NOTIFY_CHECKED'     => ($notify_user) ? 'checked="checked"' : '',
+	'S_ROBOTS_CHECKED'     => ($robots_indexing) ? 'checked' : '',
 	'S_TYPE_TOGGLE'        => $topic_type_toggle,
 	'S_TOPIC_ID'           => $topic_id,
 	'S_POST_ACTION'        => POSTING_URL,

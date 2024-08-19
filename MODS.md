@@ -30,6 +30,7 @@
 - Причина переноса топика v1.0.0 ([ссылка](https://torrentpier.com/resources/prichina-perenosa-topika.287/))
 - Закладки v1.3.0 ([ссылка](https://torrentpier.com/resources/zakladki.119/))
 - Знак зодиака v1.0.2 ([ссылка](https://torrentpier.com/resources/znak-zodiaka.278/))
+- Настройка индексации при создании темы v1.0.0 ([ссылка](https://torrentpier.com/resources/nastrojka-indeksacii-pri-sozdanii-temy.305/))
 - Улучшение стандартной пагинации v1.0.0 ([ссылка](https://torrentpier.com/resources/uluchshenie-standartnoj-paginacii.300/))
 - Улучшение индексации страниц v1.0.0 ([ссылка](https://torrentpier.com/resources/uluchshenie-indeksacii-stranic.304/))
 - Отключение входящих личных сообщений v1.0.0 ([ссылка](https://torrentpier.com/resources/otkljuchenie-vxodjaschix-lichnyx-soobschenij.177/))
