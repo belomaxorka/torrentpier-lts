@@ -164,3 +164,6 @@ CREATE TABLE IF NOT EXISTS `bb_thx` (
 
 // Обнуление рейтинга
 ALTER TABLE `bb_bt_users` ADD COLUMN `ratio_nulled` tinyint(1) NOT NULL DEFAULT '0';
+
+// Настройка индексации при создании темы
+ALTER TABLE `bb_topics` ADD COLUMN `topic_allow_robots` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0';
