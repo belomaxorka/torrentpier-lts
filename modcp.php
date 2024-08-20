@@ -294,7 +294,8 @@ switch ($mode)
 		if ($confirmed)
 		{
 			$new_forum_id = (int) $_POST['new_forum'];
-			$result = topic_move($req_topics, $new_forum_id, $forum_id, isset($_POST['move_leave_shadow']), isset($_POST['insert_bot_msg']));
+			// Причина переноса топика
+			$result = topic_move($req_topics, $new_forum_id, $forum_id, isset($_POST['move_leave_shadow']), isset($_POST['insert_bot_msg']), $_POST['reason_move_bot']);
 
 			//Обновление кеша новостей на главной
 			$news_forums = array_flip(explode(',', $bb_cfg['latest_news_forum_id']));

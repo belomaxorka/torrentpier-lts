@@ -89,6 +89,7 @@ CREATE TABLE IF NOT EXISTS `bb_attachments_desc` (
   `filetime` int(11) NOT NULL DEFAULT '0',
   `thumbnail` tinyint(1) NOT NULL DEFAULT '0',
   `tracker_status` tinyint(1) NOT NULL DEFAULT '0',
+  `hash` char(32) NOT NULL DEFAULT '',
   PRIMARY KEY (`attach_id`),
   KEY `filetime` (`filetime`),
   KEY `filesize` (`filesize`),
@@ -161,6 +162,23 @@ CREATE TABLE IF NOT EXISTS `bb_banlist` (
 
 -- ----------------------------
 -- Records of bb_banlist
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `bb_book`
+-- ----------------------------
+DROP TABLE IF EXISTS `bb_book`;
+CREATE TABLE IF NOT EXISTS `bb_book` (
+  `book_id` mediumint(8) NOT NULL AUTO_INCREMENT,
+  `user_id` mediumint(9) NOT NULL DEFAULT '0',
+  `topic_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `forum_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `time` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`book_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of bb_book
 -- ----------------------------
 
 -- ----------------------------
@@ -271,6 +289,7 @@ CREATE TABLE IF NOT EXISTS `bb_bt_torrents` (
   `tor_type` tinyint(1) NOT NULL DEFAULT '0',
   `speed_up` int(11) NOT NULL DEFAULT '0',
   `speed_down` int(11) NOT NULL DEFAULT '0',
+  `last_seeder_id` mediumint(8) NOT NULL DEFAULT '0',
   PRIMARY KEY (`info_hash`),
   UNIQUE KEY `post_id` (`post_id`),
   UNIQUE KEY `topic_id` (`topic_id`),
@@ -391,6 +410,7 @@ CREATE TABLE IF NOT EXISTS `bb_bt_users` (
   `up_release_yesterday` bigint(20) unsigned NOT NULL DEFAULT '0',
   `up_bonus_yesterday` bigint(20) unsigned NOT NULL DEFAULT '0',
   `points_yesterday` float(16,2) unsigned NOT NULL DEFAULT '0.00',
+  `ratio_nulled` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `auth_key` (`auth_key`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -530,6 +550,7 @@ INSERT INTO `bb_config` VALUES ('premod', '0');
 INSERT INTO `bb_config` VALUES ('new_tpls', '1');
 INSERT INTO `bb_config` VALUES ('tor_comment', '1');
 INSERT INTO `bb_config` VALUES ('terms', '');
+INSERT INTO `bb_config` VALUES ('admin_note', 'Hello, world!');
 
 -- ----------------------------
 -- Table structure for `bb_cron`
@@ -1101,6 +1122,7 @@ CREATE TABLE IF NOT EXISTS `bb_topics` (
   `topic_dl_type` tinyint(1) NOT NULL DEFAULT '0',
   `topic_last_post_time` int(11) NOT NULL DEFAULT '0',
   `topic_show_first_post` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `topic_allow_robots` tinyint(1) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`topic_id`),
   KEY `forum_id` (`forum_id`),
   KEY `topic_last_post_id` (`topic_last_post_id`),
@@ -1111,7 +1133,7 @@ CREATE TABLE IF NOT EXISTS `bb_topics` (
 -- ----------------------------
 -- Records of bb_topics
 -- ----------------------------
-INSERT INTO `bb_topics` VALUES ('1', '1', 'Добро пожаловать в TorrentPier II', '2', UNIX_TIMESTAMP(), '0', '0', '0', '0', '0', '1', '1', '0', '0', '0', UNIX_TIMESTAMP(), '0');
+INSERT INTO `bb_topics` VALUES ('1', '1', 'Добро пожаловать в TorrentPier II', '2', UNIX_TIMESTAMP(), '0', '0', '0', '0', '0', '1', '1', '0', '0', '0', UNIX_TIMESTAMP(), '0', '1');
 
 -- ----------------------------
 -- Table structure for `bb_topics_watch`
@@ -1194,6 +1216,8 @@ CREATE TABLE IF NOT EXISTS `bb_users` (
   `user_newest_pm_id` mediumint(8) NOT NULL DEFAULT '0',
   `user_points` float(16,2) NOT NULL DEFAULT '0.00',
   `tpl_name` varchar(255) NOT NULL DEFAULT 'default',
+  `user_park_profile` tinyint(1) NOT NULL DEFAULT '0',
+  `user_relationships` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`user_id`),
   KEY `username` (`username`(10)),
   KEY `user_email` (`user_email`(10)),
@@ -1203,9 +1227,9 @@ CREATE TABLE IF NOT EXISTS `bb_users` (
 -- ----------------------------
 -- Records of bb_users
 -- ----------------------------
-INSERT INTO `bb_users` VALUES ('-1', '0', 'Guest', 'd41d8cd98f00b204e9800998ecf8427e', '0', '0', '0', UNIX_TIMESTAMP(), '0', '0', '0', '', 'ru', '0', '0', '0', '0', '0', '0', '0', '1900-01-01', '', '', '', '', '', '', '', '', '', '', '', '', '0', '0.00', 'default');
-INSERT INTO `bb_users` VALUES ('-746', '0', 'bot', 'd41d8cd98f00b204e9800998ecf8427e', '0', '0', '0', UNIX_TIMESTAMP(), '0', '0', '0', '', 'ru', '0', '0', '0', '144', '0', '0', '0', '1900-01-01', 'bot@torrentpier.com', '', '', '', '', '', '', '', '', '', '', '', '0', '0.00', 'default');
-INSERT INTO `bb_users` VALUES ('2', '1', 'admin', 'c3284d0f94606de1fd2af172aba15bf3', '0', '0', '0', UNIX_TIMESTAMP(), '0', '1', '1', '', 'ru', '0', '0', '0', '304', '1', '0', '0', '1900-01-01', 'admin@torrentpier.com', '', '', '', '', '', '', '', '', '', '', '', '0', '0.00', 'default');
+INSERT INTO `bb_users` VALUES ('-1', '0', 'Guest', 'd41d8cd98f00b204e9800998ecf8427e', '0', '0', '0', UNIX_TIMESTAMP(), '0', '0', '0', '', 'ru', '0', '0', '0', '0', '0', '0', '0', '1900-01-01', '', '', '', '', '', '', '', '', '', '', '', '', '0', '0.00', 'default', '0', '0');
+INSERT INTO `bb_users` VALUES ('-746', '0', 'bot', 'd41d8cd98f00b204e9800998ecf8427e', '0', '0', '0', UNIX_TIMESTAMP(), '0', '0', '0', '', 'ru', '0', '0', '0', '144', '0', '0', '0', '1900-01-01', 'bot@torrentpier.com', '', '', '', '', '', '', '', '', '', '', '', '0', '0.00', 'default', '0', '0');
+INSERT INTO `bb_users` VALUES ('2', '1', 'admin', 'c3284d0f94606de1fd2af172aba15bf3', '0', '0', '0', UNIX_TIMESTAMP(), '0', '1', '1', '', 'ru', '0', '0', '0', '304', '1', '0', '0', '1900-01-01', 'admin@torrentpier.com', '', '', '', '', '', '', '', '', '', '', '', '0', '0.00', 'default', '0', '0');
 
 -- ----------------------------
 -- Table structure for `bb_user_group`
@@ -1246,6 +1270,7 @@ DROP TABLE IF EXISTS `buf_last_seeder`;
 CREATE TABLE IF NOT EXISTS `buf_last_seeder` (
   `topic_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `seeder_last_seen` int(11) NOT NULL DEFAULT '0',
+  `user_id` mediumint(8) NOT NULL DEFAULT '0',
   PRIMARY KEY (`topic_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -1265,4 +1290,20 @@ CREATE TABLE IF NOT EXISTS `buf_topic_view` (
 
 -- ----------------------------
 -- Records of buf_topic_view
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `bb_thx`
+-- ----------------------------
+DROP TABLE IF EXISTS `bb_thx`;
+CREATE TABLE IF NOT EXISTS `bb_thx` (
+  `topic_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `user_id` mediumint(8) NOT NULL DEFAULT '0',
+  `to_user_id` mediumint(8) NOT NULL DEFAULT '0',
+  `time` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`topic_id`, `user_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of bb_thx
 -- ----------------------------

@@ -32,6 +32,7 @@ while (true)
 	{
 		$sql = DB()->fetch_rowset("SELECT user_id FROM ". BB_USERS ."
 			WHERE user_level   = 0
+			AND user_park_profile = 0
 			AND user_posts     = 0
 			AND user_lastvisit <= ". (TIMENOW - 86400 * $not_active_days) ."
 			AND user_id        NOT IN(". EXCLUDED_USERS_CSV .")
@@ -53,5 +54,5 @@ while (true)
 		break;
 	}
 
-	sleep(3);
+	// sleep(3);
 }

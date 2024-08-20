@@ -9,10 +9,13 @@
 </style>
 <!-- IF SPOILER_OPENED -->
 <script type="text/javascript">
-	$(document).ready(function(){ $('div.sp-head').click(); });
+	$(document).ready(function () {
+		$('div.sp-head').not('.ignore-sp-open').click();
+	});
 </script>
 <!-- ENDIF -->
 <!-- ENDIF / LOGGED_IN -->
+<script type="text/javascript" src="{SITE_URL}styles/js/libs/printThis.min.js"></script>
 
 <!-- IF $bb_cfg['use_ajax_posts'] && (AUTH_DELETE || AUTH_REPLY || AUTH_EDIT) -->
 <script type="text/javascript">
@@ -241,6 +244,8 @@ function build_poll_add_form (src_el)
 			<!-- IF IN_MODERATION -->{L_MODERATE_TOPIC}<!-- ELSE --><a href="{PAGE_URL}&amp;mod=1&amp;start={PAGE_START}" class="small bold">{L_MODERATE_TOPIC}</a><!-- ENDIF -->
 			&nbsp;<span style="color:#CDCDCD;">|</span>&nbsp;
 			<a class="small bold" href="{PIN_HREF}">{PIN_TITLE}</a>
+			&nbsp;<span style="color:#CDCDCD;">|</span>&nbsp;
+			<a class="small bold" href="#" onclick="$('#main_content').printThis(); return false;">{L_PRINT_PAGE}</a>
 		</td>
 		<!-- IF SELECT_PPP -->
 		<td class="med" style="padding: 0 4px 2px 4px;">|</td>
@@ -252,8 +257,23 @@ function build_poll_add_form (src_el)
 		<!-- ENDIF / AUTH_MOD -->
 
 		<td class="small bold nowrap tRight" width="100%">
-			&nbsp;
 			<!-- IF LOGGED_IN -->
+			<!-- IF U_BOOK -->
+			<script type="text/javascript">
+				ajax.book = function () {
+					ajax.exec({
+						action: 'book',
+						mode: 'add',
+						tid: {TOPIC_ID},
+						fid: {FORUM_ID},
+					});
+				};
+				ajax.callback.book = function (data) {
+					$('#book').html(data.ok);
+				};
+			</script>
+			<span id="book">{U_BOOK}</span> &nbsp;<span style="color:#CDCDCD;">|</span>&nbsp;
+			<!-- ENDIF / U_BOOK -->
 			<a class="small" href="{U_SEARCH_SELF}">{L_SEARCH_SELF}</a> &nbsp;<span style="color:#CDCDCD;">|</span>&nbsp;
 			<a class="menu-root" href="#topic-options">{L_DISPLAYING_OPTIONS}</a>
 			<!-- ENDIF / LOGGED_IN -->
@@ -384,7 +404,7 @@ function build_poll_add_form (src_el)
 		<div class="post_head">
 			<p style="float: left;<!-- IF TEXT_BUTTONS --> padding: 4px 0 3px;<!-- ELSE --> padding-top: 5px;<!-- ENDIF -->">
 				<!-- IF postrow.IS_UNREAD -->{MINIPOST_IMG_NEW}<!-- ELSE -->{MINIPOST_IMG}<!-- ENDIF -->
-				<a class="small" href="{POST_URL}{postrow.POST_ID}#{postrow.POST_ID}" title="{L_POST_LINK}">{postrow.POST_DATE}</a>
+				<a class="small" href="{POST_URL}{postrow.POST_ID}#{postrow.POST_ID}" title="{L_POST_LINK}">{postrow.POST_DATE}&nbsp;|&nbsp;#{postrow.POST_NUMBER}</a>
 				<!-- IF postrow.POSTED_AFTER -->
 					<span class="posted_since">({L_POSTED_AFTER} {postrow.POSTED_AFTER})</span>
 				<!-- ENDIF -->
@@ -397,6 +417,29 @@ function build_poll_add_form (src_el)
 				<!-- IF postrow.QUOTE --><a class="txtb" href="<!-- IF $bb_cfg['use_ajax_posts'] -->" onclick="ajax.exec({ action: 'posts', post_id: {postrow.POST_ID}, type: 'reply'}); return false;<!-- ELSE -->{QUOTE_URL}{postrow.POST_ID}<!-- ENDIF -->">{QUOTE_IMG}</a>{POST_BTN_SPACER}<!-- ENDIF -->
 				<!-- IF postrow.EDIT --><a class="txtb" href="<!-- IF $bb_cfg['use_ajax_posts'] -->" onclick="edit_post({postrow.POST_ID}, 'edit'); return false;<!-- ELSE -->{EDIT_POST_URL}{postrow.POST_ID}<!-- ENDIF -->">{EDIT_POST_IMG}</a>{POST_BTN_SPACER}<!-- ENDIF -->
 				<!-- IF postrow.DELETE --><a class="txtb" href="<!-- IF $bb_cfg['use_ajax_posts'] -->" onclick="ajax.exec({ action: 'posts', post_id: {postrow.POST_ID}, topic_id : {TOPIC_ID}, type: 'delete'}); return false;<!-- ELSE -->{DELETE_POST_URL}{postrow.POST_ID}<!-- ENDIF -->">{DELETE_POST_IMG}</a>{POST_BTN_SPACER}<!-- ENDIF -->
+				<!-- IF postrow.IS_FIRST_POST && $bb_cfg['show_post_bbcode_button'] -->
+				<script type="text/javascript">
+					var loadedText = {};
+					ajax.view_post = function (post_id) {
+						if (loadedText[post_id] != null) {
+							$('#ptx-' + post_id).toggle();
+							return;
+						}
+						ajax.exec({
+							action: 'view_post',
+							post_id: post_id,
+							return_text: true,
+						});
+					};
+					ajax.callback.view_post = function (data) {
+						loadedText[data.post_id] = true;
+						$('#post_' + data.post_id + ' div.post_body').prepend(
+							'<div class="tCenter" id="ptx-' + data.post_id + '"><textarea style="width: 99%; height: 200px; line-height: 1.2;" readonly="readonly">' + data['post_text'] + '</textarea><hr></div>'
+						);
+					};
+				</script>
+				<a href="#" class="txtb" onclick="ajax.view_post('{postrow.POST_ID}'); return false;">{CODE_IMG}</a>
+				<!-- ENDIF -->
 				<!-- IF postrow.IP --><a class="txtb" href="{IP_POST_URL}{postrow.POST_ID}&amp;t={TOPIC_ID}">{IP_POST_IMG}</a>{POST_BTN_SPACER}<!-- ENDIF -->
 				<!-- IF AUTH_MOD -->
 					<a class="menu-root menu-alt1 txtb" href="#mc_{postrow.POST_ID}">{MC_IMG}</a>{POST_BTN_SPACER}
@@ -537,6 +580,16 @@ function build_poll_add_form (src_el)
 
 </table><!--/topic_main-->
 
+<!-- IF LOOKING_LIST -->
+<table class="topic" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="nav pad_6 {PG_ROW_CLASS}">
+			<p>{LOOKING_LIST}</p>
+		</td>
+	</tr>
+</table>
+<!-- ENDIF -->
+
 <!-- IF HIDE_POST_IMG --><script type="text/javascript">$('img.postImg').remove();</script><!-- ENDIF -->
 <!-- IF HIDE_SMILE --><script type="text/javascript">$('img.smile').remove();</script><!-- ENDIF -->
 
@@ -613,6 +666,8 @@ function build_poll_add_form (src_el)
 
 <!--bottom_info-->
 <div class="bottom_info">
+
+	<a href="#" onclick="$.scrollTo('#topic_main', {duration: 200, axis: 'y'}); return false;">{L_MOVE_TO_TOP}</a>
 
 	<div class="jumpbox"></div>
 

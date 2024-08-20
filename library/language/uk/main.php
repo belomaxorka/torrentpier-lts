@@ -52,6 +52,7 @@ $lang['DISABLED'] = 'Вимкнено';
 $lang['ERROR'] = 'Помилка';
 $lang['SELECT_ACTION'] = 'Виберіть дію';
 $lang['CLEAR'] = 'Очистити';
+$lang['MOVE_TO_TOP'] = 'Піднятися вгору';
 
 $lang['NEXT_PAGE'] = 'Наступ.';
 $lang['PREVIOUS_PAGE'] = 'Попер.';
@@ -97,8 +98,8 @@ $lang['ALL_CACHE_CLEARED'] = 'Кеш очищено';
 $lang['ALL_TEMPLATE_CLEARED'] = 'Кеш шаблону очищено';
 $lang['DATASTORE'] = 'Datastore';
 $lang['DATASTORE_CLEARED'] = 'Datastore очищено';
-$lang['BOARD_DISABLE'] = 'Вибачте, цей форум відключений. Спробуйте зайти пізніше';
-$lang['BOARD_DISABLE_CRON'] = 'Форум відключений на технічне обслуговування. Спробуйте зайти пізніше';
+$lang['BOARD_DISABLE'] = 'Вибачте, на ресурсі ведуться технічні роботи. Спробуйте зайти пізніше. Вхід дозволено лише адміністрації ресурсу';
+$lang['BOARD_DISABLE_CRON'] = 'Форум заблокований тригером cron-завдань. Будь ласка, оновіть сторінку';
 $lang['ADMIN_DISABLE'] = 'форум відключений адміністратором, ви можете включити його в будь-який час';
 $lang['ADMIN_DISABLE_CRON'] = 'форум заблокований тригером cron-завдань, ви можете зняти блокування в будь-який час';
 $lang['ADMIN_DISABLE_TITLE'] = 'Форум відключений';
@@ -322,6 +323,8 @@ $lang['POST_ANNOUNCEMENT'] = 'Оголошення';
 $lang['POST_STICKY'] = 'Приліплена';
 $lang['POST_NORMAL'] = 'Звичайна';
 $lang['POST_DOWNLOAD'] = 'Завантажувальна';
+
+$lang['PRINT_PAGE'] = 'Надрукувати сторінку';
 
 $lang['CONFIRM_DELETE'] = 'Ви впевнені, що хочете видалити це повідомлення?';
 $lang['CONFIRM_DELETE_POLL'] = 'Ви впевнені, що хочете видалити опитування?';
@@ -594,6 +597,7 @@ $lang['RETURN_PROFILE'] = 'Повернутися до профілю';
 $lang['SELECT_CATEGORY'] = 'Виберіть категорію';
 
 $lang['DELETE_IMAGE'] = 'Видалити зображення';
+$lang['SET_MONSTERID_AVATAR'] = 'Встановити аватар MonsterID';
 $lang['CURRENT_IMAGE'] = 'Поточне зображення';
 
 $lang['NOTIFY_ON_PRIVMSG'] = 'Повідомляти про нові особисті повідомлення';
@@ -1318,6 +1322,8 @@ $lang['UPDATE_POST_TIME'] = 'Оновити час повідомлення';
 $lang['TOPIC_SPLIT_NEW'] = 'Нова тема';
 $lang['TOPIC_SPLIT_OLD'] = 'Стара тема';
 $lang['BOT_LEAVE_MSG_MOVED'] = 'Залишити повідомлення про перенесення';
+// Причина переноса топика
+$lang['BOT_REASON_MOVED'] = 'Причина перенесення';
 $lang['BOT_AFTER_SPLIT_TO_OLD'] = 'Залишити повідомлення про поділ <b>в старій темі</b>';
 $lang['BOT_AFTER_SPLIT_TO_NEW'] = 'Додати повідомлення про поділ <b>в нову тему</b>';
 //qr
@@ -1343,6 +1349,8 @@ $lang['READ_PROFILE_TXTB'] = '[Профіль]';
 $lang['SEND_EMAIL_TXTB'] = '[E-mail]';
 $lang['VISIT_WEBSITE_TXTB'] = '[www]';
 $lang['EDIT_DELETE_POST_TXTB'] = '[Змінити]';
+// Просмотр кода топика
+$lang['CODE_TOPIC_TXTB'] = '[Код]';
 $lang['SEARCH_USER_POSTS_TXTB'] = '[Пошук]';
 $lang['VIEW_IP_TXTB'] = '[ip]';
 $lang['DELETE_POST_TXTB'] = '[x]';
@@ -1513,6 +1521,10 @@ $lang['QUOTE_TITLE'] = 'Цитата: [quote]текст[/quote] (Ctrl+Q)';
 $lang['IMG_TITLE'] = 'Добавити картинку: [img]http://image_url[/img] (Ctrl+R)';
 $lang['URL'] = 'Посилання';
 $lang['URL_TITLE'] = 'Вставте URL: [url]http://url[/url] або [url=http://url]текст URL[/url] (Ctrl+W)';
+// [Start] Thumbnail image
+$lang['THUMB'] = 'Мініатюра';
+$lang['THUMB_TITLE'] = 'Мініатюра: [thumb]http://image_url[/thumb]';
+// [End] Thumbnail image
 $lang['CODE_TITLE'] = 'Код: [code]код[/code] (Ctrl+K)';
 $lang['LIST'] = 'Список';
 $lang['LIST_TITLE'] = 'Список: [list]текст[/list] (Ctrl+L)';
@@ -1621,6 +1633,7 @@ $lang['ADMIN_INDEX'] = 'Головна сторінка';
 $lang['CREATE_PROFILE'] = 'Створити акаунт';
 
 $lang['TP_VERSION'] = 'Версія TorrentPier II';
+$lang['TP_MOD_VERSION'] = 'Версія TorrentPier II (модифікований)';
 $lang['TP_RELEASE_DATE'] = 'Дата випуску';
 $lang['ZF_VERSION'] = 'Версія Zend Framework';
 $lang['PHP_INFO'] = 'Інформація про PHP';
@@ -2540,7 +2553,8 @@ $lang['WRONG_INPUT'] = 'Ви ввели деякі неправильні зна
 $lang['PROCESSING'] = 'Йде обробка...';
 $lang['FINISHED'] = 'Закінчити';
 
-$lang['BOT_TOPIC_MOVED_FROM_TO'] = 'Топік був перенесений з форуму [b]%s[/b] у форум [b]%s[/b][br][br]%s';
+// Причина переноса топика
+$lang['BOT_TOPIC_MOVED_FROM_TO'] = 'Топік був перенесений з форуму [b]%s[/b] у форум [b]%s[/b].[br][b]Причина перенесення:[/b] %s[br][br]%s';
 $lang['BOT_MESS_SPLITS'] = 'Повідомлення з цієї теми були виділені в окремий топік [b]%s[/b][br][br]%s';
 $lang['BOT_TOPIC_SPLITS'] = 'Тема була виділена з [b]%s[/b][br][br]%s';
 
@@ -2821,3 +2835,110 @@ $lang['UPLOAD_ERRORS'] = array(
 $lang['CAPTCHA'] = 'Перевірка, що ви не робот';
 $lang['CAPTCHA_WRONG'] = 'Ви не змогли підтвердити, що ви не робот';
 $lang['CAPTCHA_SETTINGS'] = '<h2>ReCaptcha налаштована не повністю</h2><p>Якщо ви ще не згенерували ключі, ви можете це зробити на сторінці <a href="https://www.google.com/recaptcha/admin">https://www.google.com/recaptcha/admin</a>.<br />Після того, як ви сгенеріруете ключі, потрібно прописати їх у файл library/config.php.</p>';
+
+// Случайная раздача
+$lang['RANDOM_RELEASE'] = 'Випадкова роздача';
+
+// Количество релизов в профиль
+$lang['RELEASER_STAT_SIZE'] = 'Розмір:';
+$lang['RELEASER_STAT'] = 'Статистика релізера:';
+$lang['RELEASER_STAT_SHOW'] = 'Показати статистику';
+
+// Поиск по статусу раздачи
+$lang['TORRENT_STATUS'] = 'Пошук за статусом роздачі';
+
+// Акроним
+$lang['ACRONYM'] = 'Акронім';
+$lang['ACRONYM_TITLE'] = 'Акронім: [acronym=Повний текст]Короткий текст[/acronym]';
+
+// Кто просматривает тему
+$lang['WHOIS_LOOKING'] = 'Хто переглядає тему';
+
+// Заметки администратора
+$lang['ADMIN_NOTES'] = 'Нотатки адміністратора';
+$lang['NOTE_SAVE'] = 'Зберегти нотатку';
+$lang['NOTE_SAVED'] = 'Нотатка успішно збережена!';
+
+// Набор BBCode тегов с рутрекера by belomaxorka
+$lang['BOX_TAG'] = 'Рамка навколо тексту: [box]текст[/box]';
+$lang['INDENT_TAG'] = 'Додати відступ: [indent]текст[/indent]';
+$lang['PRE_TAG'] = 'Форматований текст: [pre]текст[/pre]';
+$lang['NFO_TAG'] = 'NFO: [nfo]текст[/nfo]';
+
+// Закладки
+$lang['BOOKMARKS'] = 'Закладки';
+$lang['BOOKMARKS_ADD'] = 'Додати в закладки';
+$lang['BOOKMARKS_ADD_SUCCESS'] = 'Закладка успішно додана';
+$lang['BOOKMARKS_REMOVE'] = 'Видалити із закладок';
+$lang['BOOKMARKS_REMOVE_SUCCESS'] = 'Закладка успішно видалена';
+$lang['BOOKMARKS_NONE'] = 'Вибачте, у вас немає збережених закладок';
+$lang['BOOKMARKS_ALREADY'] = 'Ви вже додали цю тему до закладок';
+$lang['BOOKMARKS_LIMIT_REACHED'] = 'У вас занадто багато закладок...';
+
+// Знак зодиака
+$lang['SHOW_ZODIAC'] = 'Показувати знак зодіаку';
+$lang['ZODIAC_SIGN'] = array(
+	'AQUARIUS' => 'Водолій',
+	'ARIES' => 'Овен',
+	'CANCER' => 'Раки',
+	'CAPRICORN' => 'Козоріг',
+	'GEMINI' => 'Близнюки',
+	'LEO' => 'Лев',
+	'LIBRA' => 'Терези',
+	'PISCES' => 'Риби',
+	'SAGITTARIUS' => 'Стрілець',
+	'SCORPIO' => 'Скорпіон',
+	'TAURUS' => 'Телець',
+	'VIRGO' => 'Діва',
+);
+
+// [AJAX] Пользователи за 24 часа
+$lang['USERS_TODAY'] = 'Користувачі відвідали ресурс за сьогодні';
+$lang['USERS_TODAY_NONE'] = 'Ніхто не заходив за сьогодні';
+
+// BB-код: текст в верхнем и нижнем индексе
+$lang['SUB_TITLE'] = 'Нижній індекс: [sub]текст[/sub]';
+$lang['SUB'] = 'SUB';
+$lang['SUP_TITLE'] = 'Верхній індекс: [sup]текст[/sup]';
+$lang['SUP'] = 'SUP';
+
+// Отключение входящих личных сообщений
+$lang['OFF_PM'] = 'Вимкнути вхідні ОП';
+$lang['OFF_PM_MESSAGE'] = 'Користувач відключив вхідні ОП';
+
+// Парковка аккаунта
+$lang['PARK_CONTROL'] = 'Паркування облікового запису';
+$lang['PARK_WARNING'] = 'Припаркувавши обліковий запис, ви не зможете користуватися ресурсом!';
+$lang['PARK_PROFILE_STATUS'] = 'Обліковий запис припаркований';
+$lang['PARK_PROFILE_STATUS_FAQ'] = 'Що таке "Паркування облікового запису"?';
+$lang['PARK_ACCOUNT_PARKED'] = 'Доступ до ресурсу обмежений, поки обліковий запис припарковано. Щоб почати користуватися ресурсом знову, вимкніть паркування в налаштуваннях профілю';
+
+// Семейное положение
+$lang['RELATIONSHIPS'] = 'Сімейний стан';
+$lang['RELATIONSHIPS_SELECTOR'] = array(
+	0 => 'Не вказана',
+	1 => 'Неодружений / Неодружена',
+	2 => 'Зустрічаюся',
+	3 => 'Заручений(a)',
+	4 => 'Одружений / Одружена',
+	5 => 'У цивільному шлюбі',
+	6 => 'Закоханий / Закохана',
+	7 => 'Все складно',
+	8 => 'В активному пошуку'
+);
+
+// Спасибо
+$lang['THANK_TOPIC'] = 'Сказати "Дякую"';
+$lang['THANKS_GRATITUDE'] = 'Спасибі за подяку!';
+$lang['LAST_LIKES'] = 'Останні, хто подякував';
+$lang['LIKE_OWN_POST'] = 'Ви не можете залишити подяку у власній темі';
+$lang['NO_LIKES'] = 'Ніхто ще не сказав дякую...';
+$lang['LIKE_ALREADY'] = 'Ви вже дякую в цій темі';
+
+// Обнуление рейтинга
+$lang['BT_NULL_RATIO'] = 'Скинути рейтинг';
+$lang['BT_NULL_RATIO_NONE'] = 'У вас немає рейтингу';
+$lang['BT_NULL_RATIO_ALERT'] = "Увага!\n\nВи впевнені, що хочете скинути рейтинг?";
+$lang['BT_NULL_RATIO_AGAIN'] = 'Ви вже робили скидання рейтингу!';
+$lang['BT_NULL_RATIO_NOT_NEEDED'] = 'У вас добрий рейтинг. Скидання можливе лише за рейтингу менше ніж %s';
+$lang['BT_NULL_RATIO_SUCCESS'] = 'Рейтинг успішно скинутий!';

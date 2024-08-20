@@ -26,6 +26,13 @@ $user->session_start();
 
 set_die_append_msg();
 
+//
+// Проверка на парковку аккаунта
+//
+if ($userdata['user_park_profile']) {
+	bb_die($lang['PARK_ACCOUNT_PARKED']);
+}
+
 // Posts per page
 $posts_per_page = $bb_cfg['posts_per_page'];
 $select_ppp = '';
@@ -122,6 +129,9 @@ $forum_topic_data =& $t_data;
 $topic_id = $t_data['topic_id'];
 $forum_id = $t_data['forum_id'];
 $topic_attachment = isset($t_data['topic_attachment']) ? (int) $t_data['topic_attachment'] : null;
+
+// Allow robots indexing
+$page_cfg['allow_robots'] = (bool)$t_data['topic_allow_robots'];
 
 if($t_data['allow_porno_topic'] && bf($userdata['user_opt'], 'user_opt', 'user_porn_forums')) bb_die($lang['ERROR_PORNO_FORUM']);
 
@@ -492,6 +502,21 @@ elseif (($t_data['topic_poster'] == $userdata['user_id']) && $userdata['session_
 }
 
 //
+// Закладки
+//
+if (!IS_GUEST) {
+	if (!DB()->fetch_row('SELECT book_id FROM ' . BB_BOOK . " WHERE topic_id = $topic_id AND user_id = " . $userdata['user_id'])) {
+		$template->assign_vars(array(
+			'U_BOOK' => '<a class="small" href="#" onclick="ajax.book(); return false;">' . $lang['BOOKMARKS_ADD'] . '</a>',
+		));
+	} else {
+		$template->assign_vars(array(
+			'U_BOOK' => '<a class="small" href="#" onclick="ajax.exec({ action:\'book\', mode:\'delete\', tid:' . $topic_id . ', ids: \'0\' }); return false;">' . $lang['BOOKMARKS_REMOVE'] . '</a>',
+		));
+	}
+}
+
+//
 // Topic watch information
 //
 $s_watching_topic = $s_watching_topic_img = '';
@@ -617,6 +642,58 @@ if ($topic_attachment)
 {
 	require(ATTACH_DIR .'attachment_mod.php');
 	init_display_post_attachments($t_data['topic_attachment']);
+}
+
+//
+// Кто просматривает тему
+//
+if ($bb_cfg['who_is_looking_topic']) {
+	$max_users = 150;
+	$cache_lifetime = 300;
+	if (!$viewing_users = CACHE('bb_cache')->get('viewing_users_' . $topic_id)) {
+		$viewing_users = array();
+	}
+
+	// Удаляем устаревшие записи из кэша
+	foreach ($viewing_users as $viewing_user) {
+		$timestamp = $viewing_user['time'];
+		if ((TIMENOW - $timestamp) >= $cache_lifetime) {
+			unset($viewing_users[$viewing_user['user_id']]);
+			if (!empty($viewing_users)) {
+				CACHE('bb_cache')->set('viewing_users_' . $topic_id, $viewing_users, $cache_lifetime);
+			} else {
+				CACHE('bb_cache')->rm('viewing_users_' . $topic_id);
+			}
+		}
+		unset($viewing_user);
+	}
+
+	// Добавляем новые записи в кэш
+	if (!IS_GUEST && !isset($viewing_users[$userdata['user_id']])) {
+		$viewing_users[$userdata['user_id']] = array(
+			'time' => TIMENOW,
+			'user_id' => $userdata['user_id'],
+			'user_rank' => $userdata['user_rank'],
+			'username' => $userdata['username']
+		);
+		CACHE('bb_cache')->set('viewing_users_' . $topic_id, $viewing_users, $cache_lifetime);
+	}
+
+	// Формируем вывод
+	$looking_list = array();
+	foreach ($viewing_users as $key => $value) {
+		$looking_list[] = (count($looking_list) >= $max_users) ? $value['user_id'] : profile_url(array('user_id' => $value['user_id'], 'username' => $value['username'], 'user_rank' => $value['user_rank']));
+	}
+
+	$output_list = $lang['WHOIS_LOOKING'] . '&nbsp;(' . count($looking_list) . ')' . ':&nbsp;' . implode(", ", array_slice(array_reverse($looking_list), 0, $max_users));
+	if (count($looking_list) > $max_users) {
+		$output_list .= ', ...';
+	}
+	$template->assign_vars(array(
+		'LOOKING_LIST' => !empty($looking_list) ? $output_list : false,
+	));
+
+	unset($viewing_users, $looking_list, $output_list, $max_users, $cache_lifetime);
 }
 
 //

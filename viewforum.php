@@ -48,6 +48,13 @@ if (!$forum_id OR !$forum_data = @$forums['forum'][$forum_id])
 	bb_die($lang['FORUM_NOT_EXIST']);
 }
 
+//
+// Проверка на парковку аккаунта
+//
+if ($userdata['user_park_profile']) {
+	bb_die($lang['PARK_ACCOUNT_PARKED']);
+}
+
 // Only new
 $only_new = $user->opt_js['only_new'];
 $only_new_sql = '';
@@ -431,6 +438,7 @@ $template->assign_vars(array(
 	'PAGE_TITLE'          => htmlCHR($forum_data['forum_name']),
 	'FORUM_ID'            => $forum_id,
 	'FORUM_NAME'          => htmlCHR($forum_data['forum_name']),
+	'FORUM_DESC'          => htmlCHR($forum_data['forum_desc']),
 	'TORRENTS'            => $forum_data['allow_reg_tracker'],
 	'POST_IMG'            => ($forum_data['forum_status'] == FORUM_LOCKED) ? $images['post_locked'] : $post_img,
 

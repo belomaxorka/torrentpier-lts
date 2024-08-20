@@ -84,6 +84,7 @@ $(document).ready(function(){
 <var class="ajax-params">{action: "edit_user_profile", id: "user_skype",    editableType: "yesno-skype"}</var>
 <var class="ajax-params">{action: "edit_user_profile", id: "user_twitter",  editableType: "yesno-twitter"}</var>
 <var class="ajax-params">{action: "edit_user_profile", id: "user_gender",   editableType: "yesno-gender"}</var>
+<var class="ajax-params">{action: "edit_user_profile", id: "user_relationships", editableType: "yesno-relationships"}</var>
 <var class="ajax-params">{action: "edit_user_profile", id: "user_birthday", editableType: "yesno-birthday"}</var>
 <var class="ajax-params">{action: "edit_user_profile", id: "u_up_total"}</var>
 <var class="ajax-params">{action: "edit_user_profile", id: "u_down_total"}</var>
@@ -135,7 +136,23 @@ ajax.callback.group_membership = function(data) {
 </script>
 <!-- ENDIF / IS_AM -->
 
-<!-- IF TRAF_STATS -->
+<!-- IF LOGGED_IN -->
+<script type="text/javascript">
+	ajax.releases_profile = function (mode) {
+		$('#releases_profile').html('<i class="loading-1">{L_LOADING}</i>');
+		ajax.exec({
+			action: 'releases_profile',
+			mode: mode,
+			user_id: {PROFILE_USER_ID}
+		});
+	}
+	ajax.callback.releases_profile = function (data) {
+		$('#releases_profile').html(data.releases_profile_html);
+	}
+</script>
+<!-- ENDIF -->
+
+<!-- IF TRAF_STATS || $bb_cfg['ratio_null_enabled'] -->
 <script type="text/javascript">
 ajax.index_data = function(mode) {
 	ajax.exec({
@@ -144,12 +161,14 @@ ajax.index_data = function(mode) {
 		user_id : {PROFILE_USER_ID}
 	});
 };
-ajax.callback.index_data = function(data) {
-	$('#traf-stats-tbl').html(data.html);
-	$('#bt_user_ratio').html(data.user_ratio);
-	$('#traf-stats-span').hide();
-	$('#traf-stats-tbl').show();
-	$('#bt_user_ratio').show();
+ajax.callback.index_data = function (data) {
+	if (data.mode == 'get_traf_stats') {
+		$('#traf-stats-tbl').html(data.html);
+		$('#bt_user_ratio').html(data.user_ratio);
+		$('#traf-stats-span').hide();
+		$('#traf-stats-tbl').show();
+		$('#bt_user_ratio').show();
+	}
 };
 </script>
 <!-- ENDIF -->
@@ -196,6 +215,7 @@ ajax.callback.gen_passkey = function(data){
 <tr>
 	<td class="row1 vTop tCenter" width="30%">
 
+		<h4 class="cat border bw_TB">{L_PARK_PROFILE_STATUS}: <span class="warnColor2">{STATUS_PARK}</span></h4>
 		<div id="avatar-img" class="mrg_4 med">
 			{AVATAR_IMG}
 			<!-- IF IS_ADMIN || PROFILE_USER -->
@@ -395,11 +415,20 @@ ajax.callback.gen_passkey = function(data){
 					<!-- ENDIF -->
 
 					<!-- IF SHOW_PASSKEY -->
-					[ {L_BT_PASSKEY}:  <span id="passkey-btn"><a class="med" href="#" onclick="$('#passkey-gen').show(); $('#passkey-btn').hide(); return false;">{L_BT_PASSKEY_VIEW}</a></span>
+					[ {L_BT_PASSKEY}: <span id="passkey-btn"><a class="med" href="#" onclick="$('#passkey-gen').show(); $('#passkey-btn').hide(); return false;">{L_BT_PASSKEY_VIEW}</a></span>
 					<span id="passkey-gen" class="med" style="display: none;">
 						<b id="passkey" class="med bold"><!-- IF AUTH_KEY -->{AUTH_KEY}<!-- ELSE -->{L_NOSELECT}<!-- ENDIF --></b>&nbsp;|
 						<a href="#" onclick="ajax.exec({ action: 'gen_passkey', user_id  : {PROFILE_USER_ID} }); return false;">{L_BT_GEN_PASSKEY}</a>
 					</span> ]
+					<!-- ENDIF -->
+					<!-- IF SHOW_BT_USERDATA -->
+					<!-- IF PROFILE_USER || IS_ADMIN -->
+					<!-- IF $bb_cfg['ratio_null_enabled'] -->
+					<!-- IF not NULLED_RATIO or IS_ADMIN -->
+					[ <a class="med" href="#" onclick="ajax.index_data('null_ratio'); return false;">{L_BT_NULL_RATIO}</a> ]
+					<!-- ENDIF -->
+					<!-- ENDIF -->
+					<!-- ENDIF -->
 					<!-- ENDIF -->
 				</td>
 			</tr>
@@ -442,10 +471,16 @@ ajax.callback.gen_passkey = function(data){
 				<td id="user_gender"><b class="editable">{GENDER}</b></td>
 			</tr>
 			<!-- ENDIF -->
+			<!-- IF RELATIONSHIPS -->
+			<tr>
+				<th>{L_RELATIONSHIPS}:</th>
+				<td id="user_relationships"><b class="editable">{RELATIONSHIPS}</b></td>
+			</tr>
+			<!-- ENDIF -->
 			<!-- IF BIRTHDAY -->
 			<tr>
 				<th>{L_BIRTHDAY}:</th>
-				<td id="user_birthday"><b class="editable">{BIRTHDAY}</b></td>
+				<td id="user_birthday"><b class="editable">{BIRTHDAY}</b>&nbsp;<!-- IF SHOW_ZODIAC -->{SHOW_ZODIAC}<!-- ENDIF --></td>
 			</tr>
 			<tr>
 				<th>{L_AGE}:</th>
@@ -453,6 +488,10 @@ ajax.callback.gen_passkey = function(data){
 			</tr>
 			<!-- ENDIF -->
 			<!-- IF SHOW_BT_USERDATA -->
+			<tr>
+				<th>{L_RELEASER_STAT}</th>
+				<td id="releases_profile">[ <a href="#" class="med" onclick="ajax.releases_profile('get_releases_profile'); return false;">{L_RELEASER_STAT_SHOW}</a> ]</td>
+			</tr>
 			<tr>
 				<td colspan="2" class="pad_4">
 					<table id="traf-stats-tbl" <!-- IF TRAF_STATS -->style="display: none;"<!-- ENDIF --> class="bCenter borderless" cellspacing="1">

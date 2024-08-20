@@ -54,6 +54,13 @@ else
 // Start session management
 $user->session_start(array('req_login' => true));
 
+//
+// Проверка на парковку аккаунта
+//
+if ($userdata['user_park_profile']) {
+	bb_die($lang['PARK_ACCOUNT_PARKED']);
+}
+
 if (IS_AM)
 {
 	$bb_cfg['max_inbox_privmsgs']   += 1000;
@@ -960,6 +967,10 @@ else if ( $submit || $refresh || $mode != '' )
 		{
 			bb_die($lang['CANNOT_SEND_PRIVMSG']);
 		}
+		// Отключение входящих личных сообщений
+		if (bf($to_userdata['user_opt'], 'user_opt', 'off_pm') && !IS_AM) {
+			bb_die($lang['OFF_PM_MESSAGE'] . '<p class="mrg_10"><a href="index.php">' . $lang['INDEX_RETURN'] . '</a></p>');
+		}
 
 		$msg_time = TIMENOW;
 
@@ -1145,7 +1156,7 @@ else if ( $submit || $refresh || $mode != '' )
 		{
 			$user_id = intval($_GET[POST_USERS_URL]);
 
-			$sql = "SELECT username FROM " . BB_USERS . " WHERE user_id = $user_id AND user_id <> " . GUEST_UID;
+			$sql = "SELECT username, user_opt FROM " . BB_USERS . " WHERE user_id = $user_id AND user_id <> " . GUEST_UID;
 			if (!($result = DB()->sql_query($sql)))
 			{
 				$error = TRUE;
@@ -1155,12 +1166,14 @@ else if ( $submit || $refresh || $mode != '' )
 			if ($row = DB()->sql_fetchrow($result))
 			{
 				$to_username = $row['username'];
+				// Отключение входящих личных сообщений
+				$to_user_opt = $row['user_opt'];
 			}
 		}
 
 		else if ( $mode == 'edit' )
 		{
-			$sql = "SELECT pm.*, pmt.privmsgs_text, u.username, u.user_id
+			$sql = "SELECT pm.*, pmt.privmsgs_text, u.username, u.user_id, u.user_opt
 				FROM " . BB_PRIVMSGS . " pm, " . BB_PRIVMSGS_TEXT . " pmt, " . BB_USERS . " u
 				WHERE pm.privmsgs_id = $privmsg_id
 					AND pmt.privmsgs_text_id = pm.privmsgs_id
@@ -1183,12 +1196,14 @@ else if ( $submit || $refresh || $mode != '' )
 
 			$to_username = $privmsg['username'];
 			$to_userid = $privmsg['user_id'];
+			// Отключение входящих личных сообщений
+			$to_user_opt = $privmsg['user_opt'];
 
 		}
 		else if ( $mode == 'reply' || $mode == 'quote' )
 		{
 
-			$sql = "SELECT pm.privmsgs_subject, pm.privmsgs_date, pmt.privmsgs_text, u.username, u.user_id
+			$sql = "SELECT pm.privmsgs_subject, pm.privmsgs_date, pmt.privmsgs_text, u.username, u.user_id, u.user_opt
 				FROM " . BB_PRIVMSGS . " pm, " . BB_PRIVMSGS_TEXT . " pmt, " . BB_USERS . " u
 				WHERE pm.privmsgs_id = $privmsg_id
 					AND pmt.privmsgs_text_id = pm.privmsgs_id
@@ -1208,6 +1223,8 @@ else if ( $submit || $refresh || $mode != '' )
 
 			$to_username = $privmsg['username'];
 			$to_userid = $privmsg['user_id'];
+			// Отключение входящих личных сообщений
+			$to_user_opt = $privmsg['user_opt'];
 
 			if ( $mode == 'quote' )
 			{
@@ -1223,6 +1240,8 @@ else if ( $submit || $refresh || $mode != '' )
 		else
 		{
 			$privmsg_subject = $privmsg_message = $to_username = '';
+			// Отключение входящих личных сообщений
+			$to_user_opt = '';
 		}
 	}
 
@@ -1232,6 +1251,10 @@ else if ( $submit || $refresh || $mode != '' )
 	if (bf($userdata['user_opt'], 'user_opt', 'dis_pm') && $mode != 'edit')
 	{
 		$message = ($lang['CANNOT_SEND_PRIVMSG']);
+	}
+	// Отключение входящих личных сообщений
+	if (!empty($to_user_opt) && bf($to_user_opt, 'user_opt', 'off_pm') && !IS_AM) {
+		bb_die($lang['OFF_PM_MESSAGE'] . '<p class="mrg_10"><a href="index.php">' . $lang['INDEX_RETURN'] . '</a></p>');
 	}
 
 	//

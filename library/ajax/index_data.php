@@ -12,6 +12,28 @@ $html = '';
 
 switch($mode)
 {
+	case 'users_today':
+		$max_users = 150;
+		$day = TIMENOW - (24 * 60 * 60); // 24 часа
+		$get_users = DB()->fetch_rowset("SELECT username, user_id, user_rank, user_opt FROM " . BB_USERS . " WHERE user_session_time > $day AND user_id NOT IN(" . EXCLUDED_USERS_CSV . ") ORDER BY RAND()");
+
+		$users = array();
+		foreach ($get_users as $user) {
+			if (IS_ADMIN || $user['user_id'] == $userdata['user_id'] || !bf($user['user_opt'], 'user_opt', 'user_viewonline')) {
+				$users[] = (count($users) >= $max_users) ? $user['user_id'] : profile_url($user);
+			}
+		}
+
+		if (!empty($users)) {
+			$html = $lang['USERS_TODAY'] . '&nbsp;(<b>' . count($users) . '</b>)' . ':&nbsp;' . implode(", ", array_slice($users, 0, $max_users));
+			if (count($users) > $max_users) {
+				$html .= ', ...';
+			}
+		} else {
+			$html = $lang['USERS_TODAY_NONE'];
+		}
+	break;
+
 	case 'birthday_week':
 		$datastore->enqueue(array(
 			'stats',
@@ -92,6 +114,40 @@ switch($mode)
 			$bb_cfg['board_timezone'] = $tz;
 			cache_rm_user_sessions ($userdata['user_id']);
 		}
+	break;
+
+	// Обнуление рейтинга
+	case 'null_ratio':
+		if (!$bb_cfg['ratio_null_enabled']) {
+			$this->ajax_die($lang['MODULE_OFF']);
+		}
+		if (empty($this->request['confirmed'])) {
+			$this->prompt_for_confirm($lang['BT_NULL_RATIO_ALERT']);
+		}
+
+		$user_id = (int)$this->request['user_id'];
+		if (!IS_ADMIN && $user_id != $userdata['user_id']) {
+			$this->ajax_die($lang['NOT_AUTHORISED']);
+		}
+
+		$btu = get_bt_userdata($user_id);
+		$ratio_nulled = (bool)$btu['ratio_nulled'];
+		$user_ratio = get_bt_ratio($btu);
+
+		if (($user_ratio === null) && !IS_ADMIN) {
+			$this->ajax_die($lang['BT_NULL_RATIO_NONE']);
+		}
+		if ($ratio_nulled && !IS_ADMIN) {
+			$this->ajax_die($lang['BT_NULL_RATIO_AGAIN']);
+		}
+		if (($user_ratio >= $bb_cfg['ratio_to_null']) && !IS_ADMIN) {
+			$this->ajax_die(sprintf($lang['BT_NULL_RATIO_NOT_NEEDED'], $bb_cfg['ratio_to_null']));
+		}
+
+		$ratio_nulled_sql = (!IS_ADMIN) ? ', ratio_nulled = 1' : '';
+		DB()->query("UPDATE " . BB_BT_USERS . " SET u_up_total = 0, u_down_total = 0, u_up_release = 0, u_up_bonus = 0 $ratio_nulled_sql WHERE user_id = " . $user_id);
+		CACHE('bb_cache')->rm('btu_' . $user_id);
+		$this->ajax_die($lang['BT_NULL_RATIO_SUCCESS']);
 	break;
 
 	case 'get_traf_stats':

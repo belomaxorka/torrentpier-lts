@@ -15,6 +15,24 @@ function get_bbcode_tpl ()
 {
 $bbcode_tpl = array();
 
+// Sub
+$bbcode_tpl['sub_open'] = <<<HTML
+	<sub><small>
+HTML;
+
+$bbcode_tpl['sub_close'] = <<<HTML
+	</small></sub>
+HTML;
+
+// Sup
+$bbcode_tpl['sup_open'] = <<<HTML
+	<sup><small>
+HTML;
+
+$bbcode_tpl['sup_close'] = <<<HTML
+	</small></sup>
+HTML;
+
 // Quote
 $bbcode_tpl['quote_open'] = <<<HTML
 	<div class="q-wrap">
@@ -59,6 +77,11 @@ $bbcode_tpl['spoiler_close'] = <<<HTML
 	</div>
 HTML;
 
+// Thumb
+$bbcode_tpl['thumb'] = <<<HTML
+	<a href="\\1" data-rel="lightcase:myCollection:slideshow"><img src="\\1" class="light_img"></a>
+HTML;
+
 // Image
 $bbcode_tpl['img'] = <<<HTML
 	<var class="postImg" title="$1">&#10;</var>
@@ -71,6 +94,12 @@ HTML;
 // HR
 $bbcode_tpl['hr'] = <<<HTML
 	<span class="post-hr">-</span>
+HTML;
+
+// Movie
+$bbcode_tpl['movie'] = <<<HTML
+	<div style="width: 720px; height: auto; margin-left: auto; margin-right: auto;" data-kinobox="auto" data-\\1="\\2"></div>
+	<script src="https://kinobox.tv/kinobox.min.js"></script>
 HTML;
 
 array_deep($bbcode_tpl, 'bbcode_tpl_compact');
@@ -503,6 +532,9 @@ class bbcode
 			'#\[quote="(.+?)"\]#isu'                                 => $tpl['quote_username_open'],
 			'#\[spoiler="(.+?)"\]#isu'                               => $tpl['spoiler_title_open'],
 			'#\[list=(a|A|i|I|1)\]#isu'                              => '<ul type="$1">',
+			// Акроним
+			'#\[acronym="(.+?)"\]#isu'                               => '<span class="post-acronym" title="$1">',
+			'#\[acronym=(.+?)\]#isu'                                 => '<span class="post-acronym" title="$1">',
 			'#\[\*=(\d+)\]#isu'                                      => '<li value="$1">',
 			'#\[pre\](.*?)\[/pre\]#isu'                              => '<pre class="post-pre">$1</pre>',
 			'#\[name=([a-zA-Z0-9_]+?)\]#isu'                         => '<a name="$1"></a>',
@@ -514,8 +546,11 @@ class bbcode
 			'#\[font=([\w\- \']+)\]#isu'                             => '<span style="font-family: $1;">',
 			"#\[img\]($img_exp)\[/img\]#isu"                         => $tpl['img'],
 			"#\[img=(left|right|center)\]($img_exp)\[/img\]\s*#isu"  => $tpl['img_aligned'],
+			"#\[thumb\]($img_exp)\[/thumb\]\s*#i" 	                 => $tpl['thumb'],
 			"#\[email\]($email_exp)\[/email\]#isu"                   => '<a href="mailto:$1">$1</a>',
 			"#\[qpost=([0-9]*)\]#isu"                                => '<u class="q-post">$1</u>',
+			// Movie
+			"#\[movie=(kinopoisk|imdb|tmdb)\](.+?)\[/movie\]\s*#isu" => $tpl['movie'],
 		);
 
 		$this->str = array(
@@ -523,6 +558,22 @@ class bbcode
 			'[/quote]'   => $tpl['quote_close'],
 			'[spoiler]'  => $tpl['spoiler_open'],
 			'[/spoiler]' => $tpl['spoiler_close'],
+			// Набор BBCode тегов с рутрекера by belomaxorka
+			'[box]'      => '<div class="post-box-default"><div class="post-box">',
+			'[/box]'     => '</div></div>',
+			'[indent]'   => '<div class="post-indent">',
+			'[/indent]'  => '</div>',
+			'[pre]'      => '<pre class="post-pre">',
+			'[/pre]'     => '</pre>',
+			'[nfo]'      => '<pre class="post-nfo">',
+			'[/nfo]'     => '</pre>',
+			// BB-код: текст в верхнем и нижнем индексе
+			'[sub]'      => $tpl['sub_open'],
+			'[/sub]'     => $tpl['sub_close'],
+			'[sup]'      => $tpl['sup_open'],
+			'[/sup]'     => $tpl['sup_close'],
+			// Акроним
+			'[/acronym]' => '</span>',
 			'[list]'     => '<ul>',
 			'[*]'        => '<li>',
 			'[/list]'    => '</ul>',

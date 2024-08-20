@@ -102,6 +102,14 @@ document.write('<input type="hidden" name="user_timezone" value="'+tz+'" />');
 	<td class="prof-title">{L_AUTOLOGIN}:</td>
 	<td><a href="{U_RESET_AUTOLOGIN}">{L_RESET_AUTOLOGIN}</a><br /><h6>{L_RESET_AUTOLOGIN_EXPL}</h6></td>
 </tr>
+<tr>
+	<td class="prof-title">{L_PARK_CONTROL}:<!-- IF $bb_cfg['park_acc_help_url'] --><br /><h6><a target="blank" href="{$bb_cfg['park_acc_help_url']}">{L_PARK_PROFILE_STATUS_FAQ}</a></h6><!-- ENDIF --></td>
+	<td>
+		<label><input type="radio" name="user_park_profile" value="1" <!-- IF PARK_PROFILE -->checked="checked"<!-- ENDIF --> />{L_YES}</label>&nbsp;&nbsp;
+		<label><input type="radio" name="user_park_profile" value="0" <!-- IF not PARK_PROFILE -->checked="checked"<!-- ENDIF --> />{L_NO}</label>
+		<br /><h6>{L_PARK_WARNING}</h6>
+	</td>
+</tr>
 <!-- ENDIF -->
 <tr>
 	<th colspan="2">{L_PROFILE_INFO}</th>
@@ -110,6 +118,12 @@ document.write('<input type="hidden" name="user_timezone" value="'+tz+'" />');
 <tr>
 	<td class="prof-title">{L_GENDER}:</td>
 	<td>{USER_GENDER}</td>
+</tr>
+<!-- ENDIF -->
+<!-- IF $bb_cfg['show_relationships'] -->
+<tr>
+	<td class="prof-title">{L_RELATIONSHIPS}:</td>
+	<td>{USER_RELATIONSHIPS}</td>
 </tr>
 <!-- ENDIF -->
 <!-- IF $bb_cfg['birthday_enabled'] -->
@@ -213,6 +227,13 @@ ajax.callback.posts = function(data){
 	</td>
 </tr>
 <tr>
+	<td class="prof-title">{L_OFF_PM}:</td>
+	<td>
+		<label><input type="radio" name="off_pm" value="1" <!-- IF OFF_PM -->checked="checked"<!-- ENDIF --> />{L_YES}</label>&nbsp;&nbsp;
+		<label><input type="radio" name="off_pm" value="0" <!-- IF not OFF_PM -->checked="checked"<!-- ENDIF --> />{L_NO}</label>
+	</td>
+</tr>
+<tr>
 	<td class="prof-title">{L_ALWAYS_NOTIFY}:<br /><h6>{L_ALWAYS_NOTIFY_EXPLAIN}</h6></td>
 	<td>
 		<label><input type="radio" name="user_notify" value="1" <!-- IF USER_NOTIFY -->checked="checked"<!-- ENDIF --> />{L_YES}</label>&nbsp;&nbsp;
@@ -228,6 +249,13 @@ ajax.callback.posts = function(data){
 	</td>
 </tr>
 <!-- ENDIF -->
+<tr>
+	<td class="prof-title">{L_SHOW_ZODIAC}:</td>
+	<td>
+		<label><input type="radio" name="user_show_zodiac" value="1" <!-- IF USER_SHOW_ZODIAC -->checked="checked"<!-- ENDIF --> />{L_YES}</label>&nbsp;&nbsp;
+		<label><input type="radio" name="user_show_zodiac" value="0" <!-- IF not USER_SHOW_ZODIAC -->checked="checked"<!-- ENDIF --> />{L_NO}</label>
+	</td>
+</tr>
 <!-- IF SHOW_DATEFORMAT -->
 <tr>
 	<td class="prof-title">{L_DATE_FORMAT}:<br /><h6>{L_DATE_FORMAT_EXPLAIN}</h6></td>
@@ -291,6 +319,7 @@ ajax.callback.posts = function(data){
 			<td class="tCenter nowrap">
 				<p class="mrg_6">{AVATAR_IMG}</p>
 				<p><label><input type="checkbox" name="delete_avatar" /> {L_DELETE_IMAGE}</label></p>
+				<p><label><input type="checkbox" name="use_monster_avatar" /> {L_SET_MONSTERID_AVATAR}</label></p>
 			</td>
 		</tr>
 		</table>

@@ -159,6 +159,8 @@ elseif (isset($_GET['pane']) && $_GET['pane'] == 'right')
 		'TOPICS_PER_DAY'   => $topics_per_day,
 		'USERS_PER_DAY'    => $users_per_day,
 		'AVATAR_DIR_SIZE'  => $avatar_dir_size,
+		// Заметки администратора
+		'ADMIN_NOTE'       => $bb_cfg['admin_note'],
 		'DB_SIZE'          => $dbsize,
 		'GZIP_COMPRESSION' => ($bb_cfg['gzip_compress']) ? $lang['ON'] : $lang['OFF'],
 	));

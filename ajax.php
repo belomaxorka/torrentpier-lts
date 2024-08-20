@@ -91,12 +91,18 @@ class ajax_common
 		'change_torrent'    => array('user'),
 		'change_tor_status' => array('user'),
 		'manage_group'      => array('user'),
+		// Закладки
+		'book'              => array('user'),
+		// Количество релизов в профиль
+		'releases_profile'  => array('user'),
 
 		'view_post'         => array('guest'),
 		'view_torrent'      => array('guest'),
 		'user_register'     => array('guest'),
 		'posts'             => array('guest'),
 		'index_data'        => array('guest'),
+		// Спасибо
+		'thx'               => array('guest'),
 	);
 
 	var $action = null;
@@ -458,5 +464,23 @@ class ajax_common
 	function sitemap()
 	{
 		require(AJAX_DIR .'sitemap.php');
+	}
+
+	// Закладки
+	function book()
+	{
+		require(AJAX_DIR .'book.php');
+	}
+
+	// Количество релизов в профиль
+	function releases_profile()
+	{
+		require(AJAX_DIR .'releases_profile.php');
+	}
+
+	// Спасибо
+	function thx()
+	{
+		require(AJAX_DIR .'thanks.php');
 	}
 }

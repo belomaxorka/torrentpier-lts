@@ -114,6 +114,18 @@ switch ($mode)
 
 	break;
 
+	// Заметки администратора
+	case 'admin_note':
+
+		if (isset($this->request['note']))
+		{
+			$note = (string) $this->request['note'];
+			bb_update_config(array('admin_note' => htmlCHR($note)));
+			$this->response['note_saved'] = $lang['NOTE_SAVED'];
+		}
+
+	break;
+
 	default:
 
 		$this->ajax_die('Invalid mode: ' . $mode);

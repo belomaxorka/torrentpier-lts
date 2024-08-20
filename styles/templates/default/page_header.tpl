@@ -10,6 +10,17 @@
 <meta property="twitter:image" content="{SITE_URL}styles/images/logo/logo.png">
 <meta property="og:title" content="<!-- IF PAGE_TITLE -->{PAGE_TITLE} :: {SITENAME}<!-- ELSE -->{SITENAME}<!-- ENDIF -->">
 <meta property="twitter:title" content="<!-- IF PAGE_TITLE -->{PAGE_TITLE} :: {SITENAME}<!-- ELSE -->{SITENAME}<!-- ENDIF -->">
+<!-- IF ALLOW_ROBOTS -->
+<meta name="robots" content="all">
+<!-- ELSE -->
+<meta name="robots" content="none">
+<!-- ENDIF -->
+<!-- IF META_PREV_PAGE -->
+<link rel="prev" href="{META_PREV_PAGE}">
+<!-- ENDIF / META_PREV_PAGE -->
+<!-- IF META_NEXT_PAGE -->
+<link rel="next" href="{META_NEXT_PAGE}">
+<!-- ENDIF / META_NEXT_PAGE -->
 {META}
 <link rel="stylesheet" href="{STYLESHEET}?v={$bb_cfg['css_ver']}" type="text/css">
 <link rel="shortcut icon" href="{SITE_URL}favicon.ico" type="image/x-icon">
@@ -20,7 +31,16 @@
 <meta name="version" content="{$bb_cfg['tp_version']}">
 
 <script type="text/javascript" src="{SITE_URL}styles/js/jquery.pack.js?v={$bb_cfg['js_ver']}"></script>
+<!-- IF $bb_cfg['new_year_mode'] --><script type="text/javascript" src="{SITE_URL}styles/js/libs/snowfall.js"></script><!-- ENDIF -->
 <script type="text/javascript" src="{SITE_URL}styles/js/main.js?v={$bb_cfg['js_ver']}"></script>
+
+<link rel="stylesheet" type="text/css" href="{SITE_URL}styles/js/libs/lightcase/css/lightcase.min.css"/>
+<script type="text/javascript" src="{SITE_URL}styles/js/libs/lightcase/js/lightcase.min.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function ($) {
+		$('a[data-rel^=lightcase]').lightcase();
+	});
+</script>
 
 <!-- IF INCLUDE_BBCODE_JS -->
 <script type="text/javascript" src="{SITE_URL}styles/js/bbcode.js?v={$bb_cfg['js_ver']}"></script>
@@ -138,6 +158,13 @@ input[type="checkbox"] { margin-bottom: -1px; }
 </head>
 
 <body>
+<!-- IF $bb_cfg['new_year_mode'] -->
+<script>
+	$(document).ready(function () {
+		$(document).snowfall({round : true, minSize: 3, maxSize:10});
+	});
+</script>
+<!-- ENDIF -->
 <!-- IF EDITABLE_TPLS -->
 <div id="editable-tpl-input" style="display: none;">
 	<span class="editable-inputs nowrap" style="display: none;">
@@ -170,6 +197,23 @@ input[type="checkbox"] { margin-bottom: -1px; }
 			<option value="0">&nbsp;{$lang['GENDER_SELECT'][0]}&nbsp;</option>
 			<option value="1">&nbsp;{$lang['GENDER_SELECT'][1]}&nbsp;</option>
 			<option value="2">&nbsp;{$lang['GENDER_SELECT'][2]}&nbsp;</option>
+		</select>
+		<input type="button" class="editable-submit" value="&raquo;" style="width: 30px; font-weight: bold;">
+		<input type="button" class="editable-cancel" value="x" style="width: 30px;">
+	</span>
+</div>
+<div id="editable-tpl-yesno-relationships" style="display: none;">
+	<span class="editable-inputs nowrap" style="display: none;">
+		<select class="editable-value">
+			<option value="0">&nbsp;{$lang['RELATIONSHIPS_SELECTOR'][0]}&nbsp;</option>
+			<option value="1">&nbsp;{$lang['RELATIONSHIPS_SELECTOR'][1]}&nbsp;</option>
+			<option value="2">&nbsp;{$lang['RELATIONSHIPS_SELECTOR'][2]}&nbsp;</option>
+			<option value="3">&nbsp;{$lang['RELATIONSHIPS_SELECTOR'][3]}&nbsp;</option>
+			<option value="4">&nbsp;{$lang['RELATIONSHIPS_SELECTOR'][4]}&nbsp;</option>
+			<option value="5">&nbsp;{$lang['RELATIONSHIPS_SELECTOR'][5]}&nbsp;</option>
+			<option value="6">&nbsp;{$lang['RELATIONSHIPS_SELECTOR'][6]}&nbsp;</option>
+			<option value="7">&nbsp;{$lang['RELATIONSHIPS_SELECTOR'][7]}&nbsp;</option>
+			<option value="8">&nbsp;{$lang['RELATIONSHIPS_SELECTOR'][8]}&nbsp;</option>
 		</select>
 		<input type="button" class="editable-submit" value="&raquo;" style="width: 30px; font-weight: bold;">
 		<input type="button" class="editable-cancel" value="x" style="width: 30px;">
@@ -333,6 +377,7 @@ $(document).ready(function() {
 		</div>
 	</td>
 	<td width="50%" class="tRight">
+		<a href="{U_BOOK_URL}"><b>{L_BOOKMARKS}</b></a> &#0183;
 		<a href="{U_OPTIONS}"><b>{L_OPTIONS}</b></a> &#0183;
 		<a href="{U_CUR_DOWNLOADS}">{L_PROFILE}</a> <a href="#dls-menu" class="menu-root menu-alt1">&#9660;</a>
 	</td>

@@ -69,7 +69,7 @@ function prepare_post(&$mode, &$post_data, &$error_msg, &$username, &$subject, &
 //
 // Post a new topic/reply or edit existing post/poll
 //
-function submit_post($mode, &$post_data, &$message, &$meta, &$forum_id, &$topic_id, &$post_id, &$topic_type, $post_username, $post_subject, $post_message, $update_post_time, $poster_rg_id, $attach_rg_sig)
+function submit_post($mode, &$post_data, &$message, &$meta, &$forum_id, &$topic_id, &$post_id, &$topic_type, $post_username, $post_subject, $post_message, $update_post_time, $poster_rg_id, $attach_rg_sig, $robots_indexing)
 {
 	global $userdata, $post_info, $is_auth, $bb_cfg, $lang, $datastore;
 
@@ -125,9 +125,9 @@ function submit_post($mode, &$post_data, &$message, &$meta, &$forum_id, &$topic_
 
 		$sql_insert = "
 			INSERT INTO
-				" . BB_TOPICS . " (topic_title, topic_poster, topic_time, forum_id, topic_status, topic_type, topic_dl_type)
+				" . BB_TOPICS . " (topic_title, topic_poster, topic_time, forum_id, topic_status, topic_type, topic_dl_type, topic_allow_robots)
 			VALUES
-				('$post_subject', " . $userdata['user_id'] . ", $current_time, $forum_id, " . TOPIC_UNLOCKED . ", $topic_type, $topic_dl_type)
+				('$post_subject', " . $userdata['user_id'] . ", $current_time, $forum_id, " . TOPIC_UNLOCKED . ", $topic_type, $topic_dl_type, $robots_indexing)
 		";
 
 		$sql_update = "
@@ -136,7 +136,8 @@ function submit_post($mode, &$post_data, &$message, &$meta, &$forum_id, &$topic_
 			SET
 				topic_title = '$post_subject',
 				topic_type = $topic_type,
-				topic_dl_type = $topic_dl_type
+				topic_dl_type = $topic_dl_type,
+				topic_allow_robots = $robots_indexing
 			WHERE
 				topic_id = $topic_id
 		";
@@ -432,7 +433,8 @@ function user_notification($mode, &$post_data, &$topic_title, &$forum_id, &$topi
 	}
 }
 
-function insert_post ($mode, $topic_id, $forum_id = '', $old_forum_id = '', $new_topic_id = '', $new_topic_title = '', $old_topic_id = '', $message = '', $poster_id = '')
+// Причина переноса топика
+function insert_post ($mode, $topic_id, $forum_id = '', $old_forum_id = '', $new_topic_id = '', $new_topic_title = '', $old_topic_id = '', $message = '', $poster_id = '', $reason_move = '')
 {
 	global $userdata, $lang;
 
@@ -457,7 +459,9 @@ function insert_post ($mode, $topic_id, $forum_id = '', $old_forum_id = '', $new
 		}
 		if (!$forum_names) return;
 
-		$post_text = sprintf($lang['BOT_TOPIC_MOVED_FROM_TO'], '[url='. make_url(FORUM_URL . $old_forum_id) .']'. $forum_names[$old_forum_id] .'[/url]', '[url='. make_url(FORUM_URL . $forum_id) .']'. $forum_names[$forum_id] .'[/url]', profile_url($userdata));
+		// Причина переноса топика
+		$reason_move = !empty($reason_move) ? htmlCHR($reason_move) : $lang['NOSELECT'];
+		$post_text = sprintf($lang['BOT_TOPIC_MOVED_FROM_TO'], '[url='. make_url(FORUM_URL . $old_forum_id) .']'. $forum_names[$old_forum_id] .'[/url]', '[url='. make_url(FORUM_URL . $forum_id) .']'. $forum_names[$forum_id] .'[/url]', $reason_move, profile_url($userdata));
 
 		$poster_id = BOT_UID;
 		$poster_ip = '7f000001';

@@ -127,6 +127,10 @@ switch ($mode)
 			'user_occ'         => true,
 			'user_interests'   => true,
 			'tpl_name'         => true,
+			// Парковка аккаунта
+			'user_park_profile' => true,
+			// Семейное положение
+			'user_relationships' => $bb_cfg['show_relationships'],
 		);
 
 		// Выбор профиля: для юзера свой, для админа любой
@@ -402,6 +406,9 @@ foreach ($profile_fields as $field => $can_edit)
 				'user_dls'            => ($reg_mode) ? false : true,
 				'user_callseed'       => ($reg_mode) ? true  : true,
 				'user_retracker'      => ($reg_mode) ? true  : true,
+				'user_show_zodiac'    => ($reg_mode) ? true  : true,
+				// Отключение входящих личных сообщений
+				'off_pm'              => ($reg_mode) ? false : true,
 			);
 
 			foreach ($update_user_opt as $opt => $can_change_opt)
@@ -426,6 +433,26 @@ foreach ($profile_fields as $field => $can_edit)
 		case 'avatar_ext_id':
 			if ($submit && !bf($pr_data['user_opt'], 'user_opt', 'dis_avatar'))
 			{
+				// Integration with MonsterID
+				if (empty($_FILES['avatar']['name']) && !isset($_POST['delete_avatar']) && isset($_POST['use_monster_avatar'])) {
+					require_once(CLASS_DIR . 'monsterid/monsterid.php');
+					$tempAvatar = tmpfile();
+					$monsterAvatar = build_monster($pr_data['user_email'], $bb_cfg['avatars']['max_height'], $tempAvatar);
+					$tempAvatarPath = stream_get_meta_data($tempAvatar)['uri'];
+
+					// Manual filling $_FILES['avatar']
+					$_FILES['avatar'] = array();
+					if (is_file($tempAvatarPath)) {
+						$_FILES['avatar'] = array(
+							'name' => "MonsterID_{$pr_data['user_id']}.png",
+							'type' => mime_content_type($tempAvatarPath),
+							'tmp_name' => $tempAvatarPath,
+							'error' => UPLOAD_ERR_OK,
+							'size' => filesize($tempAvatarPath)
+						);
+					}
+				}
+
 				if (isset($_POST['delete_avatar']))
 				{
 					delete_avatar($pr_data['user_id'], $pr_data['avatar_ext_id']);
@@ -437,7 +464,7 @@ foreach ($profile_fields as $field => $can_edit)
 					require(INC_DIR .'functions_upload.php');
 					$upload = new upload_common();
 
-					if ($upload->init($bb_cfg['avatars'], $_FILES['avatar']) AND $upload->store('avatar', $pr_data))
+					if ($upload->init($bb_cfg['avatars'], $_FILES['avatar'], !isset($_POST['use_monster_avatar'])) AND $upload->store('avatar', $pr_data))
 					{
 						$pr_data['avatar_ext_id'] = $upload->file_ext_id;
 						$db_data['avatar_ext_id'] = (int) $upload->file_ext_id;
@@ -561,6 +588,22 @@ foreach ($profile_fields as $field => $can_edit)
 			break;
 
 		/**
+		 *  Отношения (edit)
+		 */
+		case 'user_relationships':
+			$relationships = isset($_POST['user_relationships']) ? (int) $_POST['user_relationships'] : $pr_data['user_relationships'];
+			if ($submit && $relationships != $pr_data['user_relationships'])
+			{
+				if (isset($lang['RELATIONSHIPS_SELECTOR'][$relationships]))
+				{
+					$pr_data['user_relationships'] = $relationships;
+					$db_data['user_relationships'] = (int) $relationships;
+				}
+			}
+			$tp_data['USER_RELATIONSHIPS'] = build_select('user_relationships', array_flip($lang['RELATIONSHIPS_SELECTOR']), $pr_data['user_relationships']);
+			break;
+
+		/**
 		*  Skype (edit)
 		*/
 		case 'user_skype':
@@ -614,6 +657,18 @@ foreach ($profile_fields as $field => $can_edit)
 				}
 			}
 			$tp_data['TEMPLATES_SELECT'] = templates_select($pr_data['tpl_name'], 'tpl_name');
+			break;
+
+		/**
+		 *  Парковка аккаунта (edit)
+		 */
+		case 'user_park_profile':
+			$user_park_profile = isset($_POST['user_park_profile']) ? (int)$_POST['user_park_profile'] : $pr_data['user_park_profile'];
+			if ($submit && $user_park_profile != $pr_data['user_park_profile']) {
+				$pr_data['user_park_profile'] = $user_park_profile;
+				$db_data['user_park_profile'] = $user_park_profile;
+			}
+			$tp_data['PARK_PROFILE'] = $pr_data['user_park_profile'];
 			break;
 
 		/**

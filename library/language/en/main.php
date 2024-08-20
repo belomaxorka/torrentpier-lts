@@ -52,6 +52,7 @@ $lang['DISABLED'] = 'Disabled';
 $lang['ERROR'] = 'Error';
 $lang['SELECT_ACTION'] = 'Select action';
 $lang['CLEAR'] = 'Clear';
+$lang['MOVE_TO_TOP'] = 'Move to top';
 
 $lang['NEXT_PAGE'] = 'Next';
 $lang['PREVIOUS_PAGE'] = 'Previous';
@@ -97,8 +98,8 @@ $lang['ALL_CACHE_CLEARED'] = 'Cache has been cleared';
 $lang['ALL_TEMPLATE_CLEARED'] = 'Template cache has been cleared';
 $lang['DATASTORE'] = 'Datastore';
 $lang['DATASTORE_CLEARED'] = 'Datastore has been cleared';
-$lang['BOARD_DISABLE'] = 'Sorry, this forum is disabled. Try to come back later';
-$lang['BOARD_DISABLE_CRON'] = 'Forum is down for maintenance. Try to come back later';
+$lang['BOARD_DISABLE'] = 'Sorry, the resource is undergoing technical work. Try to come back later. Login is allowed only to the resource administration';
+$lang['BOARD_DISABLE_CRON'] = 'Forum locked by the trigger cron job. Please refresh the page';
 $lang['ADMIN_DISABLE'] = 'the forum is disabled by administrator, you can enable it at any time';
 $lang['ADMIN_DISABLE_CRON'] = 'forum locked by the trigger cron job, you can remove a lock at any time';
 $lang['ADMIN_DISABLE_TITLE'] = 'The forum is disabled';
@@ -322,6 +323,8 @@ $lang['POST_ANNOUNCEMENT'] = 'Announcement';
 $lang['POST_STICKY'] = 'Sticky';
 $lang['POST_NORMAL'] = 'Normal';
 $lang['POST_DOWNLOAD'] = 'Download';
+
+$lang['PRINT_PAGE'] = 'Print page';
 
 $lang['CONFIRM_DELETE'] = 'Are you sure you want to delete this post?';
 $lang['CONFIRM_DELETE_POLL'] = 'Are you sure you want to delete this poll?';
@@ -594,6 +597,7 @@ $lang['RETURN_PROFILE'] = 'Return to profile';
 $lang['SELECT_CATEGORY'] = 'Select category';
 
 $lang['DELETE_IMAGE'] = 'Delete image';
+$lang['SET_MONSTERID_AVATAR'] = 'Set MonsterID avatar';
 $lang['CURRENT_IMAGE'] = 'Current image';
 
 $lang['NOTIFY_ON_PRIVMSG'] = 'Notify on new private message';
@@ -1318,6 +1322,8 @@ $lang['UPDATE_POST_TIME'] = 'Update post time';
 $lang['TOPIC_SPLIT_NEW'] = 'New topic';
 $lang['TOPIC_SPLIT_OLD'] = 'Old topic';
 $lang['BOT_LEAVE_MSG_MOVED'] = 'Add bot-message about moving';
+// Причина переноса топика
+$lang['BOT_REASON_MOVED'] = 'Reason to move';
 $lang['BOT_AFTER_SPLIT_TO_OLD'] = 'Add bot-message about split to <b>old topic</b>';
 $lang['BOT_AFTER_SPLIT_TO_NEW'] = 'Add bot-message about split to <b>new topic</b>';
 //qr
@@ -1343,6 +1349,8 @@ $lang['READ_PROFILE_TXTB'] = '[Profile]';
 $lang['SEND_EMAIL_TXTB'] = '[E-mail]';
 $lang['VISIT_WEBSITE_TXTB'] = '[www]';
 $lang['EDIT_DELETE_POST_TXTB'] = '[Edit]';
+// Просмотр кода топика
+$lang['CODE_TOPIC_TXTB'] = '[Code]';
 $lang['SEARCH_USER_POSTS_TXTB'] = '[Search]';
 $lang['VIEW_IP_TXTB'] = '[ip]';
 $lang['DELETE_POST_TXTB'] = '[x]';
@@ -1513,6 +1521,10 @@ $lang['QUOTE_TITLE'] = 'Quote text: [quote]text[/quote] (Ctrl+Q)';
 $lang['IMG_TITLE'] = 'Insert image: [img]http://image_url[/img] (Ctrl+R)';
 $lang['URL'] = 'Url';
 $lang['URL_TITLE'] = 'Insert URL: [url]http://url[/url] or [url=http://url]URL text[/url] (Ctrl+W)';
+// [Start] Thumbnail image
+$lang['THUMB'] = 'Thumb';
+$lang['THUMB_TITLE'] = 'Thumbnail image: [thumb]http://image_url[/thumb]';
+// [End] Thumbnail image
 $lang['CODE_TITLE'] = 'Code display: [code]code[/code] (Ctrl+K)';
 $lang['LIST'] = 'List';
 $lang['LIST_TITLE'] = 'List: [list]text[/list] (Ctrl+L)';
@@ -1621,6 +1633,7 @@ $lang['ADMIN_INDEX'] = 'Admin Index';
 $lang['CREATE_PROFILE'] = 'Create profile';
 
 $lang['TP_VERSION'] = 'TorrentPier version';
+$lang['TP_MOD_VERSION'] = 'TorrentPier (modded) version';
 $lang['TP_RELEASE_DATE'] = 'Release date';
 $lang['ZF_VERSION'] = 'Zend Framework version';
 $lang['PHP_INFO'] = 'Information about PHP';
@@ -2540,7 +2553,8 @@ $lang['WRONG_INPUT'] = 'You have entered some wrong values. Please check your in
 $lang['PROCESSING'] = 'Processing...';
 $lang['FINISHED'] = 'Finished';
 
-$lang['BOT_TOPIC_MOVED_FROM_TO'] = 'Topic has been moved from forum [b]%s[/b] to forum [b]%s[/b][br][br]%s';
+// Причина переноса топика
+$lang['BOT_TOPIC_MOVED_FROM_TO'] = 'Topic has been moved from forum [b]%s[/b] to forum [b]%s[/b].[br][b]Reason to move:[/b] %s[br][br]%s';
 $lang['BOT_MESS_SPLITS'] = 'Topic has been split. New topic - [b]%s[/b][br][br]%s';
 $lang['BOT_TOPIC_SPLITS'] = 'Topic has been split from [b]%s[/b][br][br]%s';
 
@@ -2821,3 +2835,113 @@ $lang['UPLOAD_ERRORS'] = array(
 $lang['CAPTCHA'] = 'Check that you are not a robot';
 $lang['CAPTCHA_WRONG'] = 'You could not confirm that you are not a robot';
 $lang['CAPTCHA_SETTINGS'] = '<h2>ReCaptcha not being fully configured</h2><p>If you haven\'t already generated the keys, you can do it on <a href="https://www.google.com/recaptcha/admin">https://www.google.com/recaptcha/admin</a>.<br />After you generate the keys, you need to put them at the file library/config.php.</p>';
+
+// Случайная раздача
+$lang['RANDOM_RELEASE'] = 'Random release';
+
+// Количество релизов в профиль
+$lang['RELEASER_STAT_SIZE'] = 'Size:';
+$lang['RELEASER_STAT'] = 'Releaser statistics:';
+$lang['RELEASER_STAT_SHOW'] = 'Show statistics';
+
+// Поиск по статусу раздачи
+$lang['TORRENT_STATUS'] = 'Search by status of release';
+
+// Акроним
+$lang['ACRONYM'] = 'Acronym';
+$lang['ACRONYM_TITLE'] = 'Acronym: [acronym=Full text]Short text[/acronym]';
+
+// Кто просматривает тему
+$lang['WHOIS_LOOKING'] = 'Now viewing this topic';
+
+// Заметки администратора
+$lang['ADMIN_NOTES'] = 'Admin notes';
+$lang['NOTE_SAVE'] = 'Save note';
+$lang['NOTE_SAVED'] = 'Note has been successfully saved!';
+
+// Набор BBCode тегов с рутрекера by belomaxorka
+$lang['BOX_TAG'] = 'Frame around text: [box]text[/box]';
+$lang['INDENT_TAG'] = 'Insert indent: [indent]text[/indent]';
+$lang['PRE_TAG'] = 'Preformatted text: [pre]text[/pre]';
+$lang['NFO_TAG'] = 'NFO: [nfo]text[/nfo]';
+
+// Закладки
+$lang['BOOKMARKS'] = 'Bookmarks';
+$lang['BOOKMARKS_ADD'] = 'Add to bookmarks';
+$lang['BOOKMARKS_ADD_SUCCESS'] = 'Bookmark added successfully';
+$lang['BOOKMARKS_REMOVE'] = 'Remove from bookmarks';
+$lang['BOOKMARKS_REMOVE_SUCCESS'] = 'Bookmark deleted successfully';
+$lang['BOOKMARKS_NONE'] = 'Sorry, you don\'t have any bookmarks saved';
+$lang['BOOKMARKS_ALREADY'] = 'You have already bookmarked this topic';
+$lang['BOOKMARKS_LIMIT_REACHED'] = 'You have too many bookmarks...';
+
+// Знак зодиака
+$lang['SHOW_ZODIAC'] = 'Show zodiac';
+$lang['ZODIAC_SIGN'] = array(
+	'AQUARIUS' => 'Aquarius',
+	'ARIES' => 'Aries',
+	'CANCER' => 'Cancer',
+	'CAPRICORN' => 'Capricorn',
+	'GEMINI' => 'Gemini',
+	'LEO' => 'Leo',
+	'LIBRA' => 'Libra',
+	'PISCES' => 'Pisces',
+	'SAGITTARIUS' => 'Sagittarius',
+	'SCORPIO' => 'Scorpio',
+	'TAURUS' => 'Taurus',
+	'VIRGO' => 'Virgo',
+);
+
+// [AJAX] Пользователи за 24 часа
+$lang['USERS_TODAY'] = 'Users who visited the site today';
+$lang['USERS_TODAY_NONE'] = 'No one came in today';
+
+// BB-код: текст в верхнем и нижнем индексе
+$lang['SUB_TITLE'] = 'Subscript text: [sub]text[/sub]';
+$lang['SUB'] = 'SUB';
+$lang['SUP_TITLE'] = 'Superscript text: [sup]text[/sup]';
+$lang['SUP'] = 'SUP';
+
+// Отключение входящих личных сообщений
+$lang['OFF_PM'] = 'Disable incoming PM';
+$lang['OFF_PM_MESSAGE'] = 'User disables incoming PM';
+
+// Парковка аккаунта
+$lang['PARK_CONTROL'] = 'Parking account';
+$lang['PARK_WARNING'] = 'If you park your account, you will not be able to use the resource!';
+$lang['PARK_PROFILE_STATUS'] = 'Account is parked';
+$lang['PARK_PROFILE_STATUS_FAQ'] = 'What is "Parking account"?';
+$lang['PARK_ACCOUNT_PARKED'] = 'Access to the resource is limited while the account is parked. To start using the resource again, disable parking in your profile settings';
+
+// Семейное положение
+$lang['RELATIONSHIPS'] = 'Relationships';
+$lang['RELATIONSHIPS_SELECTOR'] = array(
+	0 => 'Unknown',
+	1 => 'Single',
+	2 => 'Dating',
+	3 => 'Engaged',
+	4 => 'Married',
+	5 => 'In a civil marriage',
+	6 => 'In love',
+	7 => 'Complicated',
+	8 => 'Actively looking'
+);
+
+// Спасибо
+$lang['THANK_TOPIC'] = 'Say "Thanks"';
+$lang['THANKS_GRATITUDE'] = 'Thank you for your appreciation!';
+$lang['LAST_LIKES'] = 'Last who thank';
+$lang['LIKE_OWN_POST'] = 'You can\'t leave a thank you in your own topic';
+$lang['NO_LIKES'] = 'No one has said thank you yet...';
+$lang['LIKE_ALREADY'] = 'You have already left a thank you in this topic';
+
+// Обнуление рейтинга
+$lang['BT_NULL_RATIO'] = 'Reset rating';
+$lang['BT_NULL_RATIO_NONE'] = 'You don\'t have a rating';
+$lang['BT_NULL_RATIO_ALERT'] = "Attention!\n\nAre you sure you want to reset your rating?";
+$lang['BT_NULL_RATIO_AGAIN'] = 'You have already reset your rating!';
+$lang['BT_NULL_RATIO_NOT_NEEDED'] = 'You have a good rating. Reset is possible only with a rating less than %s';
+$lang['BT_NULL_RATIO_SUCCESS'] = 'The rating has been reset successfully!';
+
+// Настройка индексации при создании темы
+$lang['ALLOW_ROBOTS_INDEXING'] = 'Allow robots indexing this topic';

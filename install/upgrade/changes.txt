@@ -122,3 +122,48 @@ ALTER TABLE `bb_bt_tracker_snap` CHANGE `speed_down` `speed_down` int(11) unsign
 DELETE FROM `bb_extensions` WHERE `extension` = 'tga';
 DELETE FROM `bb_extensions` WHERE `extension` = 'tif';
 DELETE FROM `bb_extensions` WHERE `extension` = 'tiff';
+
+// -------------------------------------------------------- //
+
+// Контрольные суммы файлов
+ALTER TABLE `bb_attachments_desc` ADD `hash` char(32) NOT NULL DEFAULT '';
+
+// Заметки администратора
+INSERT INTO `bb_config` VALUES ('admin_note', 'Hello, world!');
+
+// Закладки
+DROP TABLE IF EXISTS `bb_book`;
+CREATE TABLE IF NOT EXISTS `bb_book` (
+  `book_id` mediumint(8) NOT NULL AUTO_INCREMENT,
+  `user_id` mediumint(9) NOT NULL DEFAULT '0',
+  `topic_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `forum_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `time` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`book_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+// Кто был последний на раздаче
+ALTER TABLE `bb_bt_torrents` ADD COLUMN `last_seeder_id` mediumint(8) NOT NULL DEFAULT '0';
+ALTER TABLE `buf_last_seeder` ADD COLUMN `user_id` mediumint(8) NOT NULL DEFAULT '0';
+
+// Парковка аккаунта
+ALTER TABLE `bb_users` ADD `user_park_profile` tinyint(1) NOT NULL DEFAULT '0';
+
+// Семейное положение
+ALTER TABLE `bb_users` ADD `user_relationships` tinyint(4) NOT NULL DEFAULT '0';
+
+// Спасибо
+DROP TABLE IF EXISTS `bb_thx`;
+CREATE TABLE IF NOT EXISTS `bb_thx` (
+  `topic_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `user_id` mediumint(8) NOT NULL DEFAULT '0',
+  `to_user_id` mediumint(8) NOT NULL DEFAULT '0',
+  `time` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`topic_id`, `user_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+// Обнуление рейтинга
+ALTER TABLE `bb_bt_users` ADD COLUMN `ratio_nulled` tinyint(1) NOT NULL DEFAULT '0';
+
+// Настройка индексации при создании темы
+ALTER TABLE `bb_topics` ADD COLUMN `topic_allow_robots` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0';

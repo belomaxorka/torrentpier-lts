@@ -54,15 +54,19 @@ table.forumline { margin: 0 auto; }
 <!-- IF TPL_ADMIN_MAIN -->
 <!--========================================================================-->
 <script type="text/javascript">
-ajax.manage_admin = function (mode) {
+ajax.manage_admin = function (mode, note = null) {
 	ajax.exec({
 		action  : 'manage_admin',
 		mode    : mode,
-		user_id : ''
+		user_id : '',
+		note    : note
 	});
 };
 ajax.callback.manage_admin = function(data) {
 	$('#cache').html(data.cache_html);
+	if (data.note_saved !== null) {
+		$('#res_note').html(data.note_saved);
+	}
 	$('#datastore').html(data.datastore_html);
 	$('#indexer').html(data.indexer_html);
 	$('#template_cache').html(data.template_cache_html);
@@ -143,6 +147,10 @@ ajax.callback.manage_admin = function(data) {
 		<td class="row2"><b>{$bb_cfg['tp_release_date']}</b></td>
 	</tr>
 	<tr>
+		<td class="row1" nowrap="nowrap" width="25%">{L_TP_MOD_VERSION}:</td>
+		<td class="row2"><b>{$bb_cfg['tp_mod_version']} &middot; <a target="_blank" href="https://github.com/belomaxorka/torrentpier-lts">GitHub</a></b></td>
+	</tr>
+	<tr>
 		<td class="row1" nowrap="nowrap" width="25%">{L_ZF_VERSION}:</td>
 		<td class="row2"><b>{$bb_cfg['tp_zf_version']}</b></td>
 	</tr>
@@ -187,6 +195,22 @@ ajax.callback.manage_admin = function(data) {
 		<td class="row2"><b>{DB_SIZE}</b></td>
 		<td class="row1" nowrap="nowrap">{L_GZIP_COMPRESSION}:</td>
 		<td class="row2"><b>{GZIP_COMPRESSION}</b></td>
+	</tr>
+</table>
+<br />
+
+<table class="forumline">
+	<tr>
+		<th colspan="2">{L_ADMIN_NOTES}</th>
+	</tr>
+	<tr>
+		<td class="row1 tCenter">
+			<textarea style="white-space: pre-wrap;" rows="10" cols="100" id="admin_note" name="admin_note">{ADMIN_NOTE}</textarea>
+		</td>
+		<td class="row2 tCenter">
+			<input type="button" class="liteoption" value="{L_NOTE_SAVE}" onclick="ajax.manage_admin('admin_note', $('#admin_note').val()); return false;"/>
+			<div style="margin-top: 10px;" class="seedmed" id="res_note"></div>
+		</td>
 	</tr>
 </table>
 <br />

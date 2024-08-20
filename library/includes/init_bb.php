@@ -297,6 +297,10 @@ define('BB_TOPICS_WATCH',         'bb_topics_watch');
 define('BB_USER_GROUP',           'bb_user_group');
 define('BB_USERS',                'bb_users');
 define('BB_WORDS',                'bb_words');
+// Спасибо
+define('BB_THX',                  'bb_thx');
+// Закладки
+define('BB_BOOK',                 'bb_book');
 
 define('TORRENT_EXT', 'torrent');
 
@@ -488,7 +492,7 @@ if ((empty($_POST) && !defined('IN_ADMIN') && !defined('IN_AJAX') && !file_exist
 		{
 			bb_log(date('H:i:s - ') . getmypid() .' --x- DB-LOCK OBTAINED !!!!!!!!!!!!!!!!!'. LOG_LF, CRON_LOG_DIR .'cron_check');
 
-			sleep(2);
+			// sleep(2);
 			require(CRON_DIR .'cron_init.php');
 
 			DB()->release_lock('cron');

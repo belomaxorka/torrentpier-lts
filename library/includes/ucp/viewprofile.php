@@ -85,6 +85,11 @@ else if ($signature)
 $this_date = bb_date(TIMENOW, 'md', false);
 $poster_birthday = ($profiledata['user_id'] != GUEST_UID && !empty($profiledata['user_birthday']) && $profiledata['user_birthday'] != '1900-01-01') ? bb_date(strtotime($profiledata['user_birthday']), 'md', false) : '';
 
+// Обнуление рейтинга
+if ($bb_cfg['ratio_null_enabled'] && $btu = get_bt_userdata($profiledata['user_id'])) {
+	$template->assign_vars(array('NULLED_RATIO' => $btu['ratio_nulled']));
+}
+
 $template->assign_vars(array(
 	'PAGE_TITLE'           => sprintf($lang['VIEWING_USER_PROFILE'], $profiledata['username']),
 	'USERNAME'             => $profiledata['username'],
@@ -102,10 +107,16 @@ $template->assign_vars(array(
 	'LAST_VISIT_TIME'      => ($profiledata['user_lastvisit']) ? (!$profile_user_id && bf($profiledata['user_opt'], 'user_opt', 'user_viewonline') && !IS_ADMIN) ? $lang['HIDDEN_USER'] : bb_date($profiledata['user_lastvisit'], $bb_cfg['last_visit_date_format'], false) : $lang['NEVER'],
 	'LAST_ACTIVITY_TIME'   => ($profiledata['user_session_time']) ? (!$profile_user_id && bf($profiledata['user_opt'], 'user_opt', 'user_viewonline') && !IS_ADMIN) ? $lang['HIDDEN_USER'] : bb_date($profiledata['user_session_time'], $bb_cfg['last_activity_date_format'], false) : $lang['NEVER'],
 
+	// Парковка аккаунта
+	'STATUS_PARK'          => ((bool)$profiledata['user_park_profile']) ? $lang['YES'] : $lang['NO'],
+
 	'USER_ACTIVE'          => $profiledata['user_active'],
 	'LOCATION'             => $profiledata['user_from'],
 	'OCCUPATION'           => $profiledata['user_occ'],
 	'INTERESTS'            => $profiledata['user_interests'],
+	// [Start] Семейное положение
+	'RELATIONSHIPS'        => ($bb_cfg['show_relationships'] && isset($lang['RELATIONSHIPS_SELECTOR'][$profiledata['user_relationships']])) ? $lang['RELATIONSHIPS_SELECTOR'][$profiledata['user_relationships']] : '',
+	// [End] Семейное положение
 	'SKYPE'                => $profiledata['user_skype'],
 	'TWITTER'              => $profiledata['user_twitter'],
 	'USER_POINTS'          => $profiledata['user_points'],
@@ -113,6 +124,7 @@ $template->assign_vars(array(
 	'BIRTHDAY'             => ($bb_cfg['birthday_enabled'] && !empty($profiledata['user_birthday']) && $profiledata['user_birthday'] != '1900-01-01') ? $profiledata['user_birthday'] : '',
 	'BIRTHDAY_ICON'        => ($bb_cfg['birthday_enabled'] && $this_date == $poster_birthday) ? '<img src="'. $images['icon_birthday'] .'" alt="'. $lang['HAPPY_BIRTHDAY'] .'" title="'. $lang['HAPPY_BIRTHDAY'] .'" border="0" />' : '',
 	'AGE'                  => ($bb_cfg['birthday_enabled'] && !empty($profiledata['user_birthday']) && $profiledata['user_birthday'] != '1900-01-01') ? birthday_age($profiledata['user_birthday']) : '',
+	'SHOW_ZODIAC'          => (IS_ADMIN || $profile_user_id || bf($profiledata['user_opt'], 'user_opt', 'user_show_zodiac')) ? get_zodiac($profiledata['user_birthday']) : '',
 
 	'L_VIEWING_PROFILE'    => sprintf($lang['VIEWING_USER_PROFILE'], $profiledata['username']),
 	'L_MY_PROFILE'         => sprintf($lang['VIEWING_MY_PROFILE'], 'profile.php?mode=editprofile'),

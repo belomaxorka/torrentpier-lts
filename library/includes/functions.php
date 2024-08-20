@@ -278,6 +278,8 @@ $bf['user_opt'] = array(
 	'dis_post_edit'      => 13, // Запрет на редактирование сообщений
 	'user_dls'           => 14, // Скрывать список текущих закачек в профиле
 	'user_retracker'     => 15, // Добавлять ретрекер к скачиваемым торрентам
+	'user_show_zodiac'   => 16, // Знак зодиака (Если номер "16" занят, то замените на любой другой свободный номер)
+	'off_pm'             => 17, // Отключить входящие ЛС
 );
 
 function bit2dec ($bit_num)
@@ -1753,11 +1755,13 @@ function generate_pagination ($base_url, $num_items, $per_page, $start_item, $ad
 		if ($on_page > 1)
 		{
 			$page_string = ' <a href="' . $base_url . "&amp;start=" . ( ( $on_page - 2 ) * $per_page ) . '">' . $lang['PREVIOUS_PAGE'] . '</a>&nbsp;&nbsp;' . $page_string;
+			$meta_prev_link = FULL_URL . $base_url . "&amp;start=" . (($on_page - 2) * $per_page);
 		}
 
 		if ($on_page < $total_pages)
 		{
 			$page_string .= '&nbsp;&nbsp;<a href="' . $base_url . "&amp;start=" . ( $on_page * $per_page ) . '">' . $lang['NEXT_PAGE'] . '</a>';
+			$meta_next_link = FULL_URL . $base_url . "&amp;start=" . ($on_page * $per_page);
 		}
 
 	}
@@ -1770,6 +1774,9 @@ function generate_pagination ($base_url, $num_items, $per_page, $start_item, $ad
 		'PAGE_NUMBER'  => sprintf($lang['PAGE_OF'], ( floor($start_item/$per_page) + 1 ), ceil( $num_items / $per_page )),
 		'PG_BASE_URL'  => $base_url,
 		'PG_PER_PAGE'  => $per_page,
+		// Assign meta
+		'META_PREV_PAGE' => isset($meta_prev_link) ? $meta_prev_link : '',
+		'META_NEXT_PAGE' => isset($meta_next_link) ? $meta_next_link : '',
 	));
 
 	return $pagination;
@@ -2907,5 +2914,51 @@ function bb_captcha ($mode, $callback = '')
 		default:
 			bb_simple_die(__FUNCTION__ .": invalid mode '$mode'");
 	}
+	return false;
+}
+
+// Контрольные суммы файлов
+function get_file_hash($filepath)
+{
+	global $bb_cfg;
+
+	if ($bb_cfg['attach_file_hash'] && $hash = hash_file('md5', $filepath)) {
+		return $hash;
+	}
+
+	return '';
+}
+
+// Знак зодиака
+function get_zodiac($birthday, $mode = 'full')
+{
+	global $lang, $bb_cfg;
+
+	list($year, $month, $day) = array_pad(explode('-', $birthday, 3), 3, 0);
+	if (ctype_digit("$year$month$day") && checkdate($month, $day, $year)) {
+		foreach ($bb_cfg['zodiac_sign'] as $sign => $date) {
+			if (($month == $date[0] && $day >= $date[1]) || ($month == $date[2] && $day <= $date[3])) {
+				$image = BB_ROOT . 'styles/images/zodiac/' . $sign . '.gif';
+				$title = $lang['ZODIAC_SIGN'][strtoupper($sign)];
+				if (isset($title)) {
+					$data_show = $title;
+					if (file_exists($image)) {
+						switch ($mode) {
+							case 'image':
+								$data_show = "<img src='$image' alt='$title' title='$title ($birthday)' style='vertical-align: middle;' />";
+								break;
+							default:
+							case 'full':
+								$data_show = "($title <img src='$image' alt='$title' title='$title ($birthday)' style='vertical-align: middle;' />)";
+								break;
+						}
+					}
+
+					return $data_show;
+				}
+			}
+		}
+	}
+
 	return false;
 }
